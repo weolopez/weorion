@@ -1,4 +1,3 @@
-
 function updateIS2() {
 	
 		$(".csi").each(
@@ -49,7 +48,7 @@ function dynamicLoad() {
     };
     
     // dynamically load content from twitter
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=weolopez&count=5&callback=?')
+    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=github&count=5&callback=?')
       .error( ajaxError )
       .success(function( data ){
         
