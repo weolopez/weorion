@@ -1,0 +1,36 @@
+{
+    "CE": {
+        "IUs": [
+            {
+                "name": "IUID1",
+                "url": "http://img.att.net/editorial/images/49/8020849/nokia_lumia_900.png",
+                "text": "This site has examples of client side includes and dynamic replacement of content from an ajax call to a restful service pulling a JSON object."
+            }, {
+                "name": "IUID2",
+                "url": "http://img.att.net/editorial/images/55/8020855/free_phones.png",
+				"text": "2Donec id elit non mi porta gravida at eget metus."
+            }, {
+                "name": "IUID3",
+                "url": "http://img.att.net/editorial/images/57/8020857/samsung_galaxy_siii.png",
+                "text": "3Donec id elit non mi porta gravida at eget metus."
+            }, {
+                "name": "IUID4",
+                "url": "img/rabbit3.jpg",
+                "text": "4Donec id elit non mi porta gravida at eget metus."
+            }, {
+                "name": "IUID5",
+                "url": "img/rabbit3.jpg",
+                "text": "5Donec id elit non mi porta gravida at eget metus."
+            }, {
+                "name": "IUID6",
+                "url": "img/rabbit3.jpg",
+                "text": "6Donec id elit non mi porta gravida at eget metus."
+            }, {
+                "name": "dynamicContent",
+                "title": "Dynamic Content",
+                "url": "img/rabbit3.jpg",
+                "text": "Combination of CSS, JS and Framework"
+            }
+        ]
+    }
+}
