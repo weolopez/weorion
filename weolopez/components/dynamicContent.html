@@ -1,0 +1,22 @@
+<div id="dynamicContent">
+	<div class="TDataImage" src=""></div>
+	<div class="TDataTitle"></div>
+	<div class="TDataText"></div>
+	<br/>
+	<input id="EditDynamicContent" type="button" value="Edit JSON" onclick="openJSON();">	
+</div>
+
+<script>
+	var recommendationURL="recommendationResponse.json";
+    $.getJSON(recommendationURL, function(data) {
+        $.each(data.CE.IUs, function(i, v) {
+            var tmp1 = $("#" + v.name).find('.TDataImage');
+            tmp1.attr("src", v.url);
+            var tmp = $(('.TDataTitle'), $("#" + v.name));
+            tmp.html(v.title);
+            var tmp = $(('.TDataText'), $("#" + v.name));
+            tmp.html(v.text);
+        });        
+    });
+
+</script>

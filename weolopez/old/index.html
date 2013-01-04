@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="https://raw.github.com/desandro/masonry/master/jquery.masonry.min.js"></script>
+		<script src="https://raw.github.com/roncioso/Flip-jQuery/master/jquery.flip.min.js"></script>
+		<script type="text/javascript" src="slider/jquery.slidePanel.min.js"></script>
+		<script src="js/dynamicContent.js"></script>
+		<link href="css/dynamicContent.css" rel="stylesheet" type="text/css">
+		<link href="css/MasonStyle.css" rel="stylesheet" type="text/css">
+		
+	<style>	
+		
+	</style>
+	
+	</head>
+	
+	<body>
+	
+	<!--div class="csi" src="header.html"></div-->
+	
+	
+	<!--div class="csi" src="editor.html"></div-->
+	
+	<div id="fippyBox" style="background-color:grey;margin: 0 auto;width:750px;height:100%;">
+		  
+	<!--div class="csi" src="components/banner.html"></div-->
+
+		<div id="container" class="clearfix">
+			<div class="box col2">
+				 <div class="csi" src="components/plan.html"></div> 
+			</div>
+			<div class="box col3">
+				<div class="csi" src="dynamicContent.html"></div>
+			</div>
+			<div class="box col3">
+				<div class="csi" src="TTTProject/description.html"></div>
+			</div>
+		</div>
+		
+	</div>
+			
+	<!--div class="csi" src="components/footer.html"></div-->
+		<div id="flippyContentLeft" class="flippyContent" style="background-color: green;margin: 0 auto;width:750px;height:100%;display: none;">
+				<input id="CloseEditor" type="button" value="Close" onclick="$('#container').revertFlip();window.location.reload();">
+				<iframe id="EFrame" name="EFrame" style="background-color: black;width:100%;height:900px;" src="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/DynamicContent/x.html"></iframe>
+		</div>
+		
+		<script>
+			
+		  clientSideInclude(); 
+		
+		</script>
+	</body>
+</html>
