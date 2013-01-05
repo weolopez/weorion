@@ -13,7 +13,7 @@ function load(twit) {
     };
     
     // dynamically load content from twitter
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit..attr("id")+'&count=5&callback=?')
+    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?')
       .error( ajaxError )
       .success(function( data ){
         
