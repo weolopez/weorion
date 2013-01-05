@@ -8,7 +8,7 @@ function load(twit) {
     });
     
     var $sites = $('#sites'),
-        $loadingItem = $container.find('#loading');
+        $loadingItem = $container.find('.'+twit);
         
     var ajaxError = function(){
       $loadingItem.text('Could not load examples :(');
@@ -39,7 +39,7 @@ function load(twit) {
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
           //$container.masonry( 'remove', $loadingItem );
-          $('#loading').remove();
+          $('.'+twit).remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
@@ -59,7 +59,7 @@ function updateIS2() {
 	$(".twitter").each(
 			function(index) {
 			    var c = $(this);
-			    var t = c.attr("twit");
+			    var t = c.attr("id");
 			    load(t);
 		});
 }
