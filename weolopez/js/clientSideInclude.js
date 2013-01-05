@@ -72,6 +72,6 @@ function dynamicLoad(twit, loadingDivID) {
       });
 }
 
-dynamicLoad('orionhub','.githubloading');
+//dynamicLoad('orionhub','.githubloading');
 
-dynamicLoad('twitter','.twitter');
+//dynamicLoad('twitter','.twitter');
