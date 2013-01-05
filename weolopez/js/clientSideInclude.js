@@ -1,9 +1,7 @@
 function load(twit) {
-	$(function(){
     
     var $container = $('#container');
-    var getHUB =  $('.gethub');
-    var loading = $().find(twit);
+    var getHUB =  $('#twitter');
     var screenName = twit;
     
     $('#mini-container').masonry({
@@ -47,8 +45,6 @@ function load(twit) {
         });
         
       });
-    
-  });
 }
 
 function updateIS2() {
