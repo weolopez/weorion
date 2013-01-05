@@ -71,7 +71,7 @@ function dynamicLoad() {
         
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
-          $container.masonry( 'remove', $('.githubloading' );
+         // $container.masonry( 'remove', $('.githubloading' );
           $('.githubloading').remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
