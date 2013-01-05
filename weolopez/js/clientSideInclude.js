@@ -50,21 +50,21 @@ function load(twit) {
 }
 
 function updateIS2() {
-	
-		$(".csi").each(
+	$(".csi").each(
 			function(index) {
 			    var c = $(this);
 			    var u = c.attr("src");
-	   			
 			    $(this).load(u);
-			    
+	});
+	$(".twitter").each(
+			function(index) {
+			    var c = $(this);
+			    var u = c.attr("src");
+			    $(this).load(u);
 			    var t = c.attr("twit");
-			    if (t=='weolopez') {
-			    	load(t);
-			    }
-			});
-			
-};
+			    load(t);
+	};
+});
 
 
 function loadCSS() {
