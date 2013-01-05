@@ -24,7 +24,7 @@ function clientSideInclude() {
 };
 
 
-function dynamicLoad(twit) {
+function dynamicLoad(twit, loadingDivID) {
 
     var $container = $('#container');
     
@@ -40,7 +40,7 @@ function dynamicLoad(twit) {
    */ 
     // Sites using Masonry markup
     var $sites = $('#sites')
-    var $loadingItem = $container.find('.githubloading');
+    var $loadingItem = $container.find(loadingDivID);
         
     var ajaxError = function(){$loadingItem.text('Could not load examples :(');};
     
@@ -72,4 +72,4 @@ function dynamicLoad(twit) {
       });
 }
 
-dynamicLoad('orionhub');
+dynamicLoad('orionhub','.githubloading');
