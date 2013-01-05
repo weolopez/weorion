@@ -8,7 +8,7 @@ function load(twit) {
       columnWidth: 50
     });
     
-    var loadingItem = $container.find('.'+twit);
+    var loadingItem = $('.'+twit);
         
     var ajaxError = function(){
       loadingItem.text('Could not load examples :');
