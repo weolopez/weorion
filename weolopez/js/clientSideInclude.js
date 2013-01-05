@@ -2,6 +2,8 @@ function load(twit) {
 	$(function(){
     
     var $container = $('#container');
+    var getHUB =  $('.gethub');
+    var loading = $().find(twit);
     var screenName = twit;
     
     $('#mini-container').masonry({
