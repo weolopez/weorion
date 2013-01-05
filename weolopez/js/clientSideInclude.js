@@ -61,9 +61,8 @@ function updateIS2() {
 			    var c = $(this);
 			    var t = c.attr("twit");
 			    load(t);
-	};
-});
-
+		});
+}
 
 function loadCSS() {
 	$('<link rel="stylesheet" type="text/css" href="'+"dynamicContent.css"+'" >').appendTo("head");
