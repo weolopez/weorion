@@ -1,4 +1,4 @@
-function load(twit) {
+function loadTWIT(twit) {
     
     var $container = $('#container');
     
