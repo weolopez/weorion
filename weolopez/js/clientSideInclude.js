@@ -41,7 +41,7 @@ function dynamicLoad() {
    */ 
     // Sites using Masonry markup
     var $sites = $('#sites'),
-        $loadingItem = $container.find('#loading');
+        $loadingItem = $container.find('.githubloading');
         
     var ajaxError = function(){
       $loadingItem.text('Could not load examples :(');
@@ -72,7 +72,7 @@ function dynamicLoad() {
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
           //$container.masonry( 'remove', $loadingItem );
-          $('#loading').remove();
+          $('.githubloading').remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
