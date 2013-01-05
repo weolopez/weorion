@@ -66,7 +66,13 @@ function loadCSS() {
 
 
 function clientSideInclude() {
-    updateIS2();
+    //updateIS2();
+    $(".csi").each((index) {
+        var c = $(this);
+        var u = c.attr("src");
+	$(this).load(u);
+    });
 };
+
 
 
