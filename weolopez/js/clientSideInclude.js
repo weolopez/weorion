@@ -73,3 +73,5 @@ function dynamicLoad(twit, loadingDivID) {
 }
 
 dynamicLoad('orionhub','.githubloading');
+
+dynamicLoad('twitter','.twitter');
