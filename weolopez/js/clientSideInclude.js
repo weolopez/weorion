@@ -24,9 +24,8 @@ function clientSideInclude() {
 };
 
 
-function dynamicLoad() {
-	$(function(){
-    
+function dynamicLoad(twit) {
+
     var $container = $('#container');
     
     $('#mini-container').masonry({
@@ -40,18 +39,15 @@ function dynamicLoad() {
     });
    */ 
     // Sites using Masonry markup
-    var $sites = $('#sites'),
-        $loadingItem = $container.find('.githubloading');
+    var $sites = $('#sites')
+    var $loadingItem = $container.find('.githubloading');
         
-    var ajaxError = function(){
-      $loadingItem.text('Could not load examples :(');
-    };
+    var ajaxError = function(){$loadingItem.text('Could not load examples :(');};
     
     // dynamically load content from twitter
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=github&count=5&callback=?')
+    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit+'&count=5&callback=?')
       .error( ajaxError )
       .success(function( data ){
-        
         // proceed only if we have data
         if ( !data || !data.length ) {
           ajaxError();
@@ -59,7 +55,6 @@ function dynamicLoad() {
         }
         var items = [],
             item, datum;
-        
         for ( var i=0, len = data.length; i < len; i++ ) {
           datum = data[i];
           item = '<div class="box col1" ><a href="' + datum.user.url + '">'
@@ -68,18 +63,13 @@ function dynamicLoad() {
             + '</a></div>';
           items.push( item );
         }
-        
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
          // $container.masonry( 'remove', $('.githubloading' );
           $('#githubloading').remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
-            
         });
-        
       });
-    
-  });
 }
 
-dynamicLoad();
+dynamicLoad('orionhub');
