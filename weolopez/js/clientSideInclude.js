@@ -36,8 +36,8 @@ function load(twit) {
         
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
-          $container.masonry( 'remove', loadingItem );
-          //$('.'+twit).remove();
+          //$container.masonry( 'remove', loadingItem );
+          twit.remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
