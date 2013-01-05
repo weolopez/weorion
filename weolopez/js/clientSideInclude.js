@@ -59,8 +59,6 @@ function updateIS2() {
 	$(".twitter").each(
 			function(index) {
 			    var c = $(this);
-			    var u = c.attr("src");
-			    $(this).load(u);
 			    var t = c.attr("twit");
 			    load(t);
 	};
