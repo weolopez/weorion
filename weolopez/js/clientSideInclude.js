@@ -2,16 +2,16 @@ function load(twit) {
 	$(function(){
     
     var $container = $('#container');
+    var screenName = twit;
     
     $('#mini-container').masonry({
       columnWidth: 50
     });
     
-    var $sites = $('#sites'),
-        $loadingItem = $container.find('.'+twit);
+    var loadingItem = $container.find('.'+twit);
         
     var ajaxError = function(){
-      $loadingItem.text('Could not load examples :(');
+      loadingItem.text('Could not load examples :');
     };
     
     // dynamically load content from twitter
@@ -38,8 +38,8 @@ function load(twit) {
         
         var $items = $( items.join('') );
         $items.imagesLoaded(function(){
-          //$container.masonry( 'remove', $loadingItem );
-          $('.'+twit).remove();
+          $container.masonry( 'remove', loadingItem );
+          //$('.'+twit).remove();
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
