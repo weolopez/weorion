@@ -20,8 +20,8 @@
 		openEditor(source)	
 	});
 	
-	function openEditor(source) {
-		$("#EditorFrame").attr("src","https://orionhub.org/edit/edit.html#/file/weolopez/weolopez/weolopez/"+source);
+	function openEditorURL(URL) {
+		$("#EditorFrame").attr("src",URL);
 		$("#fippyBox").flip({
 					content: $("#EditorPanel"),
 					speed: 750,
@@ -29,6 +29,9 @@
 					bgColor: 'silver',
 					direction:'lr'
 				});
+	}
+	function openEditor(source) {
+		openEditorURL("https://orionhub.org/edit/edit.html#/file/weolopez/weolopez/weolopez/"+source);
 	}
 </script>
 
