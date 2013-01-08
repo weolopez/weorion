@@ -3,7 +3,8 @@ function updateIS2() {
 			function(index) {
 			    var c = $(this);
 			    var u = c.attr("src");
-			    $(this).load(u);
+			    var newDiv = $('<div>').load(u);
+			    $container.masonry().append( newDiv ).masonry( 'appended', newDiv, true );
 	});
 
 }
