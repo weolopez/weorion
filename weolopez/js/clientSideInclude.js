@@ -4,7 +4,7 @@ function updateIS2() {
 			    var c = $(this);
 			    var u = c.attr("src");
 			    c.load(u);
-			    $container.masonry().append( c ).masonry( 'appended', c, true );
+			   // $container.masonry().append( c ).masonry( 'appended', c, true );
 	});
 
 }
