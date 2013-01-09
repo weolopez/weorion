@@ -17,7 +17,7 @@ function loadTWIT(twit) {
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
     var jqxhr = $.getJSON(url, function( data ){   
-    	alert('jsondata'+data);
+    //	alert('jsondata'+data);
     	   // proceed only if we have data
         if ( !data || !data.length ) {
           ajaxError();
