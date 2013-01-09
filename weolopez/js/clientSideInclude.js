@@ -1,5 +1,4 @@
 function loadTWIT(twit) {
-    alert('log'+twit);
     var $container = $('#container');
     
     $('#mini-container').masonry({
@@ -11,9 +10,11 @@ function loadTWIT(twit) {
     var ajaxError = function(){
       loadingItem.text('Could not load examples :');
     };
+    var url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?';
     
+    alert('log'+url);
     // dynamically load content from twitter
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?')
+    $.getJSON(url)
       .error( ajaxError )
       .success(function( data ){
         
