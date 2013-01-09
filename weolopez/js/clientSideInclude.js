@@ -1,5 +1,5 @@
 function loadTWIT(twit) {
-    
+    alert('log'+twit);
     var $container = $('#container');
     
     $('#mini-container').masonry({
