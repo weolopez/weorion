@@ -16,7 +16,7 @@ function loadTWIT(twit) {
     // dynamically load content from twitter
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
-    var jqxhr = $.getJSON("example.json", function() {
+    var jqxhr = $.getJSON(url, function() {
         alert("success");
     }).success(function() { alert("second success"); })
     .error(function() { alert("error"); })
