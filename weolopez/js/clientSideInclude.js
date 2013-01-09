@@ -1,3 +1,35 @@
+function loadMasonry(component) {
+	
+    var $container = $('#container');
+    var internallURL = component.attr("src");
+        var jqxhr = $.ajax({
+                url: internallURL,
+                dataType: "html",
+                complete: function( jqXHR, status ) {
+			if ( callback ) {
+				self.each( callback, response || [ jqXHR.responseText, status, jqXHR ] );
+			}
+                }
+            }).done(function( responseText ) {
+                var tempHTML = $('<div class="box col1">').html(responseText);
+//alert('adding plan'+tempHTML);
+			    component.parent().remove();
+                $container.masonry().append( tempHTML ).masonry( 'appended', tempHTML, true );
+            }).fail(function() {
+                alert("error");
+            }).always(function() {
+    //            alert("complete");
+            });
+
+// perform other work here ...
+
+// Set another completion function for the request above
+        jqxhr.always(function() {
+         //   alert("second complete");
+        });
+}
+
+
 function loadTWIT(twit) {
     var $container = $('#container');
     
