@@ -21,11 +21,7 @@ function loadTWIT(twit) {
     }).success(function() { //alert("second success"); 
     })
     .error(function() { alert("error"); })
-    .complete(function() { //alert("complete"); 
-    });
-// perform other work here ...
-// Set another completion function for the request above
-    jqxhr.complete(function( data ){   
+    .complete(function( data ){   
     	alert('jsondata'+data);
     	   // proceed only if we have data
         if ( !data || !data.length ) {
@@ -52,6 +48,9 @@ function loadTWIT(twit) {
             
         });
       });
+// perform other work here ...
+// Set another completion function for the request above
+    jqxhr.complete();
 }
 
 function updateIS2() {
