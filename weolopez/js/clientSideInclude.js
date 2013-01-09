@@ -14,9 +14,16 @@ function loadTWIT(twit) {
     
     alert('log'+url);
     // dynamically load content from twitter
-    $.getJSON(url)
-      .error( ajaxError )
-      .success(function( data ){
+    // Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+    var jqxhr = $.getJSON("example.json", function() {
+        alert("success");
+    }).success(function() { alert("second success"); })
+    .error(function() { alert("error"); })
+    .complete(function() { alert("complete"); });
+// perform other work here ...
+// Set another completion function for the request above
+    jqxhr.complete(function( data ){
         
         // proceed only if we have data
         if ( !data || !data.length ) {
