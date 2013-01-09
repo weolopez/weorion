@@ -12,20 +12,22 @@ function loadTWIT(twit) {
     };
     var url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?';
     
-    alert('log'+url);
+   // alert('log'+url);
     // dynamically load content from twitter
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
     var jqxhr = $.getJSON(url, function() {
-        alert("success");
-    }).success(function() { alert("second success"); })
+ //       alert("success");
+    }).success(function() { //alert("second success"); 
+    })
     .error(function() { alert("error"); })
-    .complete(function() { alert("complete"); });
+    .complete(function() { //alert("complete"); 
+    });
 // perform other work here ...
 // Set another completion function for the request above
-    jqxhr.complete(function( data ){
-        
-        // proceed only if we have data
+    jqxhr.complete(function( data ){   
+    	alert('jsondata'+data);
+    	   // proceed only if we have data
         if ( !data || !data.length ) {
           ajaxError();
           return;
@@ -49,7 +51,6 @@ function loadTWIT(twit) {
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
-        
       });
 }
 
