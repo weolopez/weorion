@@ -16,12 +16,7 @@ function loadTWIT(twit) {
     // dynamically load content from twitter
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
-    var jqxhr = $.getJSON(url, function() {
- //       alert("success");
-    }).success(function() { //alert("second success"); 
-    })
-    .error(function() { alert("error"); })
-    .complete(function( data ){   
+    var jqxhr = $.getJSON(url, function( data ){   
     	alert('jsondata'+data);
     	   // proceed only if we have data
         if ( !data || !data.length ) {
@@ -47,10 +42,15 @@ function loadTWIT(twit) {
           $container.masonry().append( $items ).masonry( 'appended', $items, true );
             
         });
-      });
+      }).success(function() { //alert("second success"); 
+    })
+    .error(function() { alert("error"); })
+    .complete(function() { //alert("second success"); 
+    })
 // perform other work here ...
 // Set another completion function for the request above
-    jqxhr.complete();
+    jqxhr.complete(function() { //alert("second success"); 
+    });
 }
 
 function updateIS2() {
