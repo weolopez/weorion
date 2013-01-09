@@ -1,4 +1,4 @@
-/*function loadMasonry(component) {
+function loadMasonry(component) {
 	
     var $container = $('#container');
     var internallURL = component.attr("src");
@@ -28,7 +28,7 @@
          //   alert("second complete");
         });
 }
-*/
+
 
 function loadTWIT(twit) {
     var $container = $('#container');
