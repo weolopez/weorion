@@ -1,8 +1,13 @@
 MultiTwitter component adds the ability to query twitter by ID and add compnents dynamically.
 <div id="github" class="twitters">
 </div>
-<div id="weolopez" class="twitters">
+<div id="orionhub" class="twitters">
 </div>			  
-<script>			  
-	findTwitters();
+<script>		
+		$(".twitters").each(
+			function(index) {
+			    var c = $(this);
+			    var t = c.attr("id");
+			    loadTWIT(c);
+		});	 
 </script>

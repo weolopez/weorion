@@ -11,14 +11,15 @@
 </div>		
 		<div id="EditorPanel" class="flippyContent">
 				<input id="CloseEditor" type="button" value="Close" onclick="$('#container').revertFlip();window.location.reload();">
-				<iframe id="EditorFrame" style="background-color:silver;width:100%;height:850px;" name="EFrame" style="" src="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/DynamicContent/index.html"></iframe>
+				<iframe id="EditorFrame" style="background-color:silver;width:100%;height:850px;" name="EFrame" style="" src=""></iframe>
 		</div>
-
 <script>
 	$(".csi").click(function(){
 		var source = $(this).attr("src");
 		openEditor(source)	
 	});
+	
+
 	
 	function openEditorURL(URL) {
 		$("#EditorFrame").attr("src",URL);
