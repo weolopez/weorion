@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 function loadMasonry(component) {
 	
     var $container = $('#container');
@@ -33,6 +34,8 @@ function loadMasonry(component) {
 
 =======
 >>>>>>> synch changes
+=======
+>>>>>>> fiddle2
 function loadTWIT(twit) {
     var $container = $('#container');
     
@@ -48,10 +51,14 @@ function loadTWIT(twit) {
     var url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?';
     
 <<<<<<< HEAD
+<<<<<<< HEAD
    // alert('log'+url);
 =======
  //   alert('log'+url);
 >>>>>>> synch changes
+=======
+ //   alert('log'+url);
+>>>>>>> fiddle2
     // dynamically load content from twitter
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
@@ -91,7 +98,10 @@ function loadTWIT(twit) {
     jqxhr.complete(function() { //alert("second success"); 
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> fiddle2
 }
 
 function loadMasonry(component) {
@@ -124,12 +134,16 @@ function loadMasonry(component) {
         jqxhr.always(function() {
          //   alert("second complete");
         });
+<<<<<<< HEAD
 >>>>>>> synch changes
+=======
+>>>>>>> fiddle2
 }
 
 function updateIS2() {
 	$(".csi").each(function(index) {
 			    var c = $(this);
+<<<<<<< HEAD
 <<<<<<< HEAD
 			    var u = c.attr("src");
 			    c.load(u);
@@ -142,6 +156,12 @@ function updateIS2() {
 			    loadMasonry(c);
 	});
 >>>>>>> synch changes
+=======
+				var u = c.attr("src");
+			//	c.load(u);
+			    loadMasonry(c);
+	});
+>>>>>>> fiddle2
 }
 
 function loadCSS() {
@@ -158,4 +178,8 @@ function clientSideInclude() {
 
 
 
+<<<<<<< HEAD
 >>>>>>> synch changes
+=======
+
+>>>>>>> fiddle2
