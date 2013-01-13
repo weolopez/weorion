@@ -1,0 +1,54 @@
+<script src="https://raw.github.com/roncioso/Flip-jQuery/master/jquery.flip.min.js"></script>
+<link href="demo.css" rel="stylesheet" type="text/css">		
+<script src="demo.js"></script>	
+
+<script src="https://raw.github.com/Craga89/qTip2/master/dist/jquery.qtip.min.js"></script>
+<link href="https://raw.github.com/Craga89/qTip2/master/dist/jquery.qtip.min.css" rel="stylesheet" type="text/css">		
+
+<!--div class="box col1" style="background-color: grey;">
+				 <div class="csi" src="components/index.html" style="background-color: silver;">component.html is the test component for new features.	</div> 
+</div-->
+
+Flippy content
+
+<div class="messagepop pop">
+  <a href=""> Edit</a>
+  <a href="http://jsfiddle.net/weolopez/WsrDs/5/"> jsfiddle</a>
+</div>
+
+<script>
+var openBOX = 'false';	
+$('body').click(function(){
+	if (openBOX=='true') {
+			var c = $(window.openDIV);
+    		$(".pop").flip({
+					content: c,
+					speed: 750,
+					color: 'silver',
+					bgColor: 'silver',
+					direction:'lr'
+				});
+				openBOX = 'false';
+	}
+});
+	
+$(".flippy").live({
+        click:
+           function() {
+				if (openBOX=='false') {
+					window.openDIV = $(this).attr("id");
+					var c = $(window.openDIV);
+	          		c.flip({
+		                content: $(".pop"),
+		                speed: 750,
+		                color: 'silver',
+		                bgColor: 'silver',
+		                direction:'lr'
+	              	});
+		                openBOX='true';
+		            }
+	          }
+	   });
+</script>
+
+		

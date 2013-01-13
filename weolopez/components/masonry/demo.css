@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
 	font-family: Helvetica, Verdana
 }
@@ -8,8 +9,20 @@ p {
 	border: 1px solid #999;
 }
 
+=======
+/**** Demos ****/
+body {
+  background-color: black;
+}
+>>>>>>> synch changes
 
 #container {
+    position:relative; clear:left;
+		width:650px;height:100%;
+		margin: 0 auto;		
+		background-color:grey;
+  
+
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;

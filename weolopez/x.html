@@ -5,139 +5,46 @@
         <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="https://raw.github.com/desandro/masonry/master/jquery.masonry.min.js"></script>
-		<link href="css/MasonStyle.css" rel="stylesheet" type="text/css">		
+		<link href="components/masonry/demo.css" rel="stylesheet" type="text/css">		
+		<script src="components/masonry/demo.js"></script>			
 		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
 </head>
 
-<style>
-	body {
-		background-color:black;
-	}
-	#fippyBox {
-		position:relative; clear:left;
-		width:650px;height:100%;
-		margin: 0 auto;		
-		background-color:grey;
-	}
-	.twitter {
-		width: 80px;	
-		margin: 5px;
-  		padding: 5px;
-		background-image:url('http://i.imgur.com/6RMhx.gif');
-  		font-size: 11px;
-  		line-height: 1.4em;
-  		float: left;
-  		-webkit-border-radius: 5px;
-     	-moz-border-radius: 5px;
-        border-radius: 5px;
-	}
-	.csiLoading {
-		width: 80px;	
-		margin: 5px;
-  		padding: 5px;
-		background-image:url('http://i.imgur.com/6RMhx.gif');
-  		font-size: 11px;
-  		line-height: 1.4em;
-  		float: left;
-  		-webkit-border-radius: 5px;
-     	-moz-border-radius: 5px;
-        border-radius: 5px;
-	}
-</style>
-
 <body>
-	<div id="fippyBox">
     	<div id="container" class="transitions-enabled clearfix" style="">
   			<div class="box col1">
-				 <div class="csi" src="components/index.html">INDEX</div> 
+				 <div id="index" class="csi" src="components/index.html"></div> 
 			</div>
 			<div class="box col1">
-				<div class="csi" src="components/clientSideInclude.html"></div> 
+				<div id="clientSideInclude" class="csi" src="components/clientSideInclude.html"></div> 
 			</div>
-			<div class="box col1">
+			<!--div class="box col1">
 				 <div class="csi" src="components/editor.html"></div> 
+			</div-->
+				 <div id="flippy" class="csi"></div> 
+			<div class="box col1">
+				<div id="dynamicContent" class="csi" src="components/dynamicContent.html"></div>
 			</div>
 			<div class="box col1">
-				<div class="csi" src="components/dynamicContent.html"></div>
+				<div id="multiTwitter" class="csi" src="components/multiTwitter.html"></div>
 			</div>
-			<div class="box col3">
-				<div class="csi" src="TTTProject/description.html"></div>
-			</div>
-			<div class="box col2">
-				<div class="csi" src="components/multiTwitter.html"></div>
-			</div>
-			<div class="box col2">
-				<div class="csi" src="components/twitter.html"></div>
-			</div>
-			
+				<div id="mobile" class="csi" src="components/mobile/mobile.html"></div>
 			<div class="box col1">
-				 <div class="csi" src="components/plan.html"></div> 
+				<div id="twitter" class="csi" src="components/twitter.html"></div>
+			</div>
+			<div class="box col1">
+				 <div id="plan" class="csi" src="components/plan.html"></div> 
 			</div>		  
 			<!--div id="githubloading" class="box col1 loading">
 				 <div class="csi" src="https://raw.github.com/weolopez/weorion/master/weolopez/components/github.html"></div> 
 			</div-->
+				
+				 <!--div class="csi" id="masonry" src="components/plan.html"></div--> 
 		</div>
-	</div>
-		<script>			
-		  clientSideInclude(); 	
+				<script>			
+		  masonryCSI(); 	
 		  function openJSON() {openEditor('recommendationResponse.json');};
-function findTwitters() {	
-	var items;
-            
-	$(".twitters").each(
-			function(index) {
-			    var c = $(this);
-			    var u = c.attr("id");
 
-    var twit = c;
-    var $container = $('#container');
-    
-    $('#mini-container').masonry({
-      columnWidth: 50
-    });
-    
-    var loadingItem = twit;
-        
-    var ajaxError = function(){
-      loadingItem.text('Could not load examples :');
-    };
-    
-    // dynamically load content from twitter
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?')
-      .error( ajaxError )
-      .success(function( data ){
-        
-        // proceed only if we have data
-        if ( !data || !data.length ) {
-          ajaxError();
-          return;
-        }
-        var item, datum;
-        
-        for ( var i=0, len = data.length; i < len; i++ ) {
-          datum = data[i];
-          item = '<div class="box col2" ><a href="' + datum.user.url + '">'
-            + '<img style="width:50px;height:65px" src="' + datum.user.profile_image_url.replace('/l.', '/m.') + '" />'
-            + '<b>' + datum.text + '</b>'
-            + '</a></div>';
-          items.push( item );
-        }        
-      });
-
-
-	});
-	
-		var $items = $( items.join('') );
-        $items.imagesLoaded(function(){
-          //$container.masonry( 'remove', loadingItem );
-          twit.remove();
-          $container.masonry().append( $items ).masonry( 'appended', $items, true );
-            
-        });
-}
- 
-        
 		</script>
-		
 	</body>
 </html>
