@@ -1,6 +1,8 @@
 
 /**** Demos ****/
-
+.csi {
+	background-color: silver;
+}
 
 #container {
   padding: 5px;

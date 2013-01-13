@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function loadMasonry(component) {
 	
     var $container = $('#container');
@@ -30,6 +31,8 @@ function loadMasonry(component) {
 }
 
 
+=======
+>>>>>>> synch changes
 function loadTWIT(twit) {
     var $container = $('#container');
     
@@ -44,7 +47,11 @@ function loadTWIT(twit) {
     };
     var url = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name='+twit.attr("id")+'&count=5&callback=?';
     
+<<<<<<< HEAD
    // alert('log'+url);
+=======
+ //   alert('log'+url);
+>>>>>>> synch changes
     // dynamically load content from twitter
     // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
@@ -83,21 +90,62 @@ function loadTWIT(twit) {
 // Set another completion function for the request above
     jqxhr.complete(function() { //alert("second success"); 
     });
+<<<<<<< HEAD
+=======
+}
+
+function loadMasonry(component) {
+	
+    var $container = $('#container');
+    window.internallURL = component.attr("src");
+//    alert('URL'+internallURL);
+    var jqxhr = $.ajax({
+                url: internallURL,
+                dataType: "html",
+                complete: function( jqXHR, status ) {
+				if ( callback ) {
+					self.each( callback, response || [ jqXHR.responseText, status, jqXHR ] );
+				}
+                }
+            }).done(function( responseText ) {
+//alert('adding plan'+responseText);
+                var tempHTML = $('<div class="csi box col1" src="'+this.url+'">').html(responseText);
+			    component.remove();
+                $container.masonry().append( tempHTML ).masonry( 'appended', tempHTML, true );
+            }).fail(function() {
+                alert("error");
+            }).always(function() {
+    //            alert("complete");
+            });
+
+// perform other work here ...
+
+// Set another completion function for the request above
+        jqxhr.always(function() {
+         //   alert("second complete");
+        });
+>>>>>>> synch changes
 }
 
 function updateIS2() {
-	$(".csi").each(
-			function(index) {
+	$(".csi").each(function(index) {
 			    var c = $(this);
+<<<<<<< HEAD
 			    var u = c.attr("src");
 			    c.load(u);
 			   // $container.masonry().append( c ).masonry( 'appended', c, true );
 	});
 
+=======
+				var u = c.attr("src");
+			//	c.load(u);
+			    loadMasonry(c);
+	});
+>>>>>>> synch changes
 }
 
 function loadCSS() {
-	$('<link rel="stylesheet" type="text/css" href="'+"dynamicContent.css"+'" >').appendTo("head");
+	//$('<link rel="stylesheet" type="text/css" href="'+"dynamicContent.css"+'" >').appendTo("head");
 };
 
 
@@ -105,3 +153,9 @@ function clientSideInclude() {
     updateIS2();
     $('.csi').draggable();
 };
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> synch changes
