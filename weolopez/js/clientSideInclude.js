@@ -103,5 +103,5 @@ function loadCSS() {
 
 function clientSideInclude() {
     updateIS2();
-    $('.csi').draggable();
+   // $('.csi').draggable();
 };
