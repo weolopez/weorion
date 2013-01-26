@@ -1,90 +1,190 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+	<html ng-app>
+
+	<head>
+	        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>
-        </title>
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-        <link rel="stylesheet" href="my.css" />
-        <style>
-            /* App custom styles */
-        </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
-        </script>
-        <script src="my.js">
-        </script>
-    </head>
-    <body>
-        <!-- Home -->
-        <div data-role="page" id="page1">
-            <div data-role="content">
-                <div id="toolbar" data-role="navbar" data-iconpos="top">
-                    <ul>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="plus" class="ui-btn-active ui-state-persist">
-                                Open
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="forward">
-                                Save
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="home">
-                                Run
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div data-role="collapsible-set" data-theme="a">
-                    <div data-role="collapsible">
-                        <h3>
-                            CSS
-                        </h3>
-                        <div data-role="fieldcontain">
-                            <fieldset data-role="controlgroup">
-                                <label for="textarea1">
-                                </label>
-                                <textarea name="" id="textarea1" placeholder="">
-                                </textarea>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>
-                            HTML
-                        </h3>
-                        <div data-role="fieldcontain">
-                            <fieldset data-role="controlgroup">
-                                <label for="textarea2">
-                                </label>
-                                <textarea name="" id="textarea2" placeholder="">
-                                </textarea>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>
-                            JS
-                        </h3>
-                        <div data-role="fieldcontain">
-                            <fieldset data-role="controlgroup">
-                                <label for="textarea3">
-                                </label>
-                                <textarea name="" id="textarea3" placeholder="">
-                                </textarea>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            //App custom javascript
-        </script>
-    </body>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		
+		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+		
+	<style>
+	
+	
+.fullscreenDiv {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}
+.droppable {
+  background-color: red;
+  height: 100%;
+  width: 40%;  
+}
+
+.rightdroppable {
+  background-color: blue;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 40%;  
+}
+.middle{
+	position:absolute;
+	background-color: green;
+    top: 25%;
+    height: 400px;
+    width: 100%;
+}
+.center {
+			    background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+			    
+    border: 1px solid #888888;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+    color: #111111;
+    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+    text-shadow: 0 1px 1px #EEEEEE;
+    position: relative;
+    width: 600px;
+    height: 100%;
+    left: 25%;
+    margin 0 auto; /* margin is -0.5 * dimension */
+}​
+
+	.toBox {
+	    position: absolute;
+    width: 300px;
+    left: 40%;
+}
+
+div.bigorange {
+	background:#f82;
+	margin: 1em;
+	display:block;
+	ba             ckground:#f60;
+	border:2px solid #EE2E26;
+	text-align:center;
+	text-decoration:none;
+	color:#FFEFDF;
+	padding:10px;
+	font:bold 24px/120%  "Lucida Grande", Arial, Helvetica, sans-serif;
+	border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
+  
+    box-shadow:
+		3px 3px 6px rgba(0, 0, 0, .2),
+		0px 0px 3px rgba(0, 0, 0, .1),
+		inset 0px 5px 12px #930,
+		inset 0px 15px 2px rgba(240, 150, 69, .5),
+		inset 0px 25px 25px #930;
+} 
+div.bigorange:hover {
+	background:#f82;
+	border:2px solid #EE2E26;
+	color:#fff;
+    box-shadow:        
+		2px 2px 4px rgba(0, 0, 0, .4),
+		0px 0px 3px rgba(0, 0, 0, .1),
+		inset 0 0 4px rgba(0, 0, 0, .6),
+		inset 0px 10px 12px #930,
+		inset 0px 20px 2px rgba(240, 150, 69, .5),
+		inset 0px 25px 25px #930; 	
+} 
+
+
+</style>	
+	
+	</head>
+
+	<body style="background-color: black;color:white;">
+    <div class='fullscreenDiv'>
+      
+    <div class="droppable"></div>
+    <div class="rightdroppable" ></div>
+    <div class="middle">  
+    <div class="center" ng-controller="CsiCtrl" style="overflow: hidden;">
+        <div data-role="content" style="height:415px;width:615px;overflow: scroll;-webkit-overflow-scrolling: touch;" >
+        	<div ng-repeat="c in csi" >
+        	   
+    	      <div id="enterButton" class="draggable bigorange" onclick="window.location = 'http://home.orionhub.org:8080/weolopez/components/{{c.text}}/index.html';alert('NOWNOWNOW');" ng-clicked="componentClicked()" style="z-index:0">{{c.text}}</div>
+    	   </div>
+        </div>			
+    </div>
+    
+    
+<script>
+
+function CsiCtrl($scope, $http) {
+ 	$scope.componentClicked = function(){
+ 	alert("CLICKED"+$index);
+ 	}
+
+ $scope.csi = [];
+  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
+    $http.get(internallURL).success(function (data) {
+                var loadedData = $(data);
+            	var compList = loadedData.find('a'); 
+                compList.each(function( index ) {
+                	var txt = $(this).text();
+                	txt = txt.substring(0,txt.length-1)
+					$scope.csi.push({text: txt, done:false});
+				}).error(function(data, status) {
+				    $scope.data = data || "Request failed";
+				    $scope.status = status;
+			    });
+    });
+}
+        var counts = [ 0, 0, 0 ];
+        var startOffset;  
+		$('.fullscreenDiv').draggable
+		({
+		  axis: "x",
+          start: function() {
+            counts[ 0 ]++;
+          },
+          drag: function(evnt,ui) {
+          startOffset=ui.offset.left;
+          	$('#enterButton').text("Start:"+startOffset+" Current:"+startOffset-ui.offset.left);
+            counts[ 1 ]++;
+          },
+          stop: function(evnt,ui) {
+          	$('#enterButton').text("Start:"+startOffset+" Current:"+startOffset-ui.offset.left);
+            counts[ 2 ]++;
+          }
+        });
+		
+		
+/*
+		
+		$( ".rightdroppable" ).droppable({
+            drop: function( event, ui ) {
+              alert("Right DROPPED");
+            }
+        });
+          
+          $( ".droppable" ).droppable({
+            drop: function( event, ui ) {
+              alert("Left DROPPED");
+           }
+          });
+  */      
+   </script>
+	</body>
+
 </html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+	<html ng-app>
+
+	<head>
+	        <meta charset="utf-8" />
+        <meta name="viewport" content="width=200px" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	
+		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
+  		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<!--script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+  		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.js"></script>
+		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css"></script>
+  
+ 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+  		<link rel="stylesheet" href="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css" />
+<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.js"></script>
+		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css"></script>
+  		<link rel="stylesheet" href="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css" /-->
+  
+<style>
+.fullscreenDiv {
+    background-color: black;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+	
+.center {
+    top: 30%;
+    height: 400px;
+    width:5000px;
+    position: relative;        
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space:nowrap
+}​
+
+	{}div.bigorange {
+	background:#f82;
+	margin: 1em;
+	display:block;
+	ba             ckground:#f60;
+	border:2px solid #EE2E26;
+	text-align:center;
+	text-decoration:none;
+	color:#FFEFDF;
+	padding:10px;
+	font:bold 12px  "Lucida Grande", Arial, Helvetica, sans-serif;
+	border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
+  
+    box-shadow:
+		3px 3px 6px rgba(0, 0, 0, .2),
+		0px 0px 3px rgba(0, 0, 0, .1),
+		inset 0px 5px 12px #930,
+		inset 0px 15px 2px rgba(240, 150, 69, .5),
+		inset 0px 25px 25px #930;
+} 
+div.bigorange:hover {
+	background:#f82;
+	border:2px solid #EE2E26;
+	color:#fff;
+    box-shadow:        
+		2px 2px 4px rgba(0, 0, 0, .4),
+		0px 0px 3px rgba(0, 0, 0, .1),
+		inset 0 0 4px rgba(0, 0, 0, .6),
+		inset 0px 10px 12px #930,
+		inset 0px 20px 2px rgba(240, 150, 69, .5),
+		inset 0px 25px 25px #930; 	
+}
+.component{
+
+    display:inline-block;
+    *display:inline;/* For IE7*/
+
+    float: left;
+	height:400px;
+	width:300px;
+	overflow: hidden;
+	
+	background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center right , center right , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+			    
+    border: 1px solid #888888;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+    color: #111111;
+    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+    text-shadow: 0 1px 1px #EEEEEE;
+    
+}
+ 
+.componentViewPort {
+	height:425px;
+	width:325px;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+</style>	
+	
+	</head>
+
+<body style="background-color: black;color:white;overflow:hidden;">
+   
+   <div class='fullscreenDiv'>
+   <div class="center"  >
+   <div class="centerViewPort">
+    	
+	<!--div class="component">
+             <div class="componentViewPort" ng-controller="mobileController">
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/mobile/mobile.html" ></div>
+	    	 </div>  
+	     </div-->   
+     
+     <div class="component">
+        <div class="componentViewPort" >
+        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/angularjs/angularjs.html" ></div>
+    	   </div>	
+        </div>
+     </div>   
+     
+     <div class="component">
+        <div class="componentViewPort" >
+        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/dynamicContent/dynamicContent.html" ></div>
+    	   </div>	
+        </div>
+     </div>   
+     
+     <div class="component">
+        <div class="componentViewPort" >
+        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/plan/plan.html" ></div>
+    	   </div>	
+        </div>
+     </div>   
+     
+     <div class="component">
+        <div class="componentViewPort" >
+        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/component/component.html" ></div>
+    	   </div>	
+        </div>
+     </div>   
+     
+    
+       	<!--div class="component">
+        <div class="componentViewPort" >
+        <div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
+        	
+     		<div style="background-color:black;height:400px;width:300px">
+			<div id="flipRoot" data-role="flip" >
+		   	<div style="background-color:green;">Flip Content 1</div>
+		   	<p style="background-color:red;">Flip Content 2</p>
+		   	<section style="background-color:blue;">Flip Content 3</section>
+			</div>   
+    		</div>
+    
+     	</div>
+   		</div>
+  		</div-->  
+     
+    </div>
+   	</div>
+  	</div>  
+  
+<script>
+/*
+function mobileController($scope, $http) {
+ 	$scope.componentClicked = function(){
+ 	alert("CLICKED"+$index);
+ 	}
+
+	 $scope.components = [];
+	  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
+	    $http.get(internallURL).success(function (data) {
+                var loadedData = $(data);
+            	var compList = loadedData.find('a'); 
+                compList.each(function( index ) {
+                	var txt = $(this).text();
+                	txt = txt.substring(0,txt.length-1)
+					$scope.components.push({text: txt, done:false});
+				}).error(function(data, status) {
+				    $scope.data = data || "Request failed";
+				    $scope.status = status;
+			    });
+	    });
+	}
+  */
+
+	clientSideInclude(); 	  
+	
+	
+   </script>
+</body>
+
+</html>

@@ -2,12 +2,6 @@
   margin: 5px;
   padding: 5px;
   background: rgba(212,212,212,.5);
- /* box-shadow:
-		3px 3px 6px rgba(0, 0, 0, .2),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0px 5px 12px silver,
-		inset 0px 15px 2px rgba(46, 46, 46, .5),
-		inset 0px 25px 25px silver;*/
   font-size: 11px;
   line-height: 1.4em;
   float: left;
@@ -16,87 +10,7 @@
           border-radius: 5px;
 }
 
-.col1 { width: 80px; }
-.col2 { width: 180px; }
-.col3 { width: 280px; }
-.col4 { width: 380px; }
-.col5 { width: 480px; }
-
-a.selected {
-  background-color:#1F75CC;
-  color:white;
-  z-index:100;
-}
 body {
   background-color: black;
-}
-.messagepop:hover {
--webkit-box-shadow:        
-		2px 2px 4px rgba(0, 0, 0, .4),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0 0 4px rgba(0, 0, 0, .6),
-		inset 0px 10px 12px #930,
-		inset 0px 20px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930; 	
-		}
-
-.messagepop {
-    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-    border: 1px solid #888888;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
-    color: #111111;
-    //display: inline-block;
-    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    margin: 10px;
-    padding: 6px 10px;
-    text-shadow: 0 1px 1px #EEEEEE;
-
-
-
-
-	//margin: 1em;
-	//display:block;
-	//background:#f60;
-	//border:2px solid #EE2E26;
-	//text-align:center;
-	//text-decoration:none;
-	//color:#FFEFDF;
-	//padding:10px;
-	//font:bold 24px/120%  "Lucida Grande", Arial, Helvetica, sans-serif;
-	//border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
-
- // background-color:#FFFFFF;
- // border:1px solid #999999;
- // cursor:default;
-  display:none;
- // margin-top: 15px;
-  position:absolute;
-  text-align:left;
-  width:394px;
-  z-index:50;
-  //padding: 25px 25px 20px;
-  //  -webkit-border-radius: 5px;
-  //   -moz-border-radius: 5px;
-   //       border-radius: 5px;
-  
-  //-webkit-box-shadow:
-    //      		3px 3px 6px rgba(0, 0, 0, .2),
-	//	0px 0px 3px rgba(0, 0, 0, .1),
-	//	inset 0px 5px 12px #930,
-	//	inset 0px 15px 2px rgba(240, 150, 69, .5),
-	//	inset 0px 25px 25px #930;
-}
-
-label {
-  display: block;
-  margin-bottom: 3px;
-  padding-left: 15px;
-  text-indent: -15px;
-}
-
-.messagepop p, .messagepop.div {
-  border-bottom: 1px solid #EFEFEF;
-  margin: 8px 0;
-  padding-bottom: 8px;
+  color: white;
 }

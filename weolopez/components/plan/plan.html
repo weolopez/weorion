@@ -1,12 +1,71 @@
-<div style="margin-left: 15px;">	
-	<li> create dyanmic content </li>
-	<li> editable content</li> 
-	<li> implement flip on edit</li>
-	<li> edit components </li>	
-	<li> Tic Tac Toe Learning Game </li>
-	<li> Edit directly from Github </li>
-	<li> Component popup </li>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+<script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+<br>
+
+<div ng-controller="Plan">
+  Hello {{userName}}
+</p>
+<span>{{remaining()}} of {{todos.length}} remaining</span>
+[ <a href="" ng-click="archive()">archive</a> ]
+<ul class="unstyled">
+	<li ng-repeat="todo in todos">
+		<input type="checkbox" ng-model="todo.done">
+		<span class="done-{{todo.done}}">{{todo.text}}</span>
+	</li>
+</ul>
+<form ng-submit="addTodo()">
+	<input type="text" ng-model="todoText" size="30" placeholder="add new todo here">
+	<input class="btn-primary" type="submit" value="add">
+</form>
 </div>
+<br>
+<a title="plan.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/plan/plan.html">Edit Plan</a>
+
+
 <script>
-  //  alert('in plan');
+
+function Plan($scope, $http) {
+	var internallURL = 'https://api.mongolab.com/api/1/databases/weolopez/collections/post?apiKey=50f36e05e4b0b9deb24829a0';
+   	$scope.userName='weo';
+ 
+ 	$http.get(internallURL).success(function(data) {
+    	$scope.todos=data;
+    	
+ 		//alert(JSON.stringify(data));
+    });
+ 
+	$scope.addTodo = function() {
+		$scope.todos.push({text:$scope.todoText, done:false});
+		$scope.todoText = '';
+		$scope.save();
+	};
+ 
+	$scope.remaining = function() {
+		var count = 0;
+		angular.forEach($scope.todos, function(todo) {
+			count += todo.done ? 0 : 1;
+		});
+		return count;
+	};
+ 
+	$scope.archive = function() {
+		var oldTodos = $scope.todos;
+		$scope.todos = [];
+		angular.forEach(oldTodos, function(todo) {
+			if (!todo.done) $scope.todos.push(todo);
+		});
+		$scope.save();
+	};
+	
+	$scope.save = function() {
+	var myJsonString = JSON.stringify($scope.todos);
+	var newString='';
+	//alert("SAVING:"+myJsonString);
+	$http.put(internallURL, myJsonString+"&m=true&u=true", function(data, status){
+            if(status == "success"){
+               // alert( "Data Saved: " + data.message );
+           }
+        });
+	};
+}
 </script>

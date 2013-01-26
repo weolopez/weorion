@@ -1,20 +1,53 @@
-<div id="dynamicContent">
+			<script src="https://raw.github.com/roncioso/Flip-jQuery/master/jquery.flip.min.js"></script>
+	<script src="http://home.orionhub.org:8080/weolopez/components/flippy/demo.js"></script>
+
+	
+<div id="dynamicContent" class="tdata" style="background-color:black;color:white;width:100%;height:300px;margin-top:20%;">
 	<div class="TDataImage" src=""></div>
-	<div class="TDataTitle"></div>
-	<div class="TDataText"></div>
+	<div class="TDataTitle">EST TDATA</div>
+	<div class="TDataText">EST TDATA</div>
 </div>
+	<a title="dynamicContent.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/dynamicContent/dynamicContent.html">Edit Dynamic Content</a>
 
 <script>
-	var recommendationURL="recommendationResponse.json";
-    $.getJSON(recommendationURL, function(data) {
-        $.each(data.CE.IUs, function(i, v) {
-            var tmp1 = $("#" + v.name).find('.TDataImage');
-            tmp1.attr("src", v.url);
-            var tmp = $(('.TDataTitle'), $("#" + v.name));
-            tmp.html(v.title);
-            var tmp = $(('.TDataText'), $("#" + v.name));
-            tmp.html(v.text);
-        });        
-    });
-    
+	var recommendationURL="https://raw.github.com/weolopez/weorion/master/weolopez/recommendationResponse.json";
+	var recommendationURL="http://home.orionhub.org:8080/weolopez/recommendationResponse.json";
+    $.getJSON(recommendationURL, {
+    	dataType:'jsonp'
+		  },  function(data) {
+		  	 $(".tdata").each(function(){
+		  	 	var ispace = $(this).attr('id');
+		  	 	var myspace='';
+		  	         $.each(data.CE.IUs, function(i, v) {
+		  	         	if (v.name==ispace) {
+		  	         		myspace=v;
+		  	         		return;
+		  	         	}
+		  	         });	
+		  
+				if (myspace=='') {
+					//remove loading css
+					return;
+				}
+		  	    var clone = $(this).clone();      
+		  	 	var tdi = clone.find('.TDataImage');
+		  	 	tdi.attr("src", myspace.url);
+		        var tmp = $(('.TDataTitle'),clone);
+		        tmp.html(myspace.title);
+		        var tmp = $(('.TDataText'), clone);
+		        tmp.html(myspace.text);
+		        
+		        $(this).flip({
+                content: clone,
+                speed: 750,
+                color: 'black',
+                bgColor: 'silver',
+                direction:'tb'
+              });
+		        
+		  	 });
+		    }
+	 );
+
+
 </script>

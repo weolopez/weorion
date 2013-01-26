@@ -1,8 +1,142 @@
 
-<div class="box col1" style="background-color: grey;">
-				 <div class="csi" src="components/index.html" style="background-color: silver;">component.html is the test component for new features.	</div> 
-</div>
+
+<!--script src="https://raw.github.com/Craga89/qTip2/master/dist/jquery.qtip.min.js"></script>
+<link href="https://raw.github.com/Craga89/qTip2/master/dist/jquery.qtip.min.css" rel="stylesheet" type="text/css"-->		
+<style>
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop:hover {
+-webkit-box-shadow:        
+		2px 2px 4px rgba(0, 0, 0, .4),
+		0px 0px 3px rgba(0, 0, 0, .1),
+		inset 0 0 4px rgba(0, 0, 0, .6),
+		inset 0px 10px 12px #930,
+		inset 0px 20px 2px rgba(240, 150, 69, .5),
+		inset 0px 25px 25px #930; 	
+		}
+
+.messagepop {
+    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+    border: 1px solid #888888;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+    color: #111111;
+    //display: inline-block;
+    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+    margin: 10px;
+    padding: 6px 10px;
+    text-shadow: 0 1px 1px #EEEEEE;
+	display:block;
+	text-align:center;
+  	display:none;
+  	position:absolute;
+  	text-align:left;
+  	width:394px;
+  	z-index:50;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
+</style>
+
+component.html is the test component for new features.	
 <div class="messagepop pop">
-  <a href=""> Edit</a>
-  <a href="http://jsfiddle.net/weolopez/WsrDs/5/"> jsfiddle</a>
+    <form method="post" id="new_message" action="/messages">
+        <p><label for="email">Your email or name</label><input type="text" size="30" name="email" id="email" /></p>
+        <p><label for="body">Message</label><textarea rows="6" name="body" id="body" cols="35"></textarea></p>
+        <p><input type="submit" value="Send Message" name="commit" id="message_submit"/> or <a class="close" href="/">Cancel</a></p>
+    </form>
 </div>
+
+<a href="/contact" id="contact">Contact Us</a>
+
+<script>
+	
+	$(".csi").click(function(){
+		var source = $(this).attr("src");
+		openEditor(source)	
+	});
+	/*
+	$('.box').hover(
+		function () {
+			//alert("SHOW");
+			$("Menu").show();
+		},
+		function () {
+			//alert("HIDE");
+			$("Menu").hide();
+		}
+	);
+
+	function deselect() {
+    $(".pop").slideFadeToggle(function() { 
+        $(".box").removeClass("selected");
+    });    
+}
+
+$(function() {
+    $(".box").live('hover', function() {
+        if($(this).hasClass("selected")) {
+            deselect();               
+        } else {
+            $(this).addClass("selected");
+            $(".pop").slideFadeToggle(function() { 
+                $("#email").focus();
+            });
+        }
+        return false;
+    });
+
+    $(".close").live('click', function() {
+        deselect();
+        return false;
+    });
+});
+
+*/
+var openBOX = 'false';	
+
+$('body').click(function(){
+   // alert("CLICK");
+	if (openBOX=='true') {
+			$(".pop").slideFadeToggle(function() { 
+		    $(".box").removeClass("selected");
+		     openBOX = 'false';	
+		});    
+	}
+});
+	
+$.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
+};
+	
+	
+$(".box").live({
+        mouseenter:
+           function() {
+       //    alert('mouseenter');
+				if (openBOX=='false') {
+       //    alert('openboxisfalse');
+	       			$(this).addClass("selected");	       		
+	                $(".pop").slideFadeToggle(function() {$("#email").focus();});
+	                openBOX='true';
+	            }
+	          }
+	   });
+</script>
+
+		

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+	  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+		<script src="https://raw.github.com/desandro/masonry/master/jquery.masonry.min.js"></script>
+		<link href="css/MasonStyle.css" rel="stylesheet" type="text/css">		
+		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
+</head>
+
+<style>
+	body {
+		background-color:black;
+	}
+	#fippyBox {
+		position:relative; clear:left;
+		width:650px;height:100%;
+		margin: 0 auto;		
+		background-color:grey;
+	}
+	.twitter {
+		width: 60px;	
+		height: 60px;
+		margin: 5px;
+  		padding: 5px;
+		background-image:url('http://i.imgur.com/6RMhx.gif');
+  		font-size: 11px;
+  		line-height: 1.4em;
+  		float: left;
+  		-webkit-border-radius: 5px;
+     	-moz-border-radius: 5px;
+        border-radius: 5px;
+	}
+	.csiLoading {
+		width: 60px;	
+		height: 60px;
+		margin: 5px;
+  		padding: 5px;
+		background-image:url('http://i.imgur.com/6RMhx.gif');
+  		font-size: 11px;
+  		line-height: 1.4em;
+  		float: left;
+  		-webkit-border-radius: 5px;
+     	-moz-border-radius: 5px;
+        border-radius: 5px;
+	}
+</style>
+
+<body>
+
+	<div id="fippyBox">
+    	<div id="container" class="transitions-enabled clearfix" style="">
+    	
+			<div class="box col2">
+				<div class="csi" src="components/angularjs/angularjs.html"></div> 
+			</div>
+  			<div class="box col1">
+				 <a href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/index.html" onclick="openEditorURL('https://orionhub.org/edit/edit.html#/file/weolopez/weolopez/weolopez/index.html')">
+				<img style="width:50px;height:65px" src="https://si0.twimg.com/profile_images/1689640619/Orion_Square.jpg" />
+		        <b>Edit this sites index.html</b></a>
+			</div>
+			<div class="box col1">
+				<div class="csi" src="components/clientSideInclude/clientSideInclude.html"></div> 
+			</div>
+			<!--div class="box col1">
+				 <div class="csi" src="components/editor/editor.html"></div> 
+			</div-->
+			<div class="box col1">
+				<div class="csi" src="components/dynamicContent/dynamicContent.html"></div>
+			</div>
+			<div class="box col3">
+				<div class="csi" src="projects/TTTProject/description.html"></div>
+			</div>
+			<div class="box col1">
+				<div class="csi" src="components/multiTwitter/multiTwitter.html"></div>
+			</div>
+			<div class="box col1">
+				<div class="csi" src="components/twitter/twitter.html"></div>
+			</div>
+			<div class="box col1">
+				<div class="csi" src="https://raw.github.com/weolopez/weorion/master/weolopez/components/banner.html"></div>
+			</div>
+			<div class="box col1">
+				 <div class="csi" src="components/mobile/mobileDemo.html"></div> 
+			</div>		
+			<div class="box col1">
+				 <div class="csi" src="components/plan/plan.html"></div> 
+			</div>		  
+			<!--div id="githubloading" class="box col1 loading">
+				 <div class="csi" src="https://raw.github.com/weolopez/weorion/master/weolopez/components/github.html"></div> 
+			</div-->
+		</div>
+	</div>
+		<script>			
+		  clientSideInclude(); 	
+		  function openJSON() {openEditor('recommendationResponse.json');};
+		</script>
+		
+	</body>
+</html>

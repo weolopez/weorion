@@ -1,29 +1,26 @@
-var openBOX = 'false';	
-
-$('body').click(function(){
-	if (openBOX=='true') {
-    		$(".pop").flip({
-					content: $(".csi"),
-					speed: 750,
-					color: 'silver',
-					bgColor: 'silver',
-					direction:'lr'
-				});
-	}
-});
-	
-$(".csi").live({
-        click:
-           function() {
-				if (openBOX=='false') {
-          		$(".csi").flip({
-                content: $(".pop"),
+function flippyWEO(box,to,from) {	
+var openBOX=true;	
+	box.live({
+		click:function() {
+      if (openBOX) {     		
+          		box.flip({
+                content: to,
                 speed: 750,
                 color: 'silver',
                 bgColor: 'silver',
                 direction:'lr'
               });
-	                openBOX='true';
-	            }
-	          }
-	   });
+	            openBOX=false;
+      } else {
+          		box.flip({
+                content: from,
+                speed: 750,
+                color: 'silver',
+                bgColor: 'silver',
+                direction:'lr'
+              });
+	            openBOX=true;      
+      }
+		}
+	});
+}

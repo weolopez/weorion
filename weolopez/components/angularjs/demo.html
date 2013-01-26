@@ -1,0 +1,92 @@
+<html ng-app>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+<style>
+    .done-true {
+    text-decoration: line-through;
+    color: grey;
+    }
+			.fullscreenDiv {
+			    background-color: black;
+			    width: 100%;
+			    height: auto;
+			    bottom: 0px;
+			    top: 0px;
+			    left: 0;
+			    position: absolute;
+			}
+			.center {
+			    background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+				//background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */
+			    
+			    border: 1px solid #888888;
+			    border-radius: 10px 10px 10px 10px;
+			    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+			    color: #111111;
+			    //display: inline-block;
+			    //font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+			   //text-shadow: 0 1px 1px #EEEEEE;
+			    position: absolute;
+			    width: 300px;
+			    height: 500px;
+			    top: 20%;
+			    left: 40%;
+			    margin-left: -50px; /* margin is -0.5 * dimension */
+			    margin-top: -25px; 
+			}
+</style>
+</head>
+	<body style="background-color: black;color:white;">
+		<div class='fullscreenDiv'>
+		    <div class="center">
+	<h2>Components</h2>
+	
+	<div ng-controller="CsiCtrl">
+		List of components
+			<div ng-repeat="c in csi">
+				<span class="done-{{c.done}}">{{c.text}}</span>
+				<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/{{c.text}}.html">e</a>
+				<a title="index.html" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/index.html">i</a>
+				<a title="Edit {{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/index.html">ei</a>
+				<a title="{{c.text}} demo.html" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.html">d</a>
+				<a title="Edit {{c.text}} demo.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.html">ed</a>
+				<a title="{{c.text}} demo.css" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.css">c</a>
+				<a title="Edit {{c.text}} demo.css" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.css">ec</a>
+				<a title="{{c.text}} demo.js" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.js">j</a>
+				<a title="Edit {{c.text}} demo.js" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.js">ej</a>
+				<a title="{{c.text}} JSFiddle" href="http://jsfiddle.net/gh/get/jquery/1.8/weolopez/weorion/tree/master/weolopez/components/{{c.text}}/">jq</a>
+				<a title="{{c.text}} Github" href="http://github.com/weolopez/weorion/tree/master/weolopez/components/{{c.text}}/">git</a>
+			</div>
+			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/index.html">Edit index</a>
+			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/x.html">Edit X</a>
+	</div>		   
+	</div>
+		</div>​
+	
+<script>	
+
+function CsiCtrl($scope, $http) {
+	
+
+ $scope.csi = [];
+  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
+    $http.get(internallURL).success(function (data) {
+                var loadedData = $(data);
+            	var compList = loadedData.find('a'); 
+                compList.each(function( index ) {
+                	var txt = $(this).text();
+                	txt = txt.substring(0,txt.length-1)
+					$scope.csi.push({text: txt, done:false});
+				}).error(function(data, status) {
+				    $scope.data = data || "Request failed";
+				    $scope.status = status;
+			    });
+    });
+}
+</script>
+</body>
+</html>

@@ -1,112 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Sliding Panel v5</title>
-<style type="text/css">
-body {
-	color:#333;
-	width:600px;
-	font-size:14px;
-	font-family:Verdana, Geneva, sans-serif;
-	margin:0 auto;
-	padding:0 100px;
-}
-a:focus {
-outline: none;
-}
-a.trigger{
-	position: absolute;
-	background:#88bbd4 url(images/plus.png) 6% 55% no-repeat;
-	text-decoration: none;
-	font-size: 16px;
-	letter-spacing:-1px;
-	font-family: verdana, helvetica, arial, sans-serif;
-	color:#fff;
-	padding:4px 12px 6px 24px;
-	font-weight: bold;
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html ng-app>
+
+	<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
+		<style>
+			.fullscreenDiv {
+			    background-color: black;
+			    width: 100%;
+			    height: auto;
+			    bottom: 0px;
+			    top: 0px;
+			    left: 0;
+			    position: absolute;
+			}
+			.center {
+			    background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+				//background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */
+			    
+			    border: 1px solid #888888;
+			    border-radius: 10px 10px 10px 10px;
+			    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+			    color: #111111;
+			    //display: inline-block;
+			    //font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+			   //text-shadow: 0 1px 1px #EEEEEE;
+			    position: absolute;
+			    width: 300px;
+			    height: 500px;
+			    top: 20%;
+			    left: 40%;
+			    margin-left: -50px; /* margin is -0.5 * dimension */
+			    margin-top: -25px; 
+			}
+		</style>
+	</head>
 	
-	z-index:2;
-}
-a.trigger.left {
-	left: 0;
-	border-top-right-radius: 5px;
-	-moz-border-radius-topright: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-a.trigger.right {
-	right: 0;
-	border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-topleft: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-top-left-radius: 5px;
-}
-a.trigger:hover {
-	background-color:#59B;
-}
-a.active.trigger {
-	background:#666 url(images/minus.png) 6% 55% no-repeat;
-}
-.panel {
-	color:#CCC;
-	position: absolute;
-	display: none;
-	background: #000000;
-	width: 300px;
-	height: auto;
-	z-index:1;
-}
-.panel.left {
-	left: 0;
-	padding: 20px 30px 20px 100px;
-	border-top-right-radius: 15px;
-	-moz-border-radius-topright: 15px;
-	-webkit-border-top-right-radius: 15px;
-	-moz-border-radius-bottomright: 15px;
-	-webkit-border-bottom-right-radius: 15px;
-	border-bottom-right-radius: 15px;
-}
-
-.panel p {
-	font-size:11px;
-}
-</style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.slidePanel.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function(){
+	<body style="background-color: black;color:white;">
+		<div class='fullscreenDiv'>
+		    <div class="center">
+		    	<div class="csi" src="slider.html"></div>
+		    </div>
+		</div>​
 	
-	// default settings
-	// $('.panel').slidePanel();
-	
-	// custom settings
-	$('#panel1').slidePanel({
-		triggerName: '#trigger1',
-		position: 'fixed',
-		triggerTopPos: '20px',
-		panelTopPos: '10px',
-		ajax: true,
-		ajaxSource: 'ajax.html'
-	});
+		<script>
+			clientSideInclude(); 	
+		</script>
+	</body>
 
-});
-</script>
-</head>
-
-<body>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut suscipit orci. Praesent egestas fermentum consectetur. Vestibulum vulputate nibh cursus sapien sagittis egestas. Suspendisse sed magna nisi. Sed faucibus eleifend sapien ut rutrum. Phasellus sed sollicitudin ante. Integer molestie molestie tortor, feugiat porttitor elit tincidunt id. In molestie justo quis turpis feugiat vitae consequat sem vulputate. Aenean orci elit, molestie eu sollicitudin pellentesque, lobortis ultricies nisl. Donec hendrerit lacus nec sapien mattis molestie commodo leo interdum. In a mi a sem lobortis mollis id eget magna. Quisque gravida semper scelerisque. In facilisis ullamcorper consectetur. Donec ornare pretium volutpat. Mauris fermentum, nisl et vehicula congue, orci velit pellentesque nulla, varius gravida turpis libero sed neque.</p>
-
-<a href="#" id="trigger1" class="trigger left">panel</a>
-<div id="panel1" class="panel left">
-	<p>Here is some static content for Panel 1.</p>
-    <p>Ut purus metus, fermentum vitae pulvinar vel, elementum eget nulla. Pellentesque posuere, enim ut dapibus vestibulum, leo nunc porttitor neque, sed pulvinar orci sem eleifend sapien. Nullam at odio nibh, eu pharetra ipsum.</p>
-</div>
-
-</body>
 </html>
