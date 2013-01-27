@@ -5,9 +5,26 @@
 
 <p>This is the partial for view 1.</p>
 
-Hello {{user.name }}
+Hello {{userName }}
 
-		   	   
+		List of components
+			<div ng-repeat="c in csi">
+				<span class="done-{{c.done}}">{{c.text}}</span>
+				<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/{{c.text}}.html">e</a>
+				<a title="index.html" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/index.html">i</a>
+				<a title="Edit {{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/index.html">ei</a>
+				<a title="{{c.text}} demo.html" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.html">d</a>
+				<a title="Edit {{c.text}} demo.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.html">ed</a>
+				<a title="{{c.text}} demo.css" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.css">c</a>
+				<a title="Edit {{c.text}} demo.css" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.css">ec</a>
+				<a title="{{c.text}} demo.js" href="http://home.orionhub.org:8080/weolopez/components/{{c.text}}/demo.js">j</a>
+				<a title="Edit {{c.text}} demo.js" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/demo.js">ej</a>
+				<a title="{{c.text}} JSFiddle" href="http://jsfiddle.net/gh/get/jquery/1.8/weolopez/weorion/tree/master/weolopez/components/{{c.text}}/">jq</a>
+				<a title="{{c.text}} Github" href="http://github.com/weolopez/weorion/tree/master/weolopez/components/{{c.text}}/">git</a>
+			</div>
+			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/index.html">Edit index</a>
+			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/x.html">Edit X</a>
+			   	   
     	   </div>	
         </div>
      </div>   

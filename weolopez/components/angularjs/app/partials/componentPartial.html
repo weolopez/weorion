@@ -35,11 +35,10 @@ div.bigorange:hover {
 	
 	<div class="component">
         <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-			<div ng-repeat="c in csi">
-  <div id="enterButton" class="draggable bigorange" ng-click="clickHandler(c.text)" style="width:250px;z-index:0">{{c.text}}</div>
-
-    	   </div>	
+		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/{{component}}/{{component}}.html"></div>
         </div>
      </div>   
      </div>
+     		<script>
+			clientSideInclude(); 	
+		</script>
