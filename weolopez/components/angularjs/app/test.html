@@ -1,0 +1,168 @@
+<!doctype html>
+<html ng-app="Demo">
+<head>
+	<meta charset="utf-8" />
+	<title>Capturing Document-Clicks In AngularJS</title>
+</head>
+<body
+	ng-controller="DemoController"
+	bn-document-click="handleClick( $event )">
+
+	<h1>
+		Capturing Document-Clicks In AngularJS
+	</h1>
+
+	<p>
+		Click anywhere to trigger an event.
+	</p>
+
+	<p>
+		<strong>Click X</strong>: {{ mouseX }}
+	</p>
+
+	<p>
+		<strong>Click Y</strong>: {{ mouseY }}
+	</p>
+
+
+
+	<!--
+		Load jQuery and AngularJS from the CDN. In order for
+		AngularJS to use the "full" jQuery (as opposed to its own
+		jQLite), we need to load jQuery first.
+	-->
+	<script
+		type="text/javascript"
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+	</script>
+	<script
+		type="text/javascript"
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js">
+	</script>
+	<script type="text/javascript">
+
+
+		// Create an application module for our demo.
+		var Demo = angular.module( 'Demo', ['DemoDirective'] );
+
+
+		// -------------------------------------------------- //
+		var Demo = angular.module( 'DemoDirective', ['TestDemoDirective'] );
+		// -------------------------------------------------- //
+
+
+		// Define our document-click directive. This will evaluate the
+		// given expression on the containing scope when the click
+		// event is triggered.
+		angular.module( "TestDemoDirective", [] ).directive(
+			"bnDocumentClick",
+			function( $document, $parse ){
+
+				// I connect the Angular context to the DOM events.
+				var linkFunction = function( $scope, $element, $attributes ){
+
+					// Get the expression we want to evaluate on the
+					// scope when the document is clicked.
+					var scopeExpression = $attributes.bnDocumentClick;
+
+					// Compile the scope expression so that we can
+					// explicitly invoke it with a map of local
+					// variables. We need this to pass-through the
+					// click event.
+					//
+					// NOTE: I ** think ** this is similar to
+					// JavaScript's apply() method, except using a
+					// set of named variables instead of an array.
+					var invoker = $parse( scopeExpression );
+
+					// Bind to the document click event.
+					$document.on(
+						"keypress",
+						function( event ){
+
+							// When the click event is fired, we need
+							// to invoke the AngularJS context again.
+							// As such, let's use the $apply() to make
+							// sure the $digest() method is called
+							// behind the scenes.
+							$scope.$apply(
+								function(){
+
+									// Invoke the handler on the scope,
+									// mapping the jQuery event to the
+									// $event object.
+									invoker(
+										$scope,
+										{
+											$event: event
+										}
+									);
+
+								}
+							);
+
+						}
+					);
+
+					// TODO: Listen for "$destroy" event to remove
+					// the event binding when the parent controller
+					// is removed from the rendered document.
+
+				};
+
+				// Return the linking function.
+				return( linkFunction );
+
+			}
+		);
+
+
+		// -------------------------------------------------- //
+		// -------------------------------------------------- //
+
+
+		// I am the controller for the Body tag.
+		Demo.controller(
+			"DemoController",
+			function( $scope, $window ) {
+
+				// Set the initial X/Y values.
+				$scope.mouseX = "N/A";
+				$scope.mouseY = "N/A";
+
+				// When the document is clicked, it will invoke
+				// this method, passing-through the jQuery event.
+				$scope.handleClick = function( event ){
+
+					$scope.mouseX = event.keyCode;
+					$scope.mouseY = event.charCode;
+
+				   var key = new Array();
+				   alert("KEY DOWN");
+		            event = event || $window.event; // because of Internet Explorer quirks...
+		            k = event.which || event.charCode || event.keyCode; // because of browser differences...
+		            alert("KEY="+k);
+		            if (k == 69) {
+		            	var tail = document.URL.substring(39);
+		            	alert( "tail:"+tail );
+		                $window.location = "https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/"+tail;
+		            } 
+		            if (k==65) {
+		                //$(".banner").css({opacity: 0, visibility: "visible"}).animate({opacity: 1.0}, 400);
+		            }
+
+
+				};
+
+			}
+		);
+
+
+		// -------------------------------------------------- //
+		// -------------------------------------------------- //
+
+
+	</script>
+
+</body>
+</html>

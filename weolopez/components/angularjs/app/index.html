@@ -4,33 +4,19 @@
 <style>
 </style>
 </head>
-<body>
+<body
+	ng-controller="weolopezAppController"
+	appKeyDown="handleKeyPress( $event )">
 <div class='fullscreenDiv'>
-	<div class="banner" ng-controller="BannerCtl"><br>{{bannerText}}</div>
-<div class='center'>
-<div class='centerViewPort'>
-	<div ng-view></div>
-</div>
-</div>
+	<ng:include src="'partials/header.html'"></ng:include>
+	<div class='center'>
+		<div class='centerViewPort'>
+			<div ng-view></div>
+		</div>
+	</div>
+	<ng:include src="'partials/logger.html'"></ng:include>
 </div>
 <script>
-
-	
-	var key = new Array();
-		document.onkeydown = function(e) {
-	//	alert("KEY DOWN");
-            e = e || window.event; // because of Internet Explorer quirks...
-            k = e.which || e.charCode || e.keyCode; // because of browser differences...
-          //  alert("KEY="+k);
-            if (k == 69) {
-            	var tail = document.URL.substring(39);
-           // 	alert( "tail:"+tail );
-                window.location = "https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/"+tail;
-            } 
-            if (k==65) {
-                $(".banner").css({opacity: 0, visibility: "visible"}).animate({opacity: 1.0}, 400);
-            }
-         }
 </script>
   <script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
   <script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
