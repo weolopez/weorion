@@ -1,0 +1,52 @@
+	body {
+	 background-color: black;
+	 color:white;
+	 }
+	 
+	#banner {
+    	margin-top: 100px;
+		color: black;
+		width: 600px;
+		height:200px;
+		margin-left:auto;
+		margin-right:auto;
+				background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+			    visibility:hidden;
+		font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+    	text-shadow: 0 1px 1px #EEEEEE;
+    	text-align:center;
+    	vertical-align:middle;
+	}
+	
+.fullscreenDiv {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}
+.center {
+			    background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+			    
+    border: 1px solid #888888;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+    color: #111111;
+    //display: inline-block;
+    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
+    text-shadow: 0 1px 1px #EEEEEE;
+    width: 200px;
+    height: 50px;
+    margin-top: 5%;
+    left: 50%;
+		margin-left:auto;
+		margin-right:auto;
+}​

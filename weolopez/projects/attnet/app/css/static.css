@@ -1,0 +1,233 @@
+@import url('http://cq2-dev.stage.att.net/cq/etc/designs/att-net/fluid_grid.css');
+body { font:100%/1.5 Arial, Helvetica, sans-serif; margin:0; padding:0; background:#ebebeb;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block;}
+img { border:none;}
+p {margin:0 0 1em;}
+a, a:link, a:visited { text-decoration:none;}
+.newline {clear:both;}
+
+#siteWrap {}
+
+/* START: MASTHEAD */
+#masthead { margin-bottom:1em; line-height:1; z-index:999999999;}
+#GlobalNav{ background:url(http://cq2-dev.stage.att.net/cq/etc/designs/att-net/images/ui/attGlobalNavHeader-bg.gif) repeat-x 0 0; height:34px;}
+#GlobalNav .globalNavWrap{ width:60.625em; height:35px; margin:0 auto; background:url(http://cq2-dev.stage.att.net/cq/etc/designs/att-net/images/ui/attGlobalNavHeader-bg.gif) repeat-x 0 0; position:relative;}
+#GlobalNav ul{ margin:0; padding:7px 0 0; list-style:none; font-size:0.6875em;} 
+#GlobalNav ul li{ float:left;} 
+#GlobalNav ul li.selected { background:#fff; border-radius:5px 5px 0 0; position:relative;}
+#GlobalNav ul li.selected span{ color:#fe7307; display:none;}
+#GlobalNav ul li a, #GlobalNav ul li a:link, #GlobalNav ul li a:visited { display:block; padding:0 14px; margin:8px 0; color:#fff; border-right:1px solid #888;}
+#GlobalNav ul li a:hover { text-decoration:underline;}
+#GlobalNav ul li.selected a:hover span { text-decoration:none;}
+#GlobalNav ul li.selected a{ color:#515151; border-right:0;}
+#GlobalNav ul li.last a {border-right:0;}
+#GlobalNav .gnMoreLinks {position:absolute; right:0; top:0;}
+#GlobalNav .gnMoreLinks li.last a {padding-right:0;}
+
+#masthead section { width:60.625em; height:112px; margin:0 auto; padding:15px 0 0; background:#fff; border-left:1px solid #c8c8c8; border-right:1px solid #c8c8c8; box-shadow:0 3px 3px #c8c8c8; position:relative; border-bottom:2px solid #ec8f16;}
+
+a.attLogo { display:block; width:140px; height:52px; background:url(images/logos/att-head-ico-sprite.png) no-repeat 0 0; text-indent:-999em; position:absolute; top:26px; left:31px;}
+a.yahooLogo { display:block; width:108px; height:30px; background:url(images/logos/att-head-ico-sprite.png) no-repeat -171px 0; text-indent:-999em; position:absolute; top:36px; right:39px;}
+a.mailLink { display:block; width:70px; height:30px; background:url(images/logos/att-head-ico-sprite.png) no-repeat -296px 0; position:absolute; bottom:0.75em; right:25px; padding-left:45px; font-size:0.6875em; line-height:1.25; }
+a.mailLink:link, a.mailLink:visited {color:#088DD5;}
+a.mailLink:hover {color:#666;}
+a.mailLink span { color:#666; text-transform:uppercase;}
+
+.mainNav { font-size:1.125em; margin:20px 0 12px;}
+.mainNav ul { margin:0 0 0 10px; padding:0; list-style:none; height:25px;}
+.mainNav ul li { display:block; float:left; border-right:1px solid #ccc;}
+.mainNav ul li.last { border:0; position:relative; background:url(images/logos/att-head-ico-sprite.png) no-repeat 72px -48px; padding-right:5px;}
+.mainNav ul li a { display:block;}
+.mainNav ul li.last a {z-index:9999999; padding:0 0 10px;}
+.mainNav ul li a, .mainNav ul li a:link, .mainNav ul li a:visited { color:#1e1e1e; padding:0 20px;}
+.mainNav ul li a:hover { color:#ff7100; text-decoration:underline;}
+
+.subNav {display:none; width:303px; position:absolute; top:15px; left:-1px; z-index:999999; font:normal 0.6666666666666667em/1.75 arial, verdana, san-serif;}
+.subNav .topCap {background:url(images/ui/att-drop-nav.png) no-repeat center top; height:20px; padding-top:10px; font-size:0;}
+.subNav .wrap {padding:0 20px 20px; background:url(images/ui/att-drop-nav.png) no-repeat center bottom;}
+.subNav ul {width:40%; height:auto; float:left; margin:0;}
+.subNav ul li {display:block; border:0; float:none;}
+.subNav ul.col2 {border-left:1px solid #ccc; padding-left:20px; width:48%}
+.mainNav .subNav ul li a {display:block; padding:0; color:#0679b3; }
+
+.subChannelNav {font-size:0.75em; padding:8px 10px;}
+.subChannelNav ul {margin:0 0 0 10px; padding:0; list-style:none;}
+.subChannelNav ul li {display:inline; padding:0 10px; border-right:1px solid #ccc;}
+.subChannelNav ul li a {}
+.subChannelNav ul li a, .subChannelNav ul li a:link, .subChannelNav ul li a:visited {color:#666;}
+.subChannelNav ul li a.active {color:#ff7100;}
+.subChannelNav ul li a:hover {color:#ff7100; text-decoration:underline;}
+.subChannelNav ul li.last {border:0;} 
+.subChannelNav ul li:last-child {border:0;}
+
+
+/* START: SEARCH */
+#mainSearchMod {width:560px; height:59px; margin-left:225px; text-align:left; font:12px Arial, Helvetica, sans-serif; position:relative;}
+#mainSearchMod form {margin:0; padding:0; position:relative;}
+
+ul#sNav {margin:0 0 3px; padding:0; list-style:none;}
+ul#sNav li {display:inline;}
+ul#sNav li a {padding:0 8px; text-decoration:none; color:#636363;}
+ul#sNav li a:hover {text-decoration:underline;}
+
+.sInputs {background:#f2f2f2; padding:5px 0 5px 5px;}
+.sInputs label {display:none;}
+.sInputs span {padding:0 5px 0 3px;}
+.sInputs input {border:1px solid #d6d6d6; border-radius:2px; padding:5px 4px; height:17px; color:#636363;}
+.sInputs .sTxt {width:421px; -moz-transition:border 0.1s ease-in-out 0.1s; -webkit-transition:border 0.1s ease-in-out 0.1s; -o-transition:border 0.1s ease-in-out 0.1s; transition:border 0.1s ease-in-out 0.1s;}
+.sInputs .sTxt:hover, .sInputs .sTxt:focus {border-color:#f90; box-shadow:0 0 2px #f90;}
+.sInputs .sBtn {width:110px; height:29px; color:#000; cursor:pointer; margin-left:5px; padding:0;  background:url(images/ui/attSearch-btn-bg.png) repeat-x 0 0; font:bold 12px Arial, Helvetica, sans-serif;}
+
+.sWhere {display:none;}
+.sWhere {width:193px;}
+
+.sLogo { background:url(images/ui/powerBySearchLogos.png) no-repeat scroll 100px 100px; bottom:-15px; height:13px; position: absolute; right:9px; width:112px;}
+/* END: SEARCH */
+
+.subChannels { width:60.625em; margin:0 auto 1em; background:#fff; position:relative; height:30px; border:1px solid #c8c8c8; border-top:none; box-shadow:0 1px 2px #c8c8c8; border-radius:0 0 5px 5px; background:url(images/ui/subChannelGrad_bg.png) #fff no-repeat center 0; }
+
+#signIn {position:absolute; top:0; right:1em; text-align:right; z-index:1; font-family:Arial, Helvetica, sans-serif;}
+#signIn ul {margin:0; padding:0; list-style:none; font-size:11px; color:#666;}
+#signIn ul li {float:left; padding:10px 0 5px; position:relative;}
+#signIn ul li>strong { padding:0 8px 0 0; border-right:1px #666 solid;}
+#signIn ul li a, #signIn ul li a:link, #signIn ul li a:visited { padding:0 8px; border-right:1px #666 solid; color:#666;}
+#signIn ul li a:hover { text-decoration:underline;}
+#signIn #attSignUp {}
+#signIn #attSignOut {background:url(images/ui/signIn.png) no-repeat 0 6px; margin-left:5px;}
+#signIn #attSignOut a {padding-left:16px; }
+#signIn #attSignOut a, #signIn #attSignUp a {border:0; margin-right:10px;}
+#signIn #url_login { padding-left:0;}
+
+#signIn ul li#attSup {background:url(images/ui/signIn.png) no-repeat right -15px;}
+#signIn ul li#attSup a {padding:0 20px 0 6px;}
+
+#signIn ul li.last {padding-right:0;} 
+#signIn ul li.last a {border:0;} 
+#signIn ul#helpMenu { text-align:left; display:none; border:1px solid #ccc; background:#fff; position:absolute; left:0; top:18px;}
+#signIn ul#helpMenu li {float:none; border:0; padding:1px; font-weight:bold; position:static;}
+#signIn ul#helpMenu li.sep {border-bottom:1px solid #ccc;}
+#signIn ul#helpMenu li a {padding:4px 20px; display:block; background:none; white-space:nowrap;}
+#signIn ul#helpMenu li a:hover {background:#b3d4ff; color:#333;}
+
+/* END: MASTHEAD */
+
+/*START: CHANNEL CONTENT CONTAINER */
+#pageBody { width:60.625em; margin:0 auto 1em; padding:0.75em 0; background:#fff; border:1px solid #c8c8c8; box-shadow:0px 0px 3px #b9b9b9; border-radius:5px; position:relative;}
+#pageBody article { color:#333; font-size:0.85em;}
+#pageBody article figure { text-align:center;}
+#pageBody article figure figcaption {font-size:0.85em; color:#666;}
+#pageBody article figure.figLt {float:left; margin:0 1em 1em 0;}
+
+.imgLt { float:left; margin:0 0.5em 1em 0;}
+#pageBody article > h1 {margin:0; padding:0; font-size:1.75em; font-weight:normal; color:#FE7307}
+#pageBody article p + h1 { margin:1.5em 0 0;}
+#pageBody article h2 { font-size:1em; margin:0;}
+#pageBody article h1 + h2 {margin:1em 0 0;}
+#pageBody article h3 { font-size:1em; }
+#pageBody article h4 { font-size:1em; font-weight:bold; color:#0094d7;}
+#pageBody a:link, #pageBody a:visited { color:#0094d7;}
+#pageBody a:hover { text-decoration:underline;}
+.ad300 .advert {text-transform:uppercase; color:#999; font-size:10px; margin-bottom:0.25em;}
+
+/* START: parsys component */
+div.par, div.rightpar { clear: both; }
+div.parsys_column { height: 100%; width: 100%; float: left; border: 0; vertical-align:top; padding: 0; margin: 0; }
+div.section { /* Property added to avoid IE hasLayout issue on paragraphs see #20817 - IE6: div around Drag Components image not big enough */ zoom: 1; }
+div.parsys_column .section { overflow:hidden; width: 100%; }
+
+/* column control layouts */
+div.cq-colctrl-cols { width: 100%; float: left; }
+div.cq-colctrl-default { width: 100%; }
+
+/* layout 0 : 100%  */
+div.cq-colctrl-lt0 { }
+div.cq-colctrl-lt0-c0 { width: 100%; margin:0; }
+
+/* layout 0 : 50% 50%  */
+div.cq-colctrl-lt1 { }
+div.cq-colctrl-lt1-c0 { width: 49.0%; margin-right:1%; }
+div.cq-colctrl-lt1-c1 { width: 49.0%; margin-left: 1%; }
+
+/* layout 1 : 33% 33% 33% */
+div.cq-colctrl-lt2 { }
+div.cq-colctrl-lt2-c0 { width: 32%; margin-right: 1%; }
+div.cq-colctrl-lt2-c1 { width: 32%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt2-c2 { width: 32%; margin-left: 1%; }
+
+/* layout 2: 16% 16% 16% 33% */
+div.cq-colctrl-lt3 { }
+div.cq-colctrl-lt3-c0 { width: 21%; margin-right: 1%; }
+div.cq-colctrl-lt3-c1 { width: 21%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt3-c2 { width: 21%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt3-c3 { width: 31%; margin-left: 1%; }
+
+/* layout 3: 4 x 25% */
+div.cq-colctrl-lt4 { }
+div.cq-colctrl-lt4-c0 { width: 23.5%; margin-right: 1%; }
+div.cq-colctrl-lt4-c1 { width: 23.5%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt4-c2 { width: 23.5%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt4-c3 { width: 23.5%; margin-left: 1%; }
+
+/* layout 4: 5 x 20% */
+div.cq-colctrl-lt5 { }
+div.cq-colctrl-lt5-c0 { width: 18.4%; margin-right: 1%; }
+div.cq-colctrl-lt5-c1 { width: 18.4%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt5-c2 { width: 18.4%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt5-c3 { width: 18.4%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt5-c4 { width: 18.4%; margin-left: 1%; }
+
+/* layout 5: 6 x 16% */
+div.cq-colctrl-lt6 { }
+div.cq-colctrl-lt6-c0 { width: 15%; margin-right: 1%; }
+div.cq-colctrl-lt6-c1 { width: 15%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt6-c2 { width: 15%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt6-c3 { width: 15%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt6-c4 { width: 15%; margin-left: 1%; margin-right: 1%; }
+div.cq-colctrl-lt6-c5 { width: 15%; margin-left: 1%; }
+
+/* END: parsys component */
+
+/* END: CHANNEL CONTENT CONTAINER */
+
+/*START: FOOTER */
+#attLogoFoot {position:absolute; top:39px; left:0px; height:24px; width:53px; text-indent:-999em; background:url(images/logos/attLogo_53x24.png) no-repeat center -1px;}
+#footer {height:170px; background:url(images/ui/footerBg.png) no-repeat center top; width:950px; margin:0 auto; clear:both; position:relative; color:#999; font-family:Verdana, Geneva, sans-serif;}
+#footer .imgLeft img {float:left; margin:3px 10px 0 0;}
+#footer .imgRight img {float:right; margin:0 10px 0 0;}
+#footer a, #footer a:link, #footer a:visited {text-decoration:none; color:#088dd5;} 
+
+#footer a:hover {text-decoration:underline;}
+#footerUrls {position:absolute; top:35px; right:0; width:862px;}
+
+ul.attOnWeb, ul.footerLinks {margin:0; padding:0; list-style:none; clear:left; height:30px; line-height:normal;}
+ul.attOnWeb li { float:left; padding:0 20px; font-size:9px; background:url(images/ui/tabBorderDark.png) no-repeat left 0;}
+ul.attOnWeb li a {font-size:12px;}
+ul.attOnWeb li.first {font-size:12px; padding:8px 20px 0 0 ;background:none;}
+ul.attOnWeb li#attComFoot {width:148px;}
+ul.attOnWeb li#attNetFoot {width:182px; } 
+
+ul.footerLinks {margin-top:30px; height:15px;}
+ul.footerLinks li {float:left; padding:0 6px; border-right:1px solid #999; margin:0; font-size:0.75em; }
+ul.footerLinks li.first {padding-left:0;}
+ul.footerLinks li.last {border:0;}
+#footer .copyright {clear:left; font-size:9px; position:relative; margin-top:18px;}
+#footer .copyright p {width:400px;}
+#footer .copyright #USOlympic {background:url(images/logos/YP_USOC_logos.png) no-repeat; width:367px; height:40px; position:absolute; right:15px; top:0;}
+#footer .copyright #USOlympic a {display:block; position:absolute; height:40px; text-indent:-999em;}
+#footer .copyright #USOlympic a#USOurl {width:225px; right:0;}
+#footer .copyright #USOlympic a#YPurl {width:90px;}
+/* END: FOOTER */
+
+
+
+/* START: IE7 FIXES */
+.ie7 .grid_1, .ie7 .grid_2, .ie7 .grid_3, .ie7 .grid_4, .ie7 .grid_5, .ie7 .grid_6, .ie7 .grid_7, .ie7 .grid_8, .ie7 .grid_9, .ie7 .grid_10, .ie7 .grid_11, .ie7 .grid_12, .ie7 .grid_13, .ie7 .grid_14, .ie7 .grid_15, .ie7 .grid_16, .ie7 .grid_17, .ie7 .grid_18, .ie7 .grid_19, .ie7 .grid_20, .ie7 .grid_21, .ie7 .grid_22, .ie7 .grid_23, .ie7 .grid_24 {margin:0 0.55em; position:static;}
+.ie7 .mainNav ul li {display:inline;}
+.ie7 .mainNav ul li a {display:inline;}
+.ie7 .subNav {}
+.ie7 .subNav ul li {display:block;}
+.ie7 .subChannels {position:static;}
+.ie7 #signIn {position:static; text-align:right; z-index:1; font-family:Arial, Helvetica, sans-serif; float:right; margin-right:1.5em; z-index:1;}
+
+.ie7 #pageBody {position:static;}
+/* END: IE7 FIXES */

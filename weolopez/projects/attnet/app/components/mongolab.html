@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <script src="http://code.angularjs.org/1.0.0/angular-1.0.0.min.js"></script>
+  <script src="https://raw.github.com/angular/angular.js/master/src/ngResource/resource.js"></script>
+  <script src="https://raw.github.com/pkozlowski-opensource/angularjs-mongolab/ecf9d7fc0925763f16d0e279f4fce3dc5a2196f7/mongolab.js"></script>
+  
+  
+</head>
+<body>
+ <div ng-controller="AppController">
+    <ul>
+        <li ng-repeat="p in projects[0].offers.jumbotron">
+        
+            {{p.title}}
+
+        </li>
+    </ul>
+</div>
+<script>
+var app = angular.module('app', ['mongolabResource']);
+app.controller('AppController', function($scope, Project) {
+    $scope.projects = Project.query();
+});
+
+app.constant('API_KEY', '50f36e05e4b0b9deb24829a0');
+app.constant('DB_NAME', 'weolopez');
+
+app.factory('Project', function($mongolabResource) {
+    return $mongolabResource('offerRecommendation');
+});
+
+</script>
+
+</body>
+</html>

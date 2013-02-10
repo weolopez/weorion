@@ -7,124 +7,50 @@
         <meta name="viewport" content="width=200px, initial-scale=2" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
 		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+			
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		
-		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
-		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-		
-	<style>
-	
-	
+<style>
+
+
 .fullscreenDiv {
     background-color: black;
     width: 100%;
- //   height: auto;
+ // height: auto;
     bottom: 0px;
     top: 0px;
     left: 0;
     position: absolute;
 }
-	
+
 .center {
     top: 30%;
     height: 400px;
-
-			    background: #999; /* for non-css3 browsers */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
-				background: -webkit-gradient(linear, center right , center right , from(#888888), to(#EEEEEE)); /* for webkit browsers */
-			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-			    
-    border: 1px solid #888888;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
-    color: #111111;
-    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    text-shadow: 0 1px 1px #EEEEEE;
     position: relative;
     width: 300px;
-    margin 0 auto; /* margin is -0.5 * dimension */
 }​
 
-	{}div.bigorange {
-	background:#f82;
-	margin: 1em;
-	display:block;
-	ba             ckground:#f60;
-	border:2px solid #EE2E26;
-	text-align:center;
-	text-decoration:none;
-	color:#FFEFDF;
-	padding:10px;
-	font:bold 12px  "Lucida Grande", Arial, Helvetica, sans-serif;
-	border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
-  
-    box-shadow:
-		3px 3px 6px rgba(0, 0, 0, .2),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0px 5px 12px #930,
-		inset 0px 15px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930;
-} 
-div.bigorange:hover {
-	background:#f82;
-	border:2px solid #EE2E26;
-	color:#fff;
-    box-shadow:        
-		2px 2px 4px rgba(0, 0, 0, .4),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0 0 4px rgba(0, 0, 0, .6),
-		inset 0px 10px 12px #930,
-		inset 0px 20px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930; 	
-} 
+</style>
 
-
-</style>	
 	
 	</head>
 
 	<body style="background-color: black;color:white;">
-    <div class='fullscreenDiv'>
+    <div class='fullscreenDiv'style="">
       
 
-    <div class="center" ng-controller="CsiCtrl" style="overflow: hidden;">
-        <div data-role="content" style="height:420px;width:410px;overflow: scroll;-webkit-overflow-scrolling: touch;" >
-        	<div ng-repeat="c in csi" >
-    	      <div id="enterButton" class="draggable bigorange" onclick="window.location = 'http://home.orionhub.org:8080/weolopez/components/{{c.text}}/index.html';" ng-clicked="componentClicked()" style="width:250px;z-index:0">{{c.text}}</div>
-    	   </div>	
-    	</div>
+<div class="center" style="">
+<ng-include src="'partials/componentList.html'"></ng-include>
     </div>
     </div>
     
     
-<script>
 
-function CsiCtrl($scope, $http) {
- 	$scope.componentClicked = function(){
- 	alert("CLICKED"+$index);
- 	}
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+		
 
- $scope.csi = [];
-  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
-    $http.get(internallURL).success(function (data) {
-                var loadedData = $(data);
-            	var compList = loadedData.find('a'); 
-                compList.each(function( index ) {
-                	var txt = $(this).text();
-                	txt = txt.substring(0,txt.length-1)
-					$scope.csi.push({text: txt, done:false});
-				}).error(function(data, status) {
-				    $scope.data = data || "Request failed";
-				    $scope.status = status;
-			    });
-    });
-}
-  
-   </script>
 	</body>
 
 </html>

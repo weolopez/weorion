@@ -1,0 +1,379 @@
+/* Offers CSS */
+body {}
+
+#pageBody {border:none; box-shadow:none; background:none; padding:0;}
+#pageBody > section {margin-bottom:1em;}
+
+#topSection, #btmSection {background:#fff; margin-bottom:1em; border:1px solid #C8C8C8; border-radius: 5px 5px 5px 5px;box-shadow: 0 0 3px #B9B9B9;}
+
+#topSection .title h1 { font-weight:normal; font-size:1.125em; color:#333;}
+
+#midSection div.parsys_column .teaserModule.section {overflow:visible;}
+#midSection .container_24 {margin:0; width:100%}
+#midSection .container_24 .grid_12 {margin:0; width:49%;}
+#midSection .container_24 .grid_12.ltCol {margin-right:0.575em;}
+#midSection .container_24 .grid_12.rtCol {margin-left:0.575em; float:right;}
+#midSection .container_24 .grid_12.ltCol .module {min-height:388px;}
+
+#midSection .module {border:1px solid #C8C8C8; border-radius:5px; box-shadow:0 0 3px #B9B9B9; margin:0;}
+#midSection .module header {border-radius:5px 5px 0 0; background:url(http://cq2-dev.stage.att.net/cq/etc/designs/att-net/images/gradBg.jpg) repeat-x center bottom;}
+#midSection .module header h1 {font-size:1.125em;}
+
+#btmSection {padding-top:0.25em;}
+#btmSection .module {border:0;}
+#btmSection .module header {background:none; border-top:1px #ccc solid; border-bottom:0;}
+#btmSection .module header h1 {padding:1em 0; font-size:1.125em;}
+#btmSection .module section {margin:0;}
+
+.module {border:1px #ccc solid; border-radius:5px; margin:1em 0; background:#fff;}
+.module header {background:#e3e3e3; border-bottom:1px #ccc solid;}
+.module header h1 {margin:0; padding:1em; font-size:1em; font-weight:normal; color:#333;}
+.module section {margin:1em;}
+.module section p {font-size:0.8125em; margin:1em 0;}
+
+#btmSection .parsys > .title > h1 {margin-top:0;}
+#btmSection .title h1 {border-top:1px #ccc solid; padding:1em 0 0; margin-bottom:0; font-weight:normal; font-size:1.125em; }
+#btmSection .parsys_column {margin-top:0.75em; margin-bottom:0.75em;}
+#btmSection .parsys_column > .parsys_column {margin-top:0; margin-bottom:0;}
+#btmSection .cq-colctrl-lt5 {text-align:center;}
+
+
+#productSearch {margin:1em 0;}
+#productSearch fieldset {margin:0; padding:0; border:0;}
+#productSearch fieldset label {display:none;}
+
+.imgLeft .image {float:left; margin:0 1em 0 0;}
+.imgRight .image img {float:right; margin:0 0 1em 1em;}
+.imgCenter .cq-colctrl-lt5 {text-align:center;}
+
+/* Tabs */
+.tabctrl {background:#fff; border:1px solid #C8C8C8; border-radius: 5px 5px 5px 5px;box-shadow: 0 0 3px #B9B9B9;}
+.tabctrl-header ul {height:63px; overflow:visible; font-size:0.875em; background:#ebebeb;}
+.tabctrl-header ul li {width:32.75%; margin:0 2px; }
+#pageBody .tabctrl-header ul li a {color:#333; padding:1.5em 0; width:100%; text-align:center; background:url(clientlibs/images/gradBg.jpg) repeat-x #fff center bottom;}
+#pageBody .tabctrl-header ul li.active a {color:#333; padding-bottom:22px; background:#fff;}
+
+
+/*
+.tabctrl .textimage {width:50%; height:100px; float:left;}
+.tabctrl .new.section {clear:both;}
+*/
+
+.tabctrl-container p {font-size:0.8125em; margin:0 0 5px;}
+.tabctrl-container .section {margin-bottom:1.5em;}
+
+/* IE7 overrides */
+.ie7 #topSection {text-align:center;}
+.ie7 #topSection .container_24 {text-align:left;}
+.ie7 #topSection .title h1 {margin:1em 0;}
+
+
+
+/* 
+    Resets defualt browser settings
+    reset.css
+*/
+
+
+/*
+    Page style
+*/
+
+#container {
+    width:920px;
+    padding:0 10px 8px;
+    margin:auto;
+    margin-bottom:15px;
+    height:290px;
+    position:relative;
+    z-index:0;
+    border:1px solid #636363;
+    border-radius:4px;
+}
+#container1{
+    width:940px;
+    padding:10px 10px 10px 0;
+    margin:auto;
+   
+    height:260px;
+    position:relative;
+    z-index:0;
+   /* border:1px solid #636363;
+    border-radius:4px;*/
+}
+
+
+#ribbon {
+    position:absolute;
+    top:-3px;
+    left:-15px;
+    z-index:500;
+}
+
+#frame {
+    position:absolute;
+    z-index:0;
+    width:1180px;
+    height:341px;
+    top:-3px;
+    left:-130px;
+}
+
+/*
+    Slideshow
+*/
+
+#slides {
+    position:absolute;
+    top:4px;
+    left:4px;
+    z-index:100;
+    
+}
+
+/*
+    Slides container
+    Important:
+    Set the width of your slides container
+    Set to display none, prevents content flash
+*/
+
+.slides_container {
+    width:920px;
+    overflow:hidden;
+    position:absolute;
+    display:none;
+    height:288px;
+}
+
+/*
+    Each slide
+    Important:
+    Set the width of your slides
+    If height not specified height will be set by the slide content
+    Set to display block
+*/
+
+.slides_container a {
+    width:920px;
+    height:270px;
+    display:block;
+}
+
+.slides_container a img {
+    display:block;
+}
+
+/*
+    Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+    position:absolute;
+    top:107px;
+    left:-38px;
+    width:24px;
+    height:43px;
+    display:block;
+    z-index:101;
+}
+
+#slides .next {
+    left:958px;
+}
+
+/*
+    Pagination
+*/
+
+.pagination {
+    margin:-875px 385px;
+    width:100px;
+    position:absolute;
+    z-index:2147483647;
+}
+
+.pagination li {
+    float:left;
+    margin:0 1px;
+    list-style:none;
+}
+
+.pagination li a {
+    display:block;
+    width:12px;
+    height:0;
+    padding-top:12px;
+    background-image:url(/content/dam/tdata_dev/OffersPage/pagination.png);
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+}
+
+.pagination li.current a {
+    background-position:0 -12px;
+}
+
+/*
+    Footer
+*/
+
+#footer {
+    text-align:center;
+    width:580px;
+    margin-top:9px;
+    padding:4.5px 0 18px;
+    border-top:1px solid #dfdfdf;
+}
+
+#footer p {
+    margin:4.5px 0;
+    font-size:1.0em;
+}
+
+/*
+    Anchors
+*/
+
+a:link,a:visited {
+    color:#599100;
+    text-decoration:none;
+}
+
+a:hover,a:active {
+    color:#599100;
+    text-decoration:underline;
+}
+
+h3{
+color:#666;
+}
+
+#image-container{
+    float: left;
+    width:52%;
+}
+
+#description-container{
+margin-top:10px;
+float : right;
+width:40%;
+height:300px;
+
+}
+
+
+#Short-dec p {
+color:#000;
+font: 0.8125em Arial,Helvetica,sans-serif;
+text-align:justify;
+margin-right:30px;
+}
+
+#info a {width:85px; Height:Auto; margin-left:10px; }
+#info a:link, #info a:visited {color:#ff7200;
+font: 0.8125em Arial,Helvetica,sans-serif; 
+}
+
+.clear {clear:both;}
+
+
+
+
+
+
+#left-image-container {
+      
+       margin-top: 10px;
+}
+
+#left-description-container {
+       
+}
+#left-info{
+margin:0px;
+padding:0px;
+}
+
+
+
+
+#right-image-container {
+       float: right;
+    padding: 10px;
+    text-align: center;
+    top: -20px;
+    width: 180px;
+
+
+}
+
+#right-description-container {
+       float: left;  
+       
+}
+#right-info{
+ float: right;
+    margin-right: 30px;
+    margin-top: 150px;
+}
+#right-info a {
+       float: left;
+       font: 0.8em Arial, Helvetica, sans-serif;
+       text-decoration: none;
+}
+
+#left-info a {
+      margin-top:150px;
+      margin-left:270px;
+       font: 0.8em Arial, Helvetica, sans-serif;
+       text-decoration: none;
+}
+#left-container {
+       float: left;
+       height: 260px;
+       overflow: hidden;
+       width:460px;
+}
+#right-container{
+       float:right;
+       height: 250px;
+       overflow: hidden;
+       width:460px;
+   
+
+}
+
+
+
+#left-title-container {
+       font: 1.2em Arial, Helvetica, sans-serif;
+}
+
+#left-short-dec {
+     font: 0.8125em Arial,Helvetica,sans-serif;
+       margin:10px 0px 0px 0px;
+       text-align: left;
+       width: 350px;
+       word-wrap: break-word;
+}
+
+#right-title-container {
+       font: 1.2em Arial, Helvetica, sans-serif;
+}
+
+#right-short-dec {
+      font: 0.8125em Arial,Helvetica,sans-serif;
+       text-align: justify;
+    width: 260px;
+    word-wrap: break-word; 
+    margin-top: 10px;
+}
+
+.loading{
+    height: 66px;
+    left: 48%;
+    position: absolute;
+    top: 25%;
+    width: 60px;
+}

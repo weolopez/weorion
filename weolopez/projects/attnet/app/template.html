@@ -1,0 +1,15 @@
+
+<div>
+    <ul id="attFeatured">
+                          <li ng-repeat="pane in projects[0].offers.jumbotron">
+                      <img src="{{pane.imgsrc}}" alt="{{pane.imgalt}}" title="{{pane.imgtitle}}" />
+                            <div class="panel-content">
+                                <div class="img"><a href="{{pane.linkurl}}"><img src="{{pane.linkimagesrc}}" alt="{{pane.linkimagealt}}" title="{{pane.linkimagetitle}}" /></a></div>
+                                <div class="desc">
+                                    <h1>{{pane.name}}</h1>
+                                    <p>{{pane.text}}</p>
+                                </div>
+                            </div>     
+        			</li>
+    </ul>
+</div>

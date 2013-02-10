@@ -1,0 +1,232 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    </head>
+    <body>
+        <table border="1" width="550" cellspacing="5" cellpadding="5" ng-controller="gameCTRL">
+            <thead>
+                <tr>
+                    <th>UNO</th>
+                    <th></th>
+                    <th>Player {{turn}} Turn</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{deck.length}}
+                        <div ng-repeat="card in deck">
+                        </div>
+                    </td>
+                    <td>{{currentcard[0].number}}:{{currentcard[0].color}}</td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="player in players">
+                    <td>{{player.name}}</td>
+                    <td>{{player.stack.length}}</td>
+                    <td>
+                        <div ng-repeat="c in player.stack">
+                            <div>
+                                <button ng-click="playCard( player, $index )" ng-disabled="isEnabled($parent.$index)">play</button>
+                                {{c[0].number}}:{{c[0].color}}
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button ng-click="start()">start</button>
+                    </td>
+                    <td>
+                        <button ng-click="addPlayer()">Add Player</button>
+                    </td>
+                    <td>
+                        <button ng-click="draw();next();">draw card</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+
+            function gameCTRL($scope) {
+                $scope.deck = [];
+                $scope.players = [];
+                $scope.currentcard;
+                $scope.turn;
+                $scope.direction = true;
+                $scope.wildColor;
+
+
+                $scope.isEnabled = function(playerIndex) {
+                    if (playerIndex===$scope.turn) return "";
+                    else return "disabled";
+                }
+                $scope.addPlayer = function() {
+                    var player = {"name": "Player " + $scope.players.length, "stack": []};
+                    $scope.players.push(player);
+                }
+                
+                $scope.draw = function() {
+                    var card = $scope.deck.splice(0, 1);
+                    var player = $scope.players[$scope.turn];
+                    player.stack.push(card);
+                }
+                
+                $scope.playCard = function(player, index) {
+                    var card = player.stack[index][0];
+                    
+                    if ($scope.isPlayable(card)) {
+                        $scope.currentcard=player.stack.splice(index, 1)[0];
+                        $scope.command();
+                    } else {
+                        alert("play a valid card or pick");
+                        return;
+                    }
+                    
+                    $scope.turn = $scope.whoNext();
+                }
+                
+                 $scope.command = function() {
+                    if ($scope.currentcard[0].number==="reverse") 
+                        $scope.direction=!$scope.direction;
+                    if ($scope.currentcard[0].number==="skip") 
+                        $scope.next();
+                    if ($scope.currentcard[0].number==="draw two") {
+                        $scope.next();
+                        $scope.draw();
+                        $scope.draw();
+                    }
+                    if ($scope.currentcard[0].number==="wild4") {
+                        $scope.next();
+                        $scope.draw();
+                        $scope.draw();
+                        $scope.draw();
+                        $scope.draw();
+                    }
+                        $scope.next();
+                }
+                
+                $scope.next = function() {
+                    if ($scope.direction) {
+                        if ($scope.turn<$scope.players.length-1) $scope.turn++;
+                        else $scope.turn=0;
+                    } else {
+                        if ($scope.turn==0) $scope.turn = $scope.players.length-1;
+                        else $scope.turn--;
+                    }
+                }
+                
+                $scope.isPlayable = function(pCard) {
+                    if ($scope.currentcard[0].color==='wild') return true;
+                    if ($scope.currentcard[0].color==='wild4') return true;
+                    if (pCard.color === $scope.currentcard[0].color) return true;
+                    if (pCard.number === $scope.currentcard[0].number) return true;
+                    if (pCard.number==="wild") return true;
+                    if (pCard.number==="wild4") return true;
+                    return false;
+                }
+
+                $scope.deal = function() {
+                    for (i = 0; i <= $scope.players.length-1; i++) {
+                        $scope.players[i].stack=[];
+                        for (j = 1; j <= 7; j++) {
+                            $scope.players[i].stack.push($scope.deck.splice(0, 1));
+                        }
+                    }
+                }
+
+                $scope.start = function() {
+                    $scope.shuffle();
+                    $scope.deal();
+                    $scope.currentcard=$scope.deck.splice(0, 1);
+                    $scope.turn = 0;
+                }
+
+                $scope.shuffle = function() {
+                    var cards=deck.deck.slice(0);
+                    var len = cards.length;
+                    var i = len;
+                    while (i--) {
+                        var p = parseInt(Math.random() * len);
+                        var t = cards[i];
+                        cards[i] = cards[p];
+                        cards[p] = t;
+                    }
+                    $scope.deck = cards;
+                }
+            }
+            var deck = {"deck": [
+                    {"color": "YELLOW", "number": "0"},
+                    {"color": "YELLOW", "number": "1"},
+                    {"color": "YELLOW", "number": "2"},
+                    {"color": "YELLOW", "number": "3"},
+                    {"color": "YELLOW", "number": "4"},
+                    {"color": "YELLOW", "number": "5"},
+                    {"color": "YELLOW", "number": "6"},
+                    {"color": "YELLOW", "number": "7"},
+                    {"color": "YELLOW", "number": "8"},
+                    {"color": "YELLOW", "number": "9"},
+                    {"color": "YELLOW", "number": "draw two"},
+                    {"color": "YELLOW", "number": "reverse"},
+                    {"color": "YELLOW", "number": "skip"},
+                    {"color": "RED", "number": "0"},
+                    {"color": "RED", "number": "1"},
+                    {"color": "RED", "number": "2"},
+                    {"color": "RED", "number": "3"},
+                    {"color": "RED", "number": "4"},
+                    {"color": "RED", "number": "5"},
+                    {"color": "RED", "number": "6"},
+                    {"color": "RED", "number": "7"},
+                    {"color": "RED", "number": "8"},
+                    {"color": "RED", "number": "9"},
+                    {"color": "RED", "number": "draw two"},
+                    {"color": "RED", "number": "reverse"},
+                    {"color": "RED", "number": "skip"},
+                    {"color": "Green", "number": "0"},
+                    {"color": "Green", "number": "1"},
+                    {"color": "Green", "number": "2"},
+                    {"color": "Green", "number": "3"},
+                    {"color": "Green", "number": "4"},
+                    {"color": "Green", "number": "5"},
+                    {"color": "Green", "number": "6"},
+                    {"color": "Green", "number": "7"},
+                    {"color": "Green", "number": "8"},
+                    {"color": "Green", "number": "9"},
+                    {"color": "Green", "number": "draw two"},
+                    {"color": "Green", "number": "reverse"},
+                    {"color": "Green", "number": "skip"},
+                    {"color": "BLUE", "number": "0"},
+                    {"color": "BLUE", "number": "1"},
+                    {"color": "BLUE", "number": "2"},
+                    {"color": "BLUE", "number": "3"},
+                    {"color": "BLUE", "number": "4"},
+                    {"color": "BLUE", "number": "5"},
+                    {"color": "BLUE", "number": "6"},
+                    {"color": "BLUE", "number": "7"},
+                    {"color": "BLUE", "number": "8"},
+                    {"color": "BLUE", "number": "9"},
+                    {"color": "BLUE", "number": "draw two"},
+                    {"color": "BLUE", "number": "reverse"},
+                    {"color": "BLUE", "number": "skip"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"}]
+            };
+            var card = deck.deck[0];
+        </script>
+    </body>
+</html>

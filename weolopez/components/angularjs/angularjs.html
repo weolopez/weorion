@@ -1,8 +1,8 @@
-
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-<br ng-app>
-	<div ng-controller="CsiCtrl">
+<div ng-controller="angularCtrl" style="font:bold 12px  'Lucida Grande', Arial, Helvetica, sans-serif;">
+<br>
+<br>
 		List of components
+		<br>
 			<div ng-repeat="c in csi">
 				<span class="done-{{c.done}}">{{c.text}}</span>
 				<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/components/{{c.text}}/{{c.text}}.html">e</a>
@@ -19,12 +19,9 @@
 			</div>
 			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/index.html">Edit index</a>
 			<a title="{{c.text}}.html" href="https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/x.html">Edit X</a>
-	</div>
-<script>	
+	<script>	
 
-function CsiCtrl($scope, $http) {
-	
-
+function angularCtrl($scope, $http) {
  $scope.csi = [];
   var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
     $http.get(internallURL).success(function (data) {
@@ -40,4 +37,5 @@ function CsiCtrl($scope, $http) {
 			    });
     });
 }
-</script>
+</script>		
+	</div>

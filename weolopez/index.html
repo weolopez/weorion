@@ -1,67 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+             <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
-	<html ng-app>
+	<html ng-app="weolopezApp">
 
 	<head>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
 		<script src="https://raw.github.com/roncioso/Flip-jQuery/master/jquery.flip.min.js"></script>
 	<script src="http://home.orionhub.org:8080/weolopez/components/flippy/demo.js"></script>
-			
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+
+			<link rel="stylesheet" href="css/style.css"/>			
+		<script src="js/app.js"></script>	
+		<script src="js/controllers.js"></script>	
+		<script src="js/services.js"></script>	
+		<script src="js/directives.js"></script>	
+		<script src="js/filters.js"></script>
+
 <style>
-	#banner {
-    	margin-top: 100px;
-		color: black;
-		width: 600px;
-		height:200px;
-		margin-left:auto;
-		margin-right:auto;
-				background: #999; /* for non-css3 browsers */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
-				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
-			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-			    visibility:hidden;
-		font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    	text-shadow: 0 1px 1px #EEEEEE;
-    	text-align:center;
-    	vertical-align:middle;
-	}
-	
-.fullscreenDiv {
-    background-color: black;
-    width: 100%;
-    height: auto;
-    bottom: 0px;
-    top: 0px;
-    left: 0;
-    position: absolute;
-}
-.center {
-			    background: #999; /* for non-css3 browsers */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
-				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
-			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-			    
-    border: 1px solid #888888;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
-    color: #111111;
-    //display: inline-block;
-    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    text-shadow: 0 1px 1px #EEEEEE;
-    width: 200px;
-    height: 50px;
-    margin-top: 5%;
-    left: 50%;
-		margin-left:auto;
-		margin-right:auto;
-}​
 
 </style>
 	</head>
-<body style="background-color: black;color:white;">
+<body onKeyupFn>
     <div class='fullscreenDiv'>
 	<div id="banner"><br>This site is a demo playground from weo to experiment, learn and share web components.</div>
     <div class="center">
@@ -76,7 +36,7 @@
 	something.onclick = function() {
 	    window.location = "components/index.html";
 	};
-	
+	/*
 	var key = new Array();
 		document.onkeydown = function(e) {
             e = e || window.event; // because of Internet Explorer quirks...
@@ -90,7 +50,7 @@
             if (k==65) {
                 $("#banner").css({opacity: 0, visibility: "visible"}).animate({opacity: 1.0}, 400);
             }
-         }
+         }*/
 </script>
 </body>
 

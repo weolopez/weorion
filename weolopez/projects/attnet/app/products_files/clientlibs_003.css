@@ -1,0 +1,8 @@
+.module {border:1px #ccc solid; border-radius:5px; margin:1em 0; background:#fff;}
+.module header {background:#e3e3e3; border-bottom:1px #ccc solid;}
+.module header h1 {margin:0; padding:1em; font-size:1em; font-weight:normal; color:#333;}
+.module section {margin:1em;}
+.module section p {font-size:0.8125em; margin:0 0 5px;}
+
+
+

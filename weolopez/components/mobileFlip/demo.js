@@ -1472,3 +1472,178 @@
   });
 
 })(jQuery, window, document);
+
+  // load popular photos
+    var CLIENT_ID = 'e9f9cc183b7742f6b731fd8c585a7e3b';
+    var BASE_URL = 'https://api.instagram.com/v1/media/popular?'
+    BASE_URL += 'client_id='+CLIENT_ID
+    BASE_URL += '&callback=init';
+
+    function layout1($parent, index, imgArray) {
+      var url = 'url(\''+imgArray[index].images.standard_resolution.url+'\')';
+      $parent.append($('<div class="imgFrame"></div>')
+      .css("backgroundImage", url)
+      );
+
+      return index+1;
+    }
+
+    function layout2($parent, index, imgArray) {
+       var nextIndex = index;
+
+       var imgurl = 'url(\''+imgArray[nextIndex].images.standard_resolution.url+'\')';
+
+       $parent.append($('<div class="imgFirstHalf"></div>')
+       .css("backgroundImage", imgurl));
+
+       if (imgArray[index+1]) {
+         nextIndex = index+1;
+         imgurl = 'url(\''+imgArray[nextIndex].images.low_resolution.url+'\')';
+
+         $parent.append($('<div class="imgLastQuarter"></div>')
+         .css("backgroundImage", imgurl));
+       }
+
+       if (imgArray[index+2]) {
+         nextIndex = index+2;
+
+         imgurl = 'url(\''+imgArray[nextIndex].images.low_resolution.url+'\')';
+         $parent.append($('<div class="imgLastQuarter"></div>')
+         .css("backgroundImage", imgurl));
+       }
+
+       return nextIndex+1;
+    }
+
+    function layout3($parent, index, imgArray) {
+       nextIndex = index;
+       var imgurl = 'url(\''+imgArray[nextIndex].images.standard_resolution.url+'\')';
+
+       $parent.append($('<div class="imgLastHalf"></div>')
+       .css("backgroundImage", imgurl));
+
+       if (imgArray[index+1]) {
+         nextIndex = index+1;
+         imgurl = 'url(\''+imgArray[nextIndex].images.low_resolution.url+'\')';
+
+         $parent.append($('<div class="imgFirstQuarter"></div>')
+         .css("backgroundImage", imgurl));
+       }
+
+       if (imgArray[index+2]) {
+         nextIndex = index+2;
+
+         imgurl = 'url(\''+imgArray[nextIndex].images.low_resolution.url+'\')';
+         $parent.append($('<div class="imgFirstQuarter"></div>')
+         .css("backgroundImage", imgurl));
+       }
+
+       return nextIndex+1;
+    }
+
+    function layout4($parent, index, imgArray) {
+      var nextIndex = index;
+      var url = 'url(\''+imgArray[nextIndex].images.standard_resolution.url+'\')';
+
+      $parent.append($('<div class="imgFrameHalf"></div>')
+      .css("backgroundImage", url)
+      );
+
+       if (imgArray[index+1]) {
+         nextIndex = index+1;
+         var url = 'url(\''+imgArray[nextIndex].images.standard_resolution.url+'\')';
+
+         $parent.append($('<div class="imgFrameHalf"></div>')
+          .css("backgroundImage", url)
+         );
+       }
+
+      return nextIndex+1;
+    }
+    var logic = [layout1, layout2, layout3, layout4];
+
+    function init(responseJSON) {
+      // put instagram photos inside
+
+      var $flipRoot = $("#flipRoot");
+      if ($flipRoot.children(".flipContent").length > 0) return;
+
+      // create introduction page
+      var imgurl = 'url(\''+responseJSON.data[0].images.standard_resolution.url+'\')';
+
+      var $page = $('<div class="imgFrame"></div>')
+      .css("backgroundImage", imgurl);
+
+      $page.append($('<div id="demotitle">jQuery Flip Plugin Demo</div>'));
+
+      $page.append($('<div id="flipmsg">&lt; Flip</div>'));
+
+      $flipRoot.append($page);
+      $page = $('<div></div>').css("backgroundColor", "white");
+
+      var i=1, len=responseJSON.data.length;
+      while (i<len) {
+
+        // pick layout logic
+        var layout = logic[(Math.floor(Math.random()*100) % logic.length)];
+        i = layout($page, i, responseJSON.data);
+
+        $flipRoot.append($page);
+        $page = $('<div></div>').css("backgroundColor", "white");
+      }
+
+
+      // controlling height (for iPhone)
+      var height = $(document).height();
+      var width = $(document).width();
+
+      if (height > 600) {
+        height = 600;
+      } else {
+        height = $(document.body).height()+60;
+      }
+
+      // init flip
+      var param = {
+        height: height+'px',
+        showPager: true,
+        loop: true
+      };
+
+      if (width < height) {
+        param.forwardDir = "btot";
+        // change flip message
+        $("#flipmsg").html("^ Flip");
+      }
+
+      $flipRoot.flip(param);
+
+
+      // a kind of autostart
+      var timer = 10000;
+      var autostart = function() {
+        var $flipRoot = $("#flipRoot");
+        var pageCount = $flipRoot.children(".flipContent").length;
+        var flipObject = $.data($flipRoot[0], 'plugin_flip');
+        var pageIdx = 0;
+
+        return flip = function() {
+          flipObject.flipNext();
+          pageIdx++;
+          if (pageIdx == pageCount) {
+            pageIdx = 0;
+          }
+
+          setTimeout(flip, timer);
+        }
+      }
+
+      setTimeout(autostart(), timer);
+    }
+
+    // append script element
+    $(document).ready(function(e) {
+      var $script = $('<script src="'+BASE_URL+'"></script');
+      $(document.body).append($script);
+    });
+

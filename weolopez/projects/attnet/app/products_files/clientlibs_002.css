@@ -1,0 +1,8 @@
+#productSearch {}
+#productSearch input[type='text'] {border:1px solid #d5d5d5; border-radius:5px; background:url(clientlibs/images/searchInput.png) no-repeat left top; padding:5px 0.5em; width:185px; color:#acacac;}
+#productSearch input[type='text']:focus {border-color:#ff7100; color:#333;}
+#productSearch input[type='text']:hover {border-color:#ff7100;}
+
+#productSearch input[type='submit'] {background:url(clientlibs/images/searchBtn.png) repeat-x center top; border:0; border-radius:5px; padding:5px 1em; color:#fff; text-shadow:1px 1px 2px #000; font-family:arial, san-serif;  font-weight:bold;}
+#productSearch input[type='submit']:hover {background-position: center bottom; cursor:pointer;}
+
