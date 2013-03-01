@@ -1,0 +1,109 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html ng-app="UNO">
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>	
+    </head>
+    <body>
+    <div style="margin: 0 auto;background-color:black;display:table;">
+        <table border="1" width="600" cellspacing="5" cellpadding="5" ng-controller="gameCTRL" style="background-color: white;margin: 0 auto;display:table-cell; vertical-align:middle;">
+            <thead>
+                <tr>
+                    <th>UNO</th>
+                    <th></th>
+                    <th style="width: 200px">{{players[turn].name}} Turn</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                    <td>
+                        <button ng-click="login()">start</button>
+                    </td>
+                    <td>	
+	                    <div></div>
+                    </td>
+                    <td>
+                        <button ng-click="drawCard()" style="background-color:white;font-size: 100%;font-family: sans-serif;font-style: oblique;font-weight: 100;">draw card from {{deck.length}}</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="player in players">
+                    <td><input type="text" ng-model="player.name" size="30" placeholder="player.name"></td>
+                    <td>{{player.stack.length}}</td>
+                    <td ng-hide="isEnabled($index)">
+                        <div ng-repeat="c in player.stack">
+                            <div style="background-color:{{c[0].color}};">
+                                <button ng-click="playCard( player, $index )" ng-disabled="isEnabled($parent.$index)" style="align:center;width:100px;font-size: 150%;font-family: sans-serif;font-style: oblique;font-weight: 100;">{{c[0].number}}</button>
+                            </div>
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<input type="text" ng-model="Nplayer.name" size="30" placeholder="Nplayer.name">
+                        <button ng-click="addPlayer(Nplayer.name)">Add Player</button>
+                    </td>
+                    <td>
+                        <button ng-click="addComputerPlayer()">Add  Computer Player</button>
+                    </td>
+                    <td>
+                    	Online Players<br>
+                        <button ng-click="findPlayer()">Add  Computer Player</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+     </div>   
+        <script>
+
+        angular.module('UNO', ['ngResource']).
+factory('Game', function($resource) {
+    var Game = $resource('https://api.mongolab.com/api/1/databases' +
+            '/weolopez/collections/game/:id',
+            {apiKey: '50f36e05e4b0b9deb24829a0'}, {
+        update: {method: 'PUT'}
+    });
+
+    Game.prototype.update = function(cb) {
+        return Game.update({id: this._id.$oid},
+        angular.extend({}, this, {_id: undefined}), cb);
+    };
+
+    Game.prototype.destroy = function(cb) {
+        return Game.remove({id: this._id.$oid}, cb);
+    };
+
+    return Game;
+});
+
+            function gameCTRL($scope, Game) {
+    			$scope.games = Game.query();
+                $scope.players = [];
+                
+                $scope.login = function() {
+                    Game.save($scope.players, function(players) {
+            			alert("Player Saved");
+			        });
+			    }    
+
+                $scope.addPlayer = function(name) {
+                    var player = {"name": name, "stack": [],"computer":"false"};
+                    $scope.players.push(player);
+                    $scope.Nplayer.name="";
+                }
+                
+                $scope.addComputerPlayer = function() {
+                    var player = {"name": "Computer " + $scope.players.length, "stack": [],"computer":"true"};
+                    $scope.players.push(player);
+                }
+}
+        </script>
+    </body>
+</html>

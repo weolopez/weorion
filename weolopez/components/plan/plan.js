@@ -36,9 +36,8 @@ strVar += "    <\/form>";
 strVar += "<\/div>";
 strVar += "";
 
-angular.module('demo', ['plan']);
 
-angular.module('plan', ['ui.bootstrap.dialog','ngResource']).
+angular.module('plunker', ['ui.bootstrap.dialog','ngResource']).
 
     // This is a module for cloud persistance in mongolab - https://mongolab.com
  //  angular.module('mongolab', ['ngResource']).
@@ -147,3 +146,63 @@ function EditCtrl($scope, Project, dialog, $rootScope) {
 	    dialog.close(result);
 	  };
 }
+/*
+function DialogDemoCtrl($scope, $dialog){
+
+  // Inlined template for demo
+  var t = '<div class="modal-header">'+
+          '<h1>This is the title</h1>'+
+          '</div>'+
+          '<div class="modal-body">'+
+          '<p>Enter a value to pass to <code>close</code> as the result: <input ng-model="result" /></p>'+
+          '</div>'+
+          '<div class="modal-footer">'+
+          '<button ng-click="close(result)" class="btn btn-primary" >Close</button>'+
+          '</div>';
+
+  $scope.opts = {
+    backdrop: true,
+    keyboard: true,
+    backdropClick: true,
+    //template:  t, // OR: 
+    templateUrl: 'detail.html',
+    controller: 'TestDialogController'
+  };
+
+  $scope.openDialog = function(){
+    var d = $dialog.dialog($scope.opts);
+    d.open().then(function(result){
+      if(result)
+      {
+        alert('dialog closed with result: ' + result);
+      }
+    });
+  };
+
+  $scope.openMessageBox = function(){
+    var title = 'This is a message box';
+    var msg = 'This is the content of the message box';
+    var btns = [{result:'cancel', label: 'Cancel'}, {result:'ok', label: 'OK', cssClass: 'btn-primary'}];
+
+    $dialog.messageBox(title, msg, btns)
+      .open()
+      .then(function(result){
+        alert('dialog closed with result: ' + result);
+    });
+  };
+}
+*/
+// the dialog is injected in the specified controller
+function TestDialogController($scope,  $location, Project, $dialog){
+  $scope.close = function(result){
+    $dialog.close(result);
+  };
+  
+      $dialog.save = function(result) {
+	    Project.save($scope.project, function(project) {
+	    	EditCtrl.openDialog(project._id.$oid);
+	    	//$location.path('/edit/' + project._id.$oid);
+	    });
+    };
+}
+

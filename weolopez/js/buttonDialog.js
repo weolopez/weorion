@@ -1,4 +1,4 @@
-var strVar="";
+var strVar = "";
 strVar += "<div class=\"modal-header\">";
 strVar += "    New plan";
 strVar += "<\/div>";
@@ -36,114 +36,106 @@ strVar += "    <\/form>";
 strVar += "<\/div>";
 strVar += "";
 
-angular.module('demo', ['plan']);
 
-angular.module('plan', ['ui.bootstrap.dialog','ngResource']).
-
-    // This is a module for cloud persistance in mongolab - https://mongolab.com
- //  angular.module('mongolab', ['ngResource']).
-    factory('Project', function($resource) {
-    	var Project = $resource('https://api.mongolab.com/api/1/databases' +
-    		'/weolopez/collections/projects/:id',
-    	{ apiKey: '50f36e05e4b0b9deb24829a0' }, {
-    		update: { method: 'PUT' }
-    	});
-     
-	    Project.prototype.update = function(cb) {
-	    return Project.update({id: this._id.$oid},
-	    angular.extend({}, this, {_id:undefined}), cb);
-	    };
-     
-	    Project.prototype.destroy = function(cb) {
-	    return Project.remove({id: this._id.$oid}, cb);
-	    };
-     
-    	return Project;
+angular.module('buttonDialogModule', ['ui.bootstrap.dialog', 'ngResource']).
+factory('Project', function($resource) {
+    var Project = $resource('https://api.mongolab.com/api/1/databases' +
+            '/weolopez/collections/projects/:id',
+            {apiKey: '50f36e05e4b0b9deb24829a0'}, {
+        update: {method: 'PUT'}
     });
+
+    Project.prototype.update = function(cb) {
+        return Project.update({id: this._id.$oid},
+        angular.extend({}, this, {_id: undefined}), cb);
+    };
+
+    Project.prototype.destroy = function(cb) {
+        return Project.remove({id: this._id.$oid}, cb);
+    };
+
+    return Project;
+});
 
 
 function ListCtrl($scope, Project, $dialog, $rootScope) {
     $scope.projects = Project.query();
-    
+
     $scope.createOpts = {
-	    backdrop: true,
-	    keyboard: true,
-	    backdropClick: true,
-	    template:  strVar, // OR: 	    templateUrl: 'detail.html',
-	    controller: 'CreateCtrl'
-  	};
+        backdrop: true,
+        keyboard: true,
+        backdropClick: true,
+        template: strVar, // OR: 	    templateUrl: 'detail.html',
+        controller: 'CreateCtrl'
+    };
 
-  $scope.createDialog = function(){
-    var d = $dialog.dialog($scope.createOpts);
-    d.open().then(function(result){
-      if(result)
-      {
-        alert('dialog closed with result: ' + result);
-      }
-    });
-  };
-  
+    $scope.createDialog = function() {
+        var d = $dialog.dialog($scope.createOpts);
+        d.open().then(function(result) {
+            if (result)
+            {
+                alert('dialog closed with result: ' + result);
+            }
+        });
+    };
+
     $scope.editOpts = {
-	    backdrop: true,
-	    keyboard: true,
-	    backdropClick: true,
-	    template:  strVar, // OR: 	    templateUrl: 'detail.html',
-	    templateUrl: 'detail.html',
-	    controller: 'EditCtrl'
-  	};
+        backdrop: true,
+        keyboard: true,
+        backdropClick: true,
+        template: strVar, // OR: 	    templateUrl: 'detail.html',
+        controller: 'EditCtrl'
+    };
 
-  $scope.editDialog = function(projectId){
-    $rootScope.projectID = projectId;
-    var d = $dialog.dialog($scope.editOpts);
-    d.open().then(function(result){
-      if(result)
-      {
-        alert('dialog closed with result: ' + result);
-      }
-    });
-  };
-  
+    $scope.editDialog = function(projectId) {
+        $rootScope.projectID = projectId;
+        var d = $dialog.dialog($scope.editOpts);
+        d.open().then(function(result) {
+            if (result)
+            {
+                alert('dialog closed with result: ' + result);
+            }
+        });
+    };
+
 }
 
 function CreateCtrl($scope, Project, dialog) {
 
     $scope.save = function() {
-	    Project.save($scope.project, function(project) {
-	    	dialog.close();
-	    });
+        Project.save($scope.project, function(project) {
+            dialog.close();
+        });
     };
-    
-	  $scope.close = function(result){
-	    dialog.close(result);
-	  };
+
 }
 
 function EditCtrl($scope, Project, dialog, $rootScope) {
     var self = this;
-    
-     
+
+
     Project.get({id: $rootScope.projectID}, function(project) {
-	    self.original = project;
-	    $scope.project = new Project(self.original);
+        self.original = project;
+        $scope.project = new Project(self.original);
     });
-     
+
     $scope.isClean = function() {
-    	return angular.equals(self.original, $scope.project);
+        return angular.equals(self.original, $scope.project);
     }
-     
+
     $scope.destroy = function() {
-	    self.original.destroy(function() {
-	   	 dialog.close();
-	    });
+        self.original.destroy(function() {
+            dialog.close();
+        });
     };
-     
-	    $scope.save = function() {
-	    	$scope.project.update(function() {
-	    		$dialog.close("Save Success");
-	   		});
-	    };
-	      
-	  $scope.close = function(result){
-	    dialog.close(result);
-	  };
+
+    $scope.save = function() {
+        $scope.project.update(function() {
+            $dialog.close("Save Success");
+        });
+    };
+
+    $scope.close = function(result) {
+        dialog.close(result);
+    };
 }

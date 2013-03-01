@@ -1,7 +1,8 @@
 'use strict';
 
 /* Controllers */
-
+//regular controllers
+	
 function enterCtrl($scope,userProfile) {
    $scope.userName=userProfile.name;
 }
@@ -40,7 +41,11 @@ var application = angular.module('project', ['mongolab']).
       when('/edit/:projectId', {controller:EditCtrl, templateUrl:'detail.html'}).
       when('/new', {controller:CreateCtrl, templateUrl:'detail.html'}).
       otherwise({redirectTo:'/'});
-  });
+  }).controller(
+	"CommandLineCtrl",
+	function CommandLineCtrl($scope, commandLine) {
+	alert("Command: "+commandLine);
+	});;
 
 
 function ListCtrl($scope, Project) {
@@ -177,3 +182,6 @@ if (k==65) {
 
 
 */
+
+
+

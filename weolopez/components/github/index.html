@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html ng-app="testLogin">
+
+	<head>
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>	
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>	
+		<script src="https://raw.github.com/angular-ui/bootstrap/master/src/transition/transition.js"></script>	
+		<script src="https://raw.github.com/angular-ui/bootstrap/master/src/dialog/dialog.js"></script>	
+		
+		<style>
+		.modal.ng-scope{
+			color:white;
+			background-color:silver;
+		}
+			.fullscreenDiv {
+			    background-color: black;
+			    width: 100%;
+			    height: auto;
+			    bottom: 0px;
+			    top: 0px;
+			    left: 0;
+			    position: absolute;
+			}
+			.center {
+			    background: #999; /* for non-css3 browsers */
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
+				background: -webkit-gradient(linear, center bottom , center bottom , from(#888888), to(#EEEEEE)); /* for webkit browsers */
+			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
+				//background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */
+			    
+			    border: 1px solid #888888;
+			    border-radius: 10px 10px 10px 10px;
+			    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+			    color: #111111;
+			    //display: inline-block;
+			    font: bold 24px calibri,"Lucida Granda",arial,sans-serif;
+			    text-shadow: 0 1px 1px #EEEEEE;
+			    position: absolute;
+			    width: 300px;
+			    height: 500px;
+			    top: 20%;
+			    left: 40%;
+			    margin-left: -50px; /* margin is -0.5 * dimension */
+			    margin-top: -25px; 
+			}
+		</style>
+	</head>
+	
+<body style="background-color: black;color:white;">
+   <div ng-controller="ListCtrl">
+      <button class="btn btn-primary" ng-click="createDialog()">New</button>
+   </div>
+<script>
+angular.module('testLogin', ['buttonDialogModule']);
+
+angular.module('buttonDialogModule', ['ui.bootstrap.dialog', 'ngResource']).
+factory('Project', function($resource) {
+    var Project = $resource('https://api.mongolab.com/api/1/databases' +
+            '/weolopez/collections/projects/:id',
+            {apiKey: '50f36e05e4b0b9deb24829a0'}, {
+        update: {method: 'PUT'}
+    });
+
+    Project.prototype.update = function(cb) {
+        return Project.update({id: this._id.$oid},
+        angular.extend({}, this, {_id: undefined}), cb);
+    };
+
+    Project.prototype.destroy = function(cb) {
+        return Project.remove({id: this._id.$oid}, cb);
+    };
+
+    return Project;
+});
+
+
+function ListCtrl($scope, Project, $dialog, $rootScope) {
+    $scope.projects = Project.query();
+
+    $scope.createOpts = {
+        backdrop: true,
+        keyboard: true,
+        backdropClick: true,
+       // template: strVar, // OR: 	    
+        templateUrl: 'detail.html',
+        controller: 'CreateCtrl'
+    };
+
+    $scope.createDialog = function() {
+        var d = $dialog.dialog($scope.createOpts);
+        d.open().then(function(result) {
+            if (result)
+            {
+                alert('dialog closed with result: ' + result);
+            }
+        });
+    };
+
+    $scope.editOpts = {
+        backdrop: true,
+        keyboard: true,
+        backdropClick: true,
+        //template: strVar, // OR: 	    
+        templateUrl: 'detail.html',
+        controller: 'EditCtrl'
+    };
+
+    $scope.editDialog = function(projectId) {
+        $rootScope.projectID = projectId;
+        var d = $dialog.dialog($scope.editOpts);
+        d.open().then(function(result) {
+            if (result)
+            {
+                alert('dialog closed with result: ' + result);
+            }
+        });
+    };
+
+}
+
+function CreateCtrl($scope, Project, dialog) {
+
+    $scope.save = function() {
+        Project.save($scope.project, function(project) {
+            dialog.close();
+        });
+    };
+
+}
+
+function EditCtrl($scope, Project, dialog, $rootScope) {
+    var self = this;
+
+
+    Project.get({id: $rootScope.projectID}, function(project) {
+        self.original = project;
+        $scope.project = new Project(self.original);
+    });
+
+    $scope.isClean = function() {
+        return angular.equals(self.original, $scope.project);
+    }
+
+    $scope.destroy = function() {
+        self.original.destroy(function() {
+            dialog.close();
+        });
+    };
+
+    $scope.save = function() {
+        $scope.project.update(function() {
+            $dialog.close("Save Success");
+        });
+    };
+
+    $scope.close = function(result) {
+        dialog.close(result);
+    };
+}
+
+</script>
+</body>
+
+</html>

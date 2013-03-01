@@ -48,7 +48,7 @@ body { font-family: 'Helvetica Neue', Arial, Sans-Serif; }
 .tiles { overflow-y: hidden; }
 .tiles > ul { width: 1175px; }
 .tiles ul { margin: 0; padding: 0; white-space: nowrap; }
-.tiles li { list-style-type: none; display: inline-block; background-color: silver; width:230px; height: 400px; padding: 1em; color: White; margin: 5px; font-weight: bold; zoom:1; *display: inline; }
+.tiles li { list-style-type: none; display: inline-block; width:230px; height: 400px; padding: 1em; color: White; margin: 5px; font-weight: bold; zoom:1; *display: inline; }
 
 
 button { display: block; border: 2px solid #aaa; line-height: normal; background-color: White; border-radius: 8px; margin: 8px 0; cursor: pointer; padding: 5px 20px; font-weight: bold; color: #333; }
@@ -68,7 +68,7 @@ button { display: block; border: 2px solid #aaa; line-height: normal; background
 
                 border: 1px solid #888888;
                 border-radius: 10px 10px 10px 10px;
-                box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
+                box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 0px 0 rgba(50, 50, 50, 0.2) inset;
                 color: #111111;
                 font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
                 text-shadow: 0 1px 1px #EEEEEE;

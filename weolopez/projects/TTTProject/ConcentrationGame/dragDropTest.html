@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drag and drop the shapes</title>
+
+<script src="easeljs/easel.js"></script> 
+<script>
+
+var stageWidth = 640;
+var stageHeight = 480;
+var stage;
+var update = true;
+var shape1, shape2, shape3; 
+var rectangleContainer;
+
+function init(){
+ 
+ //new stage
+ stage = new Stage(document.getElementById("canvas"));
+ stage.enableMouseOver();
+ 
+ rectangleContainer = new Container();
+ rectangleContainer.x = stageWidth/2 - 150;
+ rectangleContainer.y = stageHeight/2;
+  //text
+ var text = new Text("1\nred", "30px Arial", "#000000");
+ text.textAlign="center";
+ text.x = 0;
+ text.y = 0;
+ stage.addChild(text);
+ 
+ //rectangle 
+ shape2 = new Shape();
+ shape2.graphics.beginFill(Graphics.getRGB(255,0,0));
+ shape2.graphics.rect(0,0,100,100);
+ shape2.regX = 50;
+ shape2.regY = 50;
+ shape2.x = 0;
+ shape2.y = 0;
+ rectangleContainer.onPress = pressHandler;
+ rectangleContainer.addChild(shape2);
+rectangleContainer.addChild(text);
+stage.addChild(rectangleContainer);
+ 
+ //draw to the canvas
+ stage.update(); 
+ Ticker.addListener(window);
+}
+
+function pressHandler(e){
+ e.onMouseMove = function(ev){
+ 	ev.target.children[0].children[1].text= ev.stageX+":"+ev.stageY;
+  e.target.x = ev.stageX;
+  e.target.y = ev.stageY;
+  update = true;
+ }
+}
+
+function tick(){ 
+ if(update){
+  update = false;
+  stage.update(); 
+ }
+}
+
+</script>
+  
+</head>
+  
+<body onload="init()" style="background-color:black;">  
+ <canvas id="canvas" width="640" height="480" style="background-color:white;"></canvas> 
+</body>
+</html> 

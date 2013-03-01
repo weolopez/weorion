@@ -1,8 +1,37 @@
 
-<div class="box col1" style="background-color: grey;">
-				 <div class="csi" src="components/index.html" style="background-color: silver;">component.html is the test component for new features.	</div> 
-</div>
-<div class="messagepop pop">
-  <a href=""> Edit</a>
-  <a href="http://jsfiddle.net/weolopez/WsrDs/5/"> jsfiddle</a>
-</div>
+<!doctype html>
+<html ng-app="demo">
+    <head>
+        <!--link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"-->
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>
+        <script src="https://raw.github.com/angular-ui/bootstrap/master/src/dialog/dialog.js"></script>
+        <script src="https://raw.github.com/angular-ui/bootstrap/master/src/transition/transition.js"></script>
+        <script src="demo.js"></script>
+    </head>
+    <body ng-controller="ListCtrl">
+        <h2>JavaScript Projects</h2>
+        <input type="text" ng-model="search" class="search-query" placeholder="Search">
+        <table>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Description</th>
+                    <th><!--a href="#/new"><i class="icon-plus-sign"></i></a-->
+                        <button class="btn btn-primary" ng-click="createDialog()">New</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in projects | filter:search | orderBy:'name'">
+                    <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
+                    <td>{{project.description}}</td>
+                    <td><button class="btn btn-primary" ng-click="editDialog(project._id.$oid)">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </body>
+</html>

@@ -3,44 +3,41 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="UNO">
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>	
     </head>
-    <body>
-    <div style="margin: 0 auto;background-color:black;display:table;">
-        <table border="1" width="900" cellspacing="5" cellpadding="5" ng-controller="gameCTRL" style="background-color: white;margin: 0 auto;display:table-cell; vertical-align:middle;">
+    <body style="">
+        <table border="1" width="550" cellspacing="5" cellpadding="5" ng-controller="gameCTRL">
             <thead>
                 <tr>
-                    <th style="width: 300px">UNO</th>
-                    <th style="width: 300px"></th>
-                    <th style="width: 300px">{{players[turn].name}} Turn</th>
+                    <th>UNO</th>
+                    <th></th>
+                    <th>{{players[turn].name}} Turn</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="width: 300px">
+                    <td>
                         {{deck.length}}
                         <div ng-repeat="card in deck">
                         </div>
                     </td>
-                    <td style="width: 300px">	
-	                    <div style="background-color:{{currentcard[0].color}}; ">
-                    	<button disabled style="background-color:white;font-size: 150%;font-family: sans-serif;font-style: oblique;font-weight: 100;">{{currentcard[0].number}}</button>
-                    	</div>
-                    </td>
-                    <td style="width: 300px"></td>
+                    <td>{{currentcard[0].number}}:{{currentcard[0].color}}</td>
+                    <td></td>
                 </tr>
                 <tr ng-repeat="player in players">
                     <td><input type="text" ng-model="player.name" size="30" placeholder="player.name"></td>
                     <td>{{player.stack.length}}</td>
-                    <td ng-hide="isEnabled($index)">
+                    <td>
                         <div ng-repeat="c in player.stack">
-                            <div style="background-color:{{c[0].color}};">
-                                <button ng-click="playCard( player, $index )" ng-disabled="isEnabled($parent.$index)" style="align:center;width:100px;font-size: 150%;font-family: sans-serif;font-style: oblique;font-weight: 100;">{{c[0].number}}</button>
+                            <div>
+                                <button ng-click="playCard( player, $index )" ng-disabled="isEnabled($parent.$index)">play</button>
+                                {{c[0].number}}:{{c[0].color}}
                             </div>
                         </div>
                         
@@ -60,8 +57,27 @@ and open the template in the editor.
                 </tr>
             </tbody>
         </table>
-     </div>   
         <script>
+        
+        angular.module('UNO', ['ngResource']).
+factory('game', function($resource) {
+    var Project = $resource('https://api.mongolab.com/api/1/databases' +
+            '/weolopez/collections/game/:id',
+            {apiKey: '50f36e05e4b0b9deb24829a0'}, {
+        update: {method: 'PUT'}
+    });
+
+    Project.prototype.update = function(cb) {
+        return Project.update({id: this._id.$oid},
+        angular.extend({}, this, {_id: undefined}), cb);
+    };
+
+    Project.prototype.destroy = function(cb) {
+        return Project.remove({id: this._id.$oid}, cb);
+    };
+
+    return Project;
+});
 
             function gameCTRL($scope) {
                 $scope.deck = [];
@@ -102,8 +118,6 @@ and open the template in the editor.
                     
                     if ($scope.isPlayable(card)) {
                         $scope.currentcard=player.stack.splice(index, 1)[0];
-                        $scope.isGameOver(player);
-                        
                         $scope.command();
                     } else {
                         alert("play a valid card or pick");
@@ -128,8 +142,6 @@ and open the template in the editor.
                 		}
                         $scope.drawCard();
                 	}
-                	
-                	//alert("It is now Player "+player.name+" turn.");
                 }
                 
                  $scope.command = function() {
@@ -179,17 +191,6 @@ and open the template in the editor.
                             $scope.players[i].stack.push($scope.deck.splice(0, 1));
                         }
                     }
-                }
-                
-                $scope.isGameOver = function(player) {
-                		if (player.stack.length==0) {
-                			alert("Player "+player.name+" WINS!!!");
-                        	$scope.start();
-                        }
-                        if (!$scope.deck.length) {
-                			alert("Stack Empty Game is a draw");
-                        	$scope.start();
-                        }
                 }
 
                 $scope.start = function() {

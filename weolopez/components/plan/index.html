@@ -1,157 +1,255 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
-	<html ng-app>
+<!doctype html>
+<html ng-app="game">
+    <head>
+        <!--link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"-->
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>
+        <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script>
+		<script src="http://home.orionhub.org:8080/weolopez/components/plan/game.js"></script>
+    </head>
+    <body >
+		<div>
+<div ng-controller="gameCtrl" style="font:bold 12px  'Lucida Grande', Arial, Helvetica, sans-serif;">
+        <h4>JavaScript Games</h4>
+        <input type="text" ng-model="search" class="search-query" placeholder="Search">
+        <table>
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Description</th>
+                    <th>
+                        <button class="btn btn-primary" ng-click="createDialog()">New</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Game in Games | filter:search | orderBy:'name'">
+                    <td><a href="{{Game.site}}" title = "{{Game.description}}" target="_blank">{{Game.name}}</a></td>
+                    <td><button class="btn btn-primary" ng-click="editDialog(Game._id.$oid)">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+</div>
 
-	<head>
-	        <meta charset="utf-8" />
-        <meta name="viewport" content="width=200px, initial-scale=2" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		
-		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
-		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-		
-	<style>
-	
-	
-.fullscreenDiv {
-    background-color: black;
-    bottom: 0px;
-    top: 0px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-}
-	
-.center {
-    top: 30%;
-    height: 400px;
-    width:5000px;
-    position: relative;        
-    overflow-x: hidden;
-    overflow-y: hidden;
-    white-space:nowrap
-}​
 
-	{}div.bigorange {
-	background:#f82;
-	margin: 1em;
-	display:block;
-	ba             ckground:#f60;
-	border:2px solid #EE2E26;
-	text-align:center;
-	text-decoration:none;
-	color:#FFEFDF;
-	padding:10px;
-	font:bold 12px  "Lucida Grande", Arial, Helvetica, sans-serif;
-	border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
-  
-    box-shadow:
-		3px 3px 6px rgba(0, 0, 0, .2),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0px 5px 12px #930,
-		inset 0px 15px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930;
-} 
-div.bigorange:hover {
-	background:#f82;
-	border:2px solid #EE2E26;
-	color:#fff;
-    box-shadow:        
-		2px 2px 4px rgba(0, 0, 0, .4),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0 0 4px rgba(0, 0, 0, .6),
-		inset 0px 10px 12px #930,
-		inset 0px 20px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930; 	
-}
-.component{
-
-    display:inline-block;
-    *display:inline;/* For IE7*/
-
-    float: left;
-	height:400px;
-	width:300px;
-	overflow: hidden;
-	
-	background: #999; /* for non-css3 browsers */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
-				background: -webkit-gradient(linear, center right , center right , from(#888888), to(#EEEEEE)); /* for webkit browsers */
-			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-			    
-    border: 1px solid #888888;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
-    color: #111111;
-    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    text-shadow: 0 1px 1px #EEEEEE;
-    
-}
- 
-.componentViewPort {
-	height:425px;
-	width:325px;
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
-}
-
-</style>	
-	
-	</head>
-
-	<body style="background-color: black;color:white;overflow:hidden;">
-    <div class='fullscreenDiv'>
-      
-
-    <div class="center" ng-controller="CsiCtrl" >
-    	<div class="centerViewPort">
-    
-     
-     <div class="component">
-        <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/plan/plan.html" ></div>
-    	   </div>	
-        </div>
-     </div>   
-     
-     </div>
-   </div>
-   </div>
-    
-    
+</div>
 <script>
 
-function CsiCtrl($scope, $http) {
- 	$scope.componentClicked = function(){
- 	alert("CLICKED"+$index);
- 	}
 
- $scope.csi = [];
-  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
-    $http.get(internallURL).success(function (data) {
-                var loadedData = $(data);
-            	var compList = loadedData.find('a'); 
-                compList.each(function( index ) {
-                	var txt = $(this).text();
-                	txt = txt.substring(0,txt.length-1)
-					$scope.csi.push({text: txt, done:false});
-				}).error(function(data, status) {
-				    $scope.data = data || "Request failed";
-				    $scope.status = status;
-			    });
+var htmlStr="";
+htmlStr += "<div class=\"modal-header\">";
+htmlStr += "    New plan";
+htmlStr += "<\/div>";
+htmlStr += "<div class=\"modal-body\">";
+htmlStr += "    <form name=\"myForm\">";
+htmlStr += "        <div class=\"control-group\" ng-class=\"{error: myForm.name.$invalid}\">";
+htmlStr += "            <label>Name<\/label>";
+htmlStr += "            <input type=\"text\" name=\"name\" ng-model=\"Game.name\" required>";
+htmlStr += "            <span ng-show=\"myForm.name.$error.required\" class=\"help-inline\">";
+htmlStr += "                Required<\/span>";
+htmlStr += "        <\/div>";
+htmlStr += "";
+htmlStr += "        <div class=\"control-group\" ng-class=\"{error: myForm.site.$invalid}\">";
+htmlStr += "            <label>Website<\/label>";
+htmlStr += "            <input type=\"url\" name=\"site\" ng-model=\"Game.site\" required>";
+htmlStr += "            <span ng-show=\"myForm.site.$error.required\" class=\"help-inline\">";
+htmlStr += "                Required<\/span>";
+htmlStr += "            <span ng-show=\"myForm.site.$error.url\" class=\"help-inline\">";
+htmlStr += "                Not a URL<\/span>";
+htmlStr += "        <\/div>";
+htmlStr += "";
+htmlStr += "        <label>Description<\/label>";
+htmlStr += "        <textarea name=\"description\" ng-model=\"Game.description\"><\/textarea>";
+htmlStr += "";
+htmlStr += "        <br>";
+htmlStr += "        <div class=\"modal-footer\">";
+htmlStr += "            <!--a href=\"#\/\" class=\"btn\">Cancel<\/a-->";
+htmlStr += "            <button ng-click=\"close(result)\" class=\"btn btn-primary\" >Close<\/button>";
+htmlStr += "            <button ng-click=\"save()\" ng-disabled=\"isClean() || myForm.$invalid\"";
+htmlStr += "                    class=\"btn btn-primary\">Save<\/button>";
+htmlStr += "            <button ng-click=\"destroy()\"";
+htmlStr += "                    ng-show=\"Game._id\" class=\"btn btn-danger\">Delete<\/button>";
+htmlStr += "        <\/div>";
+htmlStr += "    <\/form>";
+htmlStr += "<\/div>";
+htmlStr += "";
+
+
+angular.module('game', ['ui.bootstrap.dialog','ngResource']).
+
+    // This is a module for cloud persistance in mongolab - https://mongolab.com
+ //  angular.module('mongolab', ['ngResource']).
+    factory('Game', function($resource) {
+    	var Game = $resource('https://api.mongolab.com/api/1/databases' +
+    		'/weolopez/collections/Games/:id',
+    	{ apiKey: '50f36e05e4b0b9deb24829a0' }, {
+    		update: { method: 'PUT' }
+    	});
+     
+	    Game.prototype.update = function(cb) {
+	    return Game.update({id: this._id.$oid},
+	    angular.extend({}, this, {_id:undefined}), cb);
+	    };
+     
+	    Game.prototype.destroy = function(cb) {
+	    return Game.remove({id: this._id.$oid}, cb);
+	    };
+     
+    	return Game;
     });
-}
+
+
+function gameCtrl($scope, Game, $dialog, $rootScope) {
+    $scope.Games = Game.query();
+    
+    $scope.createOpts = {
+	    backdrop: true,
+	    keyboard: true,
+	    backdropClick: true,
+	    template:  htmlStr, // OR: 	    templateUrl: 'detail.html',
+	    controller: 'CreateGameCtrl'
+  	};
+
+  $scope.createDialog = function(){
+    var d = $dialog.dialog($scope.createOpts);
+    d.open().then(function(result){
+      if(result)
+      {
+        alert('dialog closed with result: ' + result);
+      }
+    });
+  };
   
+    $scope.editOpts = {
+	    backdrop: true,
+	    keyboard: true,
+	    backdropClick: true,
+	    template:  htmlStr, // OR: 	    templateUrl: 'detail.html',
+	    templateUrl: 'detail.html',
+	    controller: 'EditGameCtrl'
+  	};
 
-			clientSideInclude(); 	  
-   </script>
-	</body>
+  $scope.editDialog = function(GameId){
+    $rootScope.GameID = GameId;
+    var d = $dialog.dialog($scope.editOpts);
+    d.open().then(function(result){
+      if(result)
+      {
+        alert('dialog closed with result: ' + result);
+      }
+    });
+  };
+  
+}
 
+function CreateGameCtrl($scope, Game, dialog) {
+
+    $scope.save = function() {
+    	$scope.Game.deck=deck.deck.slice(0);
+	    Game.save($scope.Game, function(Game) {	    	
+	    	dialog.close();
+	    });
+    };
+    
+	  $scope.close = function(result){
+	    dialog.close(result);
+	  };
+}
+
+function EditGameCtrl($scope, Game, dialog, $rootScope) {
+    var self = this;
+    
+     
+    Game.get({id: $rootScope.GameID}, function(Game) {
+	    self.original = Game;
+	    $scope.Game = new Game(self.original);
+    });
+     
+    $scope.isClean = function() {
+    	return angular.equals(self.original, $scope.Game);
+    }
+     
+    $scope.destroy = function() {
+	    self.original.destroy(function() {
+	   	 dialog.close();
+	    });
+    };
+     
+	    $scope.save = function() {
+	    	$scope.Game.update(function() {
+	    		$dialog.close("Save Success");
+	   		});
+	    };
+	      
+	  $scope.close = function(result){
+	    dialog.close(result);
+	  };
+}
+var deck = {"deck": [
+                    {"color": "YELLOW", "number": "0"},
+                    {"color": "YELLOW", "number": "1"},
+                    {"color": "YELLOW", "number": "2"},
+                    {"color": "YELLOW", "number": "3"},
+                    {"color": "YELLOW", "number": "4"},
+                    {"color": "YELLOW", "number": "5"},
+                    {"color": "YELLOW", "number": "6"},
+                    {"color": "YELLOW", "number": "7"},
+                    {"color": "YELLOW", "number": "8"},
+                    {"color": "YELLOW", "number": "9"},
+                    {"color": "YELLOW", "number": "draw two"},
+                    {"color": "YELLOW", "number": "reverse"},
+                    {"color": "YELLOW", "number": "skip"},
+                    {"color": "RED", "number": "0"},
+                    {"color": "RED", "number": "1"},
+                    {"color": "RED", "number": "2"},
+                    {"color": "RED", "number": "3"},
+                    {"color": "RED", "number": "4"},
+                    {"color": "RED", "number": "5"},
+                    {"color": "RED", "number": "6"},
+                    {"color": "RED", "number": "7"},
+                    {"color": "RED", "number": "8"},
+                    {"color": "RED", "number": "9"},
+                    {"color": "RED", "number": "draw two"},
+                    {"color": "RED", "number": "reverse"},
+                    {"color": "RED", "number": "skip"},
+                    {"color": "Green", "number": "0"},
+                    {"color": "Green", "number": "1"},
+                    {"color": "Green", "number": "2"},
+                    {"color": "Green", "number": "3"},
+                    {"color": "Green", "number": "4"},
+                    {"color": "Green", "number": "5"},
+                    {"color": "Green", "number": "6"},
+                    {"color": "Green", "number": "7"},
+                    {"color": "Green", "number": "8"},
+                    {"color": "Green", "number": "9"},
+                    {"color": "Green", "number": "draw two"},
+                    {"color": "Green", "number": "reverse"},
+                    {"color": "Green", "number": "skip"},
+                    {"color": "BLUE", "number": "0"},
+                    {"color": "BLUE", "number": "1"},
+                    {"color": "BLUE", "number": "2"},
+                    {"color": "BLUE", "number": "3"},
+                    {"color": "BLUE", "number": "4"},
+                    {"color": "BLUE", "number": "5"},
+                    {"color": "BLUE", "number": "6"},
+                    {"color": "BLUE", "number": "7"},
+                    {"color": "BLUE", "number": "8"},
+                    {"color": "BLUE", "number": "9"},
+                    {"color": "BLUE", "number": "draw two"},
+                    {"color": "BLUE", "number": "reverse"},
+                    {"color": "BLUE", "number": "skip"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild", "number": "wild"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"},
+                    {"color": "wild4", "number": "wild4"}]
+            };
+</script>
+
+    </body>
 </html>

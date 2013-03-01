@@ -1,8 +1,8 @@
 'use strict';
 
 
-// Declare app level module which depends on filters, and services
-angular.module('weolopezApp', ['weolopezApp.filters', 'weolopezApp.services', 'weolopezApp.directives','project']).
+// Declare app level module which depends on filters, and services   ||| ,'edit'
+angular.module('weolopezApp', ['weolopezApp.filters', 'weolopezApp.services', 'weolopezApp.directives', 'buttonDialogModule']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/enter', {templateUrl: 'components/partials/enter.html', controller: enterCtrl});
     $routeProvider.when('/view1', {templateUrl: 'components/partials/partial1.html', controller: enterCtrl});
