@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- In production, only one script (pdf.js) is necessary -->
+  <!-- In production, change the content of PDFJS.workerSrc below -->
+  <script type="text/javascript" src="js/pdf.js"></script>
+
+  <script>
+    // Specify the main script used to create a new PDF.JS web worker.
+    // In production, change this to point to the combined `pdf.js` file.
+    PDFJS.workerSrc = 'https://raw.github.com/mozilla/pdf.js/master/src/worker_loader.js';
+
+    // Specify the PDF with AcroForm here
+    var pdfWithFormsPath = 'http://www.irs.gov/pub/irs-pdf/f1040.pdf';
+  </script>
+  
+  <style>
+  .pdfpage { position:relative; top: 0; left: 0; border: solid 1px black; margin: 10px; }
+  .pdfpage > canvas { position: absolute; top: 0; left: 0; }
+  .pdfpage > div { position: absolute; top: 0; left: 0; }
+  .inputControl { background: transparent; border: 0px none; position: absolute; margin: auto; }
+  .inputControl[type='checkbox'] { margin: 0px; }
+  .inputHint { opacity: 0.2; background: #ccc; position: absolute; }
+  </style>
+
+  <script src="https://raw.github.com/mozilla/pdf.js/master/examples/acroforms/forms.js">
+  </script>
+</head>
+
+<body>
+  <div id="viewer"></div>
+</body>
+
+</html>
+

@@ -1,0 +1,45 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<element name="weo-binding-to-elements" attributes="age">
+    <template>
+        <p>This is <strong>{{owner}}</strong>'s tk-element but
+            <strong>{{name}}</strong> lets me borrow it.
+            He likes the color <span style="color: {{color}}">{{color}}</span>.
+            I am <strong>{{age}}</strong> years old.</p>
+        <label for="ageInput">Age:</label>
+        <input id="ageInput" type="range" value="{{age}}">
+        <label for="nameInput">Name:</label>
+        <input id="nameInput" value="{{name}}" placeholder="Your name here...">
+    </template>
+    
+     <script>
+     	alert($('#ageInput').text);
+        Polymer.register(this, {
+            age: 25,
+            name: "Joe",
+            color: "green",
+            owner: "Eric",
+            nameChanged: function () {
+                if (this.name) {
+                    // ensure capitalization
+                    this.name = this.name[0].toUpperCase() + this.name.slice(1);
+                }
+            },
+            ageChanged: function () {
+                console.log('Element age changed to ' + this.age);
+            }
+        });
+    </script> 
+</element>
+<element name="weo-plan" attributes="age">
+    <template>
+        <weo-binding-to-elements age="{{age}}"></weo-binding-to-elements>
+    </template>
+    <script>
+        Polymer.register(this, {
+            age: 18,
+            ageChanged: function () {
+                console.log('Container age changed to ' + this.age);
+            }
+        });
+    </script>
+</element>

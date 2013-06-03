@@ -1,207 +1,172 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mauricio Lopez Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap based static page">
+    <meta name="author" content="weolopez@gmail.com">
 
-	<html ng-app>
+    <!-- Le styles -->
+       <style>
 
-	<head>
-	        <meta charset="utf-8" />
-        <meta name="viewport" content="width=200px" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	
-		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
-  		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<!--script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-		<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
-  		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.js"></script>
-		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css"></script>
-  
- 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-  		<link rel="stylesheet" href="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css" />
-<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.js"></script>
-		<script src="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css"></script>
-  		<link rel="stylesheet" href="http://home.orionhub.org:8080/weolopez/components/mobileFlip/demo.css" /-->
-  
-<style>
-.fullscreenDiv {
-    background-color: black;
-    bottom: 0px;
-    top: 0px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-}
-	
-.center {
-    top: 30%;
-    height: 400px;
-    width:5000px;
-    position: relative;        
-    overflow-x: hidden;
-    overflow-y: hidden;
-    white-space:nowrap
-}​
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
 
-	{}div.bigorange {
-	background:#f82;
-	margin: 1em;
-	display:block;
-	ba             ckground:#f60;
-	border:2px solid #EE2E26;
-	text-align:center;
-	text-decoration:none;
-	color:#FFEFDF;
-	padding:10px;
-	font:bold 12px  "Lucida Grande", Arial, Helvetica, sans-serif;
-	border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;
-  
-    box-shadow:
-		3px 3px 6px rgba(0, 0, 0, .2),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0px 5px 12px #930,
-		inset 0px 15px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930;
-} 
-div.bigorange:hover {
-	background:#f82;
-	border:2px solid #EE2E26;
-	color:#fff;
-    box-shadow:        
-		2px 2px 4px rgba(0, 0, 0, .4),
-		0px 0px 3px rgba(0, 0, 0, .1),
-		inset 0 0 4px rgba(0, 0, 0, .6),
-		inset 0px 10px 12px #930,
-		inset 0px 20px 2px rgba(240, 150, 69, .5),
-		inset 0px 25px 25px #930; 	
-}
-.component{
-
-    display:inline-block;
-    *display:inline;/* For IE7*/
-
-    float: left;
-	height:400px;
-	width:300px;
-	overflow: hidden;
-	
-	background: #999; /* for non-css3 browsers */
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#EEEEEE'); /* for IE */
-				background: -webkit-gradient(linear, center right , center right , from(#888888), to(#EEEEEE)); /* for webkit browsers */
-			    background: -moz-linear-gradient(center bottom , #888888, #EEEEEE) repeat scroll 0 0 #AAAAAA;
-			    
-    border: 1px solid #888888;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 0 5px #FFFFFF inset, 1px 1px 9px #999999, 0 -38px 0 rgba(50, 50, 50, 0.2) inset;
-    color: #111111;
-    font: bold 32px calibri,"Lucida Granda",arial,sans-serif;
-    text-shadow: 0 1px 1px #EEEEEE;
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
     
-}
- 
-.componentViewPort {
-	height:425px;
-	width:325px;
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
-}
+        /* Featurettes
+    ------------------------- */
 
-</style>	
-	
-	</head>
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
 
-<body style="background-color: black;color:white;overflow:hidden;">
-   
-   <div class='fullscreenDiv'>
-   <div class="center"  >
-   <div class="centerViewPort">
-    	
-	<!--div class="component">
-             <div class="componentViewPort" ng-controller="mobileController">
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/mobile/mobile.html" ></div>
-	    	 </div>  
-	     </div-->   
-     
-     <div class="component">
-        <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/angularjs/angularjs.html" ></div>
-    	   </div>	
-        </div>
-     </div>   
-     
-     <div class="component">
-        <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/dynamicContent/dynamicContent.html" ></div>
-    	   </div>	
-        </div>
-     </div>   
-     
-     <div class="component">
-        <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/plan/plan.html" ></div>
-    	   </div>	
-        </div>
-     </div>   
-     
-     <div class="component">
-        <div class="componentViewPort" >
-        	<div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-		    	<div class="csi" src="http://home.orionhub.org:8080/weolopez/components/component/component.html" ></div>
-    	   </div>	
-        </div>
-     </div>   
-     
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+      display: block;
+        max-width: 40%;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+      display: block;
+        max-width: 40%;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    </style>
+    </head>
+    <body>
     
-       	<!--div class="component">
-        <div class="componentViewPort" >
-        <div style='font:bold 14px  "Lucida Grande", Arial, Helvetica, sans-serif;' >
-        	
-     		<div style="background-color:black;height:400px;width:300px">
-			<div id="flipRoot" data-role="flip" >
-		   	<div style="background-color:green;">Flip Content 1</div>
-		   	<p style="background-color:red;">Flip Content 2</p>
-		   	<section style="background-color:blue;">Flip Content 3</section>
-			</div>   
-    		</div>
-    
-     	</div>
-   		</div>
-  		</div-->  
-     
-    </div>
-   	</div>
-  	</div>  
-  
-<script>
-/*
-function mobileController($scope, $http) {
- 	$scope.componentClicked = function(){
- 	alert("CLICKED"+$index);
- 	}
+      <!-- START THE FEATURETTES -->
 
-	 $scope.components = [];
-	  var internallURL = 'http://home.orionhub.org:8080/weolopez/components/';
-	    $http.get(internallURL).success(function (data) {
-                var loadedData = $(data);
-            	var compList = loadedData.find('a'); 
-                compList.each(function( index ) {
-                	var txt = $(this).text();
-                	txt = txt.substring(0,txt.length-1)
-					$scope.components.push({text: txt, done:false});
-				}).error(function(data, status) {
-				    $scope.data = data || "Request failed";
-				    $scope.status = status;
-			    });
-	    });
-	}
-  */
+      <hr class="featurette-divider">
 
-	clientSideInclude(); 	  
-	
-	
-   </script>
-</body>
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="/weolopez/assets/img/ATT-logo.jpg">
+        <h2 class="featurette-heading">AT&T<br><span class="muted">Digital Life.</span></h2>
+        <p class="lead">My latest <a href="http://my-digitallife.att.com/learn">website.</a> </p>
+      </div>
 
-</html>
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-left" src="/weolopez/assets/img/resume.png">
+        <h2 class="featurette-heading">Oh yeah, it's that good. <br><span class="muted">See for yourself.</span></h2>
+        <p class="lead">Ok so I kept the text from the original Twitter Bootstrap template but its true ;) .</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="/weolopez/assets/img/uno.png">
+        <h2 class="featurette-heading">UNO Game in javascript <br><span class="muted">It'll blow your mind.</span></h2>
+        <p class="lead">Not really but it was fun to make.</p>
+      </div>
+      
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+      
+      </body>
+      </html>

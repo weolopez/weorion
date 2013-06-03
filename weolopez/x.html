@@ -2,12 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        
-        <link rel="stylesheet" href="css/app.css">
-        
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
 
+        <style>
+            [ng-cloak] {
+                display: none;
+            }
+            .row {
+                margin-left: 0px;
+            }
+        </style>
         <script>
             // include angular loader, which allows the files to load in any order
             /*
@@ -115,103 +120,93 @@
 
             // load all of the dependencies asynchronously.
             $script([
-                'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js',
+                '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+                'https://raw.github.com/angular-ui/bootstrap/master/src/transition/transition.js',
                 'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js',
-                'js/app.js',
+                'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js',
+                'js/WeoApp.js',
                 'js/services.js',
-                'js/controllers.js',
+                'js/AppControllers.js',
                 'js/filters.js',
-                'https://raw.github.com/angular-ui/bootstrap/master/src/transition/transition.js', 
-                'https://raw.github.com/angular-ui/bootstrap/master/src/dialog/dialog.js',
-                'js/directives.js',
-                'js/buttonDialog.js',
+                'js/directives.js'
             ], function() {
                 // when all is done, execute bootstrap angular application  
-                // 'https://raw.github.com/angular-ui/bootstrap/master/src/dialog/dialog.js',               
-                angular.bootstrap(document, ['weolopezApp']);
+                angular.bootstrap(document, ['myApp']);
             });
         </script>
-		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
-		
         <title>My AngularJS App</title>
-        
-        <style type="text/css">
-        .row {
-        		margin-left: 0px;
-		}
-        </style>
+        <link rel="stylesheet" href="css/app.css">
     </head>
     <body ng-cloak>
 
-        <div class="left col" ng-controller="ListCtrl">
+        <div class="left col "ng-controller="ListCtrl">
             <div class="header row">
-                <input type="text" ng-model="search" class="search-query" placeholder="Search">
+                <input id="searchField" type="text" ng-model="search" class="search-query" placeholder="Search" autofocus="autofocus">
             </div>
             <div class="body row scroll-y">
                 <ul class="listview">
-                    <li ng-repeat="project in projects[0].todos | filter:search | orderBy:'name'">
-                        <a href="{{project.url}}">{{project.text}}</a>
-                        <button class="btn btn-primary" ng-click="editDialog(project._id.$oid)">Edit</button>
+                    <li ng-repeat="project in projects | filter:search | orderBy:'name'">
+                        <a href="{{project.site}}" title="{{project.description}}">{{project.name}}</a>
+                        <button class="btn btn-primary" ng-click="editDialog(project._id.$oid)" style="right:5px;position: absolute;">Edit</button>
                     </li>
                 </ul>
             </div>
             <div class="footer row">
-				<button class="btn btn-primary" ng-click="createDialog()">New</button>
+                <button class="btn btn-primary" ng-click="createDialog()">New</button>
             </div>
         </div>
         <div class="right col">
             <div class="header row">
-                View or edit something
+                weo's demo site.
+                <input id="commandLine" type="text" ng-model="commandLine" class="search-query" placeholder="Enter Command">
             </div>
             <div class="body row scroll-y">
-            
+
                 <div>
-                   <p>... and here's a horizontally-scrollable thing:</p>
+                    <p>... and here's a horizontally-scrollable thing:</p>
 
                     <div class="scroll-x tiles">
                         <ul>
-                        	<li>
-						    	<div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
-							        <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
-							        	<ng-include src="'components/partials/componentList.html'"></ng-include>
-							        </div>
-						        </div>
-					        </li>
-                        	<li>
-						    	<div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
-							        <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
-							        	<ng-include src="'components/angularjs/angularjs.html'"></ng-include>
-							        </div>
-						        </div>
-					        </li>
-					        
-                        	<li>
-						    	<div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
-							        <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
-							        	<ng-include src="'components/dynamicContent/dynamicContent.html'"></ng-include>
-							        </div>
-						        </div>
-					        </li>
-                        	<!--li>
-						    	<div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
-							        <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
-							        	<ng-include src="'components/plan/plan.html'"></ng-include>
-							        </div>
-						        </div>
-					        </li-->
-                        	<li>
-						    	<div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
-							        <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
-							        	<ng-include src="'components/component/component.html'"></ng-include>
-							        </div>
-						        </div>
-					        </li>
+                            <!--li>
+                                <div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
+                                    <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
+                                        <ng-include src="'components/partials/componentList.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
+                                    <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
+                                        <ng-include src="'components/angularjs/angularjs.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
+                                    <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
+                                        <ng-include src="'components/dynamicContent/dynamicContent.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
+                                    <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
+                                        <ng-include src="'components/plan/plan.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="componentBox" style="overflow:hidden;height:400px;width:230px;">
+                                    <div data-role="content" style="overflow: scroll;-webkit-overflow-scrolling: touch;height:425px;width:255px;" >
+                                        <ng-include src="'components/component/component.html'"></ng-include>
+                                    </div>
+                                </div>
+                            </li-->
                         </ul>
                     </div>
-                
-                
+
+
                     <h3>Here are some other controls</h3>
                     <ul class="listview inset">
                         <li><a href="#/view1">view1</a></li>
@@ -228,12 +223,29 @@
                 </div>
             </div>
             <div class="footer row">
-                Some status text here
+                <button id="leftToggle" class="btn btn-primary" onclick="toggleLeft()">Close</button>
+                <script>
+            document.getElementById("searchField").focus();
+            function toggleLeft() {
+                if ($("#leftToggle").text() === "Close") {
+                    $(".right.col").css('left', '0px');
+                    $(".body.row").css('top', '0px');
+                    $(".header.row").css('height', '0px');
+                    $(".header.row").css('line-height', '0px');
+                    $("#leftToggle").text("Open");
+                } else {
+                    $(".right.col").css('left', '250px');
+                    $(".body.row").css('top', '75px');
+                    $(".header.row").css('height', '75px');
+                    $(".header.row").css('line-height', '75px');
+                    $("#leftToggle").text("Close");
+                }
+            }
+                </script>
             </div>
         </div>
 
         <!-- Touch scrolling -->
         <!--[if !IE]><!-->
-<script src="js/browsers.js"></script>
     </body>
 </html>

@@ -1,57 +1,105 @@
-             <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!doctype html>
+<html lang="en" ng-app="planController">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width; height=device-height, initial-scale=1.0; maximum-scale=1.0;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+        
+         <link rel="stylesheet" href="http://home.orionhub.org:8080/weolopez/css/app.css">
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>	
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.min.js"></script>	
+		<script src="https://raw.github.com/angular-ui/bootstrap/master/src/transition/transition.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/app.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/services.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/controllers.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/filters.js"></script>	
+		<script src="https://raw.github.com/angular-ui/bootstrap/master/src/dialog/dialog.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/directives.js"></script>	
+		<script src="http://home.orionhub.org:8080/weolopez/js/buttonDialog.js"></script>	
+		
+        <title>weo</title>
+        
+        <style type="text/css">
+        .row {
+        		margin-left: 0px;
+		}
+        </style>
+    </head>
+    <body ng-cloak>
 
-	<html ng-app="weolopezApp">
+        <div class="left col" ng-controller="ListCtrl">
+            <div class="header row">
+                <input id="searchField" type="text" ng-model="search" class="search-query" placeholder="Search" autofocus="autofocus">
+            </div>
+            <div class="body row scroll-y">
+                <ul class="listview">
+                    <li ng-repeat="project in projects | filter:search | orderBy:'name'">
+                        <a href="{{project.site}}" title="{{project.description}}">{{project.name}}</a>
+                        <button class="btn btn-primary" ng-click="editDialog(project._id.$oid)" style="right:5px;position: absolute;">Edit</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer row">
+				<button class="btn btn-primary" ng-click="createDialog()">New</button>
+            </div>
+        </div>
+        <div class="right col">
+            <div class="header row">
+				weo's demo site.
+				<input id="commandLine" type="text" ng-model="commandLine" class="search-query" placeholder="Enter Command">
+            </div>
+            <div class="body row scroll-y">
+            
+                <div>
+                    <h3>Here are some other controls</h3>
+                    <ul class="listview inset">
+                        <li><a href="#/view1">view1</a></li>
+                        <li><a href="#/view2">view2</a></li>
+                    </ul>
 
-	<head>
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-		<script src="https://raw.github.com/weolopez/weorion/master/weolopez/js/clientSideInclude.js"></script>	
-		<script src="https://raw.github.com/roncioso/Flip-jQuery/master/jquery.flip.min.js"></script>
-	<script src="http://home.orionhub.org:8080/weolopez/components/flippy/demo.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+                    <div ng-view></div>
 
-			<link rel="stylesheet" href="css/style.css"/>			
-		<script src="js/app.js"></script>	
-		<script src="js/controllers.js"></script>	
-		<script src="js/services.js"></script>	
-		<script src="js/directives.js"></script>	
-		<script src="js/filters.js"></script>
+                    <div>Angular seed app: v<span app-version></span></div>
 
-<style>
 
-</style>
-	</head>
-<body onKeyupFn>
-    <div class='fullscreenDiv'>
-	<div id="banner"><br>This site is a demo playground from weo to experiment, learn and share web components.</div>
-    <div class="center">
-    	<div id="enterButton" style="text-align: center;" >Enter</div>
-    </div>
-</div>​
+
+                    <p>That's enough.</p><p>That's enough.</p><p>That's enough.</p>
+                </div>
+            </div>
+            <div class="footer row">
+                <button id="leftToggle" class="btn btn-primary" onclick="toggleLeft()">Close</button>
+                <script>
+                    document.getElementById("searchField").focus();
+                	function toggleLeft() {
+                		if ($("#leftToggle").text()==="Close") {
+                			$(".right.col").css('left','0px');
+                			$(".body.row").css('top','0px');
+                			$(".header.row").css('height','0px');
+                            $(".header.row").css('line-height','0px');
+                			$("#leftToggle").text("Open");
+                		} else {
+                			$(".right.col").css('left','250px');
+                			$(".body.row").css('top','75px');
+                			$(".header.row").css('height','75px');
+                            $(".header.row").css('line-height','75px');
+							$("#leftToggle").text("Close");
+                		}
+                	}
+                </script>
+            </div>
+        </div>
+
+        <!-- Touch scrolling -->
+        <!--[if !IE]><!-->
+<script src="http://home.orionhub.org:8080/weolopez/js/browsers.js"></script>
 <script>
+angular.module('planController', ['buttonDialogModule']);
 
-	var something = document.getElementById('enterButton');
-	
-	something.style.cursor = 'pointer';
-	something.onclick = function() {
-	    window.location = "components/index.html";
-	};
-	/*
-	var key = new Array();
-		document.onkeydown = function(e) {
-            e = e || window.event; // because of Internet Explorer quirks...
-            k = e.which || e.charCode || e.keyCode; // because of browser differences...
-        //    alert("KEY="+k);
-            if (k == 69) {
-            	var tail = document.URL.substring(39);
-           // 	alert( "tail:"+tail );
-                window.location = "https://orionhub.org/edit/edit.html#/file/weolopez/weorion/weolopez/"+tail;
-            } 
-            if (k==65) {
-                $("#banner").css({opacity: 0, visibility: "visible"}).animate({opacity: 1.0}, 400);
-            }
-         }*/
+
 </script>
-</body>
-
+    </body>
 </html>
