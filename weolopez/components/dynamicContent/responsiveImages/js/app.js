@@ -1,50 +1,70 @@
-var monitor = $('.monitor');
-
 $(document).ready(function(){
-    var monitorString='';
-    
-    $.each($('.tile').find('img'), function(){
-        var imgH = $(this).height(),
-            tile = $(this).closest('.tile'),
-            imgW = $(this).width(),
-            tileW = tile.width(),
-            whiteSpaceW = tileW-imgW,
-            isPortrait = (whiteSpaceW > '170');
+    invSpaceSizing();
 
-		monitorString += '\nTile Width: '+tileW+'Width: '+imgW+' Height: '+imgH+' is Portrait: '+isPortrait+' WhiteSpace: '+whiteSpaceW;
-       
-
-        if (isPortrait){
-            tile.addClass('portrait');
-        } 
+    $('.invSpace').find('.expand').on('click', function(e){
+        e.preventDefault();
+        if($(this).text()=='+'){
+            $(this).text('-');
+        } else {
+            $(this).text('+');
+        };
+        $(this).closest('.invSpace').find('p').slideToggle();
+        if ($(window).width() < 321){
+            $(this).closest('.invSpace').find('img').toggle();
+        }
     })
-    monitor.text(monitorString);
- console.log(monitorString);
+
+
 })
 
-window.onresize = function(event) {
-    var monitorString='';
-    $.each($('.tile').find('img'), function(){
-        var imgH = $(this).height(),
-            contentH = $(this).parent().find('.content').height(),
-            tile = $(this).closest('.tile'),
+$(window).resize(function(){
+    invSpaceSizing();
+})
+
+
+function invSpaceSizing(){
+    $.each($('.invSpace').find('img'), function(){
+        var invSpaceObj = $(this).closest('.invSpace'),
+            contentObj = invSpaceObj.find('.content'),
+
             imgW = $(this).width(),
-            tileW = tile.width(),
-            whiteSpaceW = tileW-imgW,
-            imageSpaceH = imgH-contentH,
-            isPortrait = (whiteSpaceW > '170'),
-            isNotEnoughImage = (imageSpaceH < '200');
+            imgH = $(this).height(),
 
-		monitorString += '\nTile Width: '+tileW+' contentH: '+contentH+' imageSpaceH: '+imageSpaceH+' is Portrait: '+isPortrait+' isNotEnoughImage: '+isNotEnoughImage;
+        // isPortrait = (imgH > imgW),
 
-        if (isPortrait){
-            tile.addClass('portrait');
-        } else tile.removeClass('portrait');
+            invSpaceWidth = $(this).closest('.invSpace').width();
 
-		if (isNotEnoughImage) {
-			$(this).find('p').hide();
-		}
+        // console.log(whiteSpace);
+
+        //console.log('img width: '+ imgW +' img height: '+ imgH)
+        if (imgH > invSpaceObj.height()){
+            $(this).height('100%');
+        }
+
+        var whiteSpace = (invSpaceWidth - $(this).width()) / invSpaceWidth,
+            isWideLayout = (whiteSpace > 0.4);
+
+        if (isWideLayout){
+            /* Set image height to 100% and set imgWrap to same width */
+            //$(this).height('100%').width('auto').closest('.imgWrap').width(imgW);
+            $(this).closest('.imgWrap').width($(this).width());
+            //invSpaceObj.height($(this).height());
+
+            /* Remove Class then add class */
+            invSpaceObj.addClass('wide-layout');
+
+            contentObj.outerWidth((whiteSpace*100)-2+'%');
+
+        } else {
+            invSpaceObj.removeClass('wide-layout');
+
+            /*
+            if (imgW > invSpaceObj.find('.imgWrap').width()){
+                $(this).width('100%').height('auto');
+            }
+            */
+        }
+
+
     })
-        monitor.text(monitorString);
-                console.log(monitorString);
 }

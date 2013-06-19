@@ -1,38 +1,30 @@
-'use strict';
 
-/* Controllers */
-
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
-}
-MyCtrl2.$inject = [];
-
-
-var application = angular.module('project', ['mongolab']).
+angular.module('project', ['mongolab']);
+/*.
   config(function($routeProvider) {
     $routeProvider.
       when('/', {controller:ListCtrl, templateUrl:'list.html'}).
       when('/edit/:projectId', {controller:EditCtrl, templateUrl:'detail.html'}).
       when('/new', {controller:CreateCtrl, templateUrl:'detail.html'}).
       otherwise({redirectTo:'/'});
-  });
+  });*/
+
+function ListResumeCtrl($scope,Resume) {
+  $scope.resume = Resume.query();
+}
 
 
 function ListCtrl($scope, Project) {
   $scope.projects = Project.query();
 }
- 
+
 
 function CreateCtrl($scope, $location, Project) {
   $scope.save = function() {
     Project.save($scope.project, function(project) {
       $location.path('/edit/' + project._id.$oid);
     });
-  }
+  };
 }
 
 
@@ -81,4 +73,23 @@ angular.module('mongolab', ['ngResource']).
       };
 
       return Project;
+    }).
+    factory('Resume', function($resource) {
+      var Resume = $resource('https://api.mongolab.com/api/1/databases' +
+          '/weolopez/collections/resume/:id',
+          { apiKey: '50f36e05e4b0b9deb24829a0' }, {
+            update: { method: 'PUT' }
+          }
+      );
+
+      Resume.prototype.update = function(cb) {
+        return Resume.update({id: this._id.$oid},
+            angular.extend({}, this, {_id:undefined}), cb);
+      };
+
+      Resume.prototype.destroy = function(cb) {
+        return Resume.remove({id: this._id.$oid}, cb);
+      };
+
+      return Resume;
     });
