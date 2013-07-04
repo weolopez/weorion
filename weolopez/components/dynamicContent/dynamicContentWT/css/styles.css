@@ -1,0 +1,69 @@
+@import url('fluid_grid.css');
+
+body { font:100%/1.5 Arial, Helvetica, sans-serif; margin:0; padding:0; background:#ebebeb;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display:block;}
+img { border:none;}
+p {margin:0 0 1em;}
+a, a:link, a:visited { text-decoration:none;}
+.clrAll, .newline {clear:both;}
+
+#siteWrap {}
+
+#masthead { height:100px; margin:0 auto 1em; width:60.625em; background: #fff; border-radius: 0 0 5px 5px; border: 1px solid #c8c8c8; border-top: 0; box-shadow: 0 0 3px #b9b9b9 }
+
+/*MAIN SECTION BEGIN*/
+#pageBody { width:60.625em; margin:0 auto 1em; padding:0.75em 0; background:#fff; border:1px solid #c8c8c8; box-shadow:0px 0px 3px #b9b9b9; border-radius:5px; position:relative;}
+#pageBody article { color:#333; font-size:0.85em;}
+#pageBody article figure { text-align:center;}
+#pageBody article figure figcaption {font-size:0.85em; color:#666;}
+#pageBody article figure.figLt {float:left; margin:0 1em 1em 0;}
+#pageBody article figure.figRt {float:right; margin:0 0 1em 1em;}
+
+.imgLt { float:left; margin:0 0.5em 1em 0;}
+#pageBody article > h1 {margin:0; padding:0; font-size:1.75em; font-weight:normal; color:#FE7307}
+#pageBody article p + h1 { margin:1.5em 0 0;}
+#pageBody article h2 { font-size:1em; margin:0;}
+#pageBody article h1 + h2 {margin:1em 0 0;}
+#pageBody article h3 { font-size:1em; }
+#pageBody article h4 { font-size:1em; font-weight:bold; color:#0094d7;}
+#pageBody article h5 { font-size:0.875em; margin:0 0 2em; padding:0;}
+#pageBody a:link, #pageBody a:visited { color:#0094d7;}
+#pageBody a:hover { text-decoration:underline;}
+
+
+/* START: ORGRANIC TABS */
+/* Generic Utility */
+/*.hide { position: absolute; top: -9999px; left: -9999px; }*/
+.nav {height:45px; background:url('/design/CDLS10/img/ui/tabBg.png') repeat-x; margin:-8px -10px 10px; padding:0; list-style:none;  }
+.nav li {float:left; margin-right:2px; padding-left:1px; background:url('/design/CDLS10/img/ui/tabBorder.png') no-repeat right 0;}
+.nav li.last {border:0;}
+#pageBody .nav li a, #pageBody .nav li a:active, #pageBody .nav li a:visited  {display:block; color:#333; padding:10px 20px 0; margin:0; text-decoration:none; outline:none; cursor:pointer;}
+#pageBody .nav li a:hover {color:#ff7200;}
+#pageBody .nav li a.current {background:url('/design/CDLS10/img/ui/tabBgOn.png') no-repeat center 38px; height:35px; }
+#pageBody .nav li a.current, #pageBody .nav li a.current:visited {color:#ff7200;}
+/* END: ORGANIC TABS */
+
+/* START: LEGACY CHANNEL CSS */
+.ad300 {margin-bottom:1em;}
+.module {border:1px solid #ccc; border-bottom:2px solid #ccc; border-right:2px solid #ccc; background:#fff; margin-bottom:10px; font-size:0.8125em;}
+.module .modHead {height:25px; background:url('/design/CDLS20/img/ui/legacy/modHeadBg.png') repeat-x bottom center; padding:0 10px;}
+.module .modHead h3 {margin:0; padding:5px 0 0; color:#666666; font:bold 12px Verdana,Arial, Helvetica, sans-serif; }
+.module .modHead h2 {margin:0; padding:5px 0 0; color:#333333; font:bold 12px Verdana, Arial, Helvetica, sans-serif;}
+.module .modHead h1 {margin:0; padding:5px 0 0; color:#666666; font:bold 16px Verdana, Arial, Helvetica, sans-serif;}
+.module .modBody {padding:10px;}
+.module .modFoot {clear:both; border-top:1px #ccc solid; text-align:right; padding-top:5px;} 
+.modImg {text-align:center; margin-bottom:10px;}
+
+.module h1 {margin:0; padding:5px 10px; color:#ff7200; font:normal 16px Verdana, Geneva, sans-serif}
+.module h2 {}
+.module h3 {margin:0; padding:5px 0; color:#ff7200; font:normal 12px Verdana, Geneva, sans-serif}
+.module table {font:12px/16px Verdana, Geneva, sans-serif;}
+
+.module .imgLeft img {float:left;}
+.module .imgRight img {float:right;}
+
+/* List Columns */
+.module ul.col, .module dl.col dd ul {margin:0; padding:0; list-style:none;}
+.module ul.col li, .module dl.col dd ul { margin:10px 0; }
+.module dl.col, .module ul.col {width:118px; float:left; margin:0 10px;}
+.module dl.col dd {margin:0 0 10px; padding:5px 0;}

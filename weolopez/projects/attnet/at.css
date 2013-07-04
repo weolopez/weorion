@@ -1,0 +1,158 @@
+#pageBody {border:none; box-shadow:none; background:none; padding:0;}
+#pageBody > section, #midSection {margin-bottom:1em;}
+
+.container_24 .container_24 {margin:0; width:100%;}
+.container_24 .container_24 .grid_5 {width:18%;}
+
+#topSection h1 { font-weight:normal; font-size:1.125em; color:#333;}
+
+.module {border:1px #ccc solid; border-radius:5px; margin:1em 0; background:#fff; font-size:1em;}
+.module header {background:#e3e3e3; border-bottom:1px #ccc solid;}
+.module header h1 {margin:0; padding:1em; font-size:1.12em; font-weight:normal; color:#333;}
+.module section {margin:1em;}
+.module section p {font-size:0.8125em; margin:1em 0;}
+
+
+#featuredGal.module {height:311px; padding:0px 0 0 0px; margin-top: 0; border:none;}
+#featuredGal.module {height:311px; background:url(../img/at/featureBg.png) no-repeat 0 0; padding:0px 0 0 0px; margin-top: 0; border:none;}
+
+#featuredGal.module li.frame.current {background:url(../img/at/featureBgCurrent.png) no-repeat 0 1px;}
+#featuredGal.module li.frame div.hoverbg {background:url(../img/at/featureBgCurrent.png) no-repeat 0 1px;}
+#featuredGal.module img.nav-next {border-left:1px #d8d8d8 solid; padding-left:5px; right:15px;padding-top:5px;padding-bottom:5px;}
+#featuredGal.module img.nav-prev {border-right:1px #d8d8d8 solid; padding-right:5px; left:15px;padding-top:5px;padding-bottom:5px;}
+
+
+/* START: jumbotron */
+#jumbotron { margin: 1em 0;}
+#jumbotron .thumb {display:none;}
+#jumbotron .bx-pager-item {position:relative;}
+#jumbotron .tip {position:absolute; z-index:10; display:none;}
+
+body .bx-wrapper {margin-bottom:1em;}
+body .bx-wrapper .bx-viewport {border:1px solid #ccc; border-radius:5px; left:0; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
+body .bx-wrapper .bx-pager, body .bx-wrapper .bx-controls-auto {	bottom:1em;	}
+body .bx-wrapper .bx-pager {padding-top:0;}
+body .tip-inner.tip-bg-image img {margin-right:0.5em;}
+body .bx-wrapper .bx-pager.bx-default-pager a { background:url(../img/at/switcher.png) no-repeat left 0; height:25px; width:25px; margin:0;}
+body .bx-wrapper .bx-pager.bx-default-pager a:hover, body .bx-wrapper .bx-pager.bx-default-pager a.active { background:url(../img/at/switcher.png) no-repeat right 0; }
+
+.bxslider li img {border-radius:5px;}
+
+/*****************
+TOOLTIP WRAPPERS
+*****************/
+.tip-white { margin-top:10px; opacity:1; z-index:1000; text-align:left; border:none; padding:3px; min-width:50px; max-width:350px; color:#666; background-image:url(../js/poshytip/tip-white/tip-white.png);
+				/* bgImageFrameSize >= 10 should work fine *//**
+     * - If you set a background-image, border/padding/background-color will be ignored.
+     *   You can set any padding to .tip-inner instead if you need.dd
+     * - If you want a tiled background-image and border/padding for the tip,
+     *   set the background-image to .tip-inner instead.
+     */
+}
+.tip-white .tip-inner { font: 13px/18px arial, sans-serif; margin-top:-1px; padding:8px;  }
+/*
+.tip-white table { background: url(/js/jquery/poshytip/tip-white/backgroundwhite.gif) repeat-x scroll 100% 100% transparent;}
+*/
+.tip-inner { background: url(../js/poshytip/tip-white/backgroundwhite.gif) repeat-x scroll 100% 100% transparent !important; }
+
+/* Configure an arrow image - the script will automatically position it on the correct side of the tip */
+.tip-white .tip-arrow-top { margin-top:-3px; margin-left:15px; top:0; left:44%; width:16px; min-height:10px; background:url(../js/poshytip/tip-white/tip-white_arrows.png) no-repeat; }
+.tip-white .tip-arrow-right { margin-top:-9px; /* approx. half the height to center it */ margin-left:-4px; top:50%; left:100%; width:10px; min-height:20px; background:url(../js/poshytip/tip-white/tip-white_arrows.png) no-repeat -16px 0; }
+.tip-white .tip-arrow-bottom { margin-top:-6px; margin-left:9.5%; top:100%; left:37%; width:16px; min-height:13px; background:url(../js/poshytip/tip-white/tip-white_arrows.png) no-repeat -32px 0; }
+.tip-white .tip-arrow-left { margin-top:-9px; /* approx. half the height to center it */ margin-left:-6px; top:50%; left:0; width:10px; min-height:20px; background:url(../js/poshytip/tip-white/tip-white_arrows.png) no-repeat -48px 0; }
+.tips { position:absolute; left:-9999px; top:-9999px; zoom:1; }
+.tip-white div.tip-inner img { vertical-align:middle; height:50px; width:50px; }
+/* END: jumbotron */
+
+/* START: Product Search */
+#productSearch input[type='text'] {border:1px solid #d5d5d5; border-radius:5px; background:url(/design/cdls20/img/at/searchInput.png) no-repeat left top; padding:5px 0.5em; width:185px; color:#acacac;}
+#productSearch input[type='text']:focus {border-color:#ff7100; color:#333;}
+#productSearch input[type='text']:hover {border-color:#ff7100;}
+
+#productSearch input[type='submit'] {background:url(/design/cdls20/img/at/searchBtn.png) repeat-x center top; border:0; border-radius:5px; padding:5px 1em; color:#fff; text-shadow:1px 1px 2px #000; font-family:arial, san-serif;  font-weight:bold;}
+#productSearch input[type='submit']:hover {background-position: center bottom; cursor:pointer;}
+
+.IE7 #productSearch input[type='text'] {width:180px;}
+/* END: Product Search */
+
+/* START: Article Tiles */
+ul.articleTiles {margin:0; padding:0; list-style:none; height: 420px;}
+ul.articleTiles li {clear:left; margin:0.5em 0; height:105px;}
+ul.articleTiles li a.imgLink {display:block; width:100px; height:100px; float:left; margin-right:3.5em; overflow:hidden;}
+/* END: Article Tiles */
+
+#didYouKnow section.module, #MobileTab section.module {height:440px; overflow:hidden;}
+
+/* START: Mobile Tab Mod */
+#MobileTab.module .modHead {height:58px; background:#ebebeb; padding:0; position:relative; border-radius:5px 5px 0 0;}
+#MobileTab.module .nav {background:none; border-bottom: 1px solid #ccc; margin:0; height:57px;}
+#MobileTab.module .nav li { width:32.75%; margin:0 2px; background: url(/design/CDLS20/images/at/gradBg.jpg) repeat-x #fff center bottom;}
+#MobileTab.module .nav li.first {margin-left:0; padding-left:0;}
+#MobileTab.module .nav li a {height:auto; margin:0; padding:14px 0 16px; border:1px solid #ccc; border-top:none; color:#333; text-align:center; font-size:1.125em; }
+#MobileTab.module .nav li.first a {border-left:0;}
+#MobileTab.module .nav li a.current {background:#fff; border-bottom:none; padding-bottom:19px;}
+#pageBody #MobileTab.module .nav li a.current, #pageBody #MobileTab.module .nav li a.current:visited {color:#333;}
+
+#MobileTab.module .modBody {clear:left; padding:0; position:relative; height:380px; overflow:hidden;  behavior:url(/design/CDLS10/CSS/PIE.htc);}
+#MobileTab.module .modBody ul {margin:0 1em;}
+#MobileTab.module .modBody ul li {width:46%; margin:0.5em; float:left; clear:none;}
+#MobileTab.module .modBody ul li p {font-size:0.8125em; margin:1em 0;}
+#MobileTab ul.articleTiles li a.imgLink {width:100px; }
+/* END: Mobile Tab Mod */
+
+/* START: Promos */
+#promos {margin:1em 0;margin-top: 10px;}
+#promos h1 {border-top:1px #ccc solid; padding:1em 0 0; margin-bottom:0; font-weight:normal; font-size:1.125em; padding-left:25px; margin-left:10px;}
+/* END: Promos */
+
+/* START: Promos by Cat */
+#promosByCat {margin-bottom:1em;}
+#promosByCat h1 {border-top:1px #ccc solid; padding:1em 0 0; margin:0; font-weight:normal; font-size:1.125em; color:#333; }
+#promosByCat .grid_5 {text-align:center;}
+#promosByCat .grid_5 img {display:block;}
+/* END: Promos by Cat */
+
+/* Higlight on film strip*/
+.frame.current .img_wrap { border-color: #067ab4;}
+.ad300 .advert, .ad160 .advert {margin-bottom:4px}
+
+/* Offers CSS */
+#topSection, #btmSection {background:#fff; margin-bottom:1em; border:1px solid #C8C8C8; border-radius: 5px 5px 5px 5px;box-shadow: 0 0 3px #B9B9B9;}
+#topSection .title h1 { font-weight:normal; font-size:1.125em; color:#333;}
+
+#midSection div.parsys_column .teaserModule.section {overflow:visible;}
+#midSection .container_24 {margin:0; width:100%}
+#midSection .container_24 .grid_12 {margin:0; width:49%;}
+#midSection .container_24 .grid_12.ltCol {margin-right:0.575em;}
+#midSection .container_24 .grid_12.rtCol {margin-left:0.575em; float:right;}
+
+#midSection .module {border:1px solid #C8C8C8; border-radius:5px; box-shadow:0 0 3px #B9B9B9; margin:0;}
+#midSection .module header {border-radius:5px 5px 0 0; background:url(/design/CDLS20/images/at/gradBg.jpg) #EBEBEB repeat-x center bottom;}
+
+#btmSection {padding-top:0.25em; margin-top: 11px;}
+#btmSection .module {border:0;}
+#btmSection .module header {background:none; border-top:1px #ccc solid; border-bottom:0;}
+#btmSection .module header h1 {padding:1em 0; font-size:1.125em;}
+#btmSection .module section {margin:0;}
+
+#productSearch {margin:1em 0;}
+#productSearch fieldset {margin:0; padding:0; border:0;}
+#productSearch fieldset label {display:none;}
+
+
+/* START: IE7 FIXES */
+.IE7 #pageBody {position:static;}
+.IE7 #topSection {text-align:center;}
+.IE7 #topSection .container_24 {text-align:left;}
+.IE7 #topSection h1 {margin:1em 0;}
+/*
+.IE7 .grid_1, .IE7 .grid_2, .IE7 .grid_3, .IE7 .grid_4, .IE7 .grid_5, .IE7 .grid_6, .IE7 .grid_7, .IE7 .grid_8, .IE7 .grid_9, .IE7 .grid_10, .IE7 .grid_11, .IE7 .grid_12, .IE7 .grid_13, .IE7 .grid_14, .IE7 .grid_15, .IE7 .grid_16, .IE7 .grid_17, .IE7 .grid_18, .IE7 .grid_19, .IE7 .grid_20, .IE7 .grid_21, .IE7 .grid_22, .IE7 .grid_23, .IE7 .grid_24 {margin:0 0.55em; position:static;}
+.IE7 .mainNav ul li {display:inline;}
+.IE7 .mainNav ul li a {display:inline;}
+.IE7 .subNav ul li {display:block;}
+.IE7 .subChannels {position:static;}
+.IE7 #signIn {position:static; text-align:right; z-index:1; font-family:Arial, Helvetica, sans-serif; float:right; margin-right:1.5em; z-index:1;}
+.IE7 #signIn ul li {position:static;}
+*/
+/*.IE7 #pageBody {position:static;}*/
+/* END: IE7 FIXES */
