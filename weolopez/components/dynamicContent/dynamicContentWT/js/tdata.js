@@ -45,7 +45,7 @@ function defaultTransition(oldSpace, newSpace) {
 
 	$('head').append('<link rel="stylesheet" href="css/tdata.css"/>');
 	$.fn.getRecommendations = function(args, callBackfunction) {
-
+                
 		var domain = 'domain' in args ? args.domain : 'tdice-recommendation.att.com',
 			versionMajor = 'versionMajor' in args ? args.versionMajor : '2',
 			versionMinor = 'versionMinor' in args ? args.versionMinor : '0',
@@ -108,10 +108,10 @@ function defaultTransition(oldSpace, newSpace) {
 			}
 		}
 		if (typeof callBackfunction === 'function') {
-			callBackfunction($.parseJSON(offers));
+			callBackfunction(offers);
 		}
 		invSpaceActions();
-		return $.parseJSON(offers);
+		return offers;
 	}
 
 	$.fn.replaceContent = function(offer, tdataArrayObject, callbackFunction) {
@@ -123,7 +123,8 @@ function defaultTransition(oldSpace, newSpace) {
 			if (newSpace === '') {
 				var htmlTemplate = getHTML(offer, tdataArrayObject.height());
 				newSpace = tdataArrayObject.append(htmlTemplate).find('.invSpace');
-				$().invSpaceSizing(tdataArrayObject);
+                                if (newSpace.length>1) newSpace = $(newSpace[1]);
+				$().invSpaceSizing(tdataArrayObject, newSpace);
 			}
 		} else {
 			var tmp = oldSpace.clone(true, true);
@@ -209,9 +210,8 @@ function defaultTransition(oldSpace, newSpace) {
 //Current design only requires this method to be called once after DOM update
 //  Responsive design would have this method called on window resize event
 //  TODO manage font and margin for scaleing. 
-	$.fn.invSpaceSizing = function(tdataArrayObject) {
-		var invSpaceObj = tdataArrayObject.find('.invSpace'),
-			imageObj = invSpaceObj.find('img'),
+	$.fn.invSpaceSizing = function(tdataArrayObject, invSpaceObj) {
+		var imageObj = invSpaceObj.find('img'),
 			contentObj = invSpaceObj.find('.content'),
 			invSpaceWidth = tdataArrayObject.width(),
 			invSpaceHeight = tdataArrayObject.height(),
