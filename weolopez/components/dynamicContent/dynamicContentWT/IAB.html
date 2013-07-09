@@ -117,6 +117,49 @@
 							});
 						}
 
+						var lastsel2;
+						var editGrid = jQuery("#editgrid").jqGrid({
+							jsonReader: {
+								root: "offerRecord",
+								page: "pageId",
+								repeatitems: true,
+								cell: "cell",
+								id: "inventorySpaceId"
+							},
+							datatype: "json",
+							colNames: ['Approved', 'Status', 'Inv No', 'statusCode', 'name', 'displayDescription', 'url', 'imageUrl', 'imageWidth', 'imageHeight'],
+							colModel: [
+								{name: 'Approved', index: 'Approved', width: 55, align: 'center', editable: true, edittype: "checkbox", editoptions: {value: "Yes:No"}},
+								{name: 'status', index: 'status', width: 70, editable: true, edittype: "select", editoptions: {value: "Reviewed:Reviewed;Approved:Approved"}},
+								{name: 'inventorySpaceId', index: 'inventorySpaceId', width: 55, editable: false, editoptions: {readonly: true, size: 10}},
+								{name: 'statusCode', index: 'statusCode', width: 80, editable: true, editoptions: {size: 10}},
+								{name: 'name', index: 'name', width: 90, editable: true, editoptions: {size: 25}},
+								{name: 'displayDescription', index: 'displayDescription', width: 60, align: "right", editable: true, editoptions: {size: 10}},
+								{name: 'url', index: 'url', width: 60, align: "right", editable: true, editoptions: {size: 10}},
+								{name: 'imageUrl', index: 'imageUrl', width: 60, align: "right", editable: true, editoptions: {size: 10}},
+								{name: 'imageWidth', index: 'imageWidth', width: 55, align: 'center', editable: false, editoptions: {readonly: true, size: 10}},
+								{name: 'imageHeight', index: 'imageHeight', width: 70, editable: false, editoptions: {readonly: true, size: 10}}
+							],
+							rowNum: 10,
+							rowList: [10, 20, 30],
+							pager: '#pagered',
+							sortname: 'id',
+							viewrecords: true,
+							sortorder: "desc",
+							caption: "Editing Example",
+							onSelectRow: function(id) {
+								if (id && id !== lastsel2) {
+									jQuery('#editgrid').jqGrid('restoreRow', lastsel2);
+									jQuery('#editgrid').jqGrid('editRow', id, true);
+									lastsel2 = id;
+
+									$().replaceContent()
+								}
+							},
+							editurl: "#"
+						});
+
+
 						$(document).ready(function() {
 							function testWH() {
 								var tdataArrayObject = $('#TDIS');
@@ -132,46 +175,8 @@
 								consumptionEngine: 'ATTNET',
 								pageID: '1'
 							}, function(offers) {
-								var lastsel2;
-								jQuery("#editgrid").jqGrid({
-									jsonReader: {
-										root: "offerRecord",
-										page: "pageId",
-										repeatitems: true,
-										cell: "cell",
-										id: "inventorySpaceId"
-									},
-									url: 'js/server.json',
-									datatype: "json",
-									colNames: ['Approved', 'Status','Inv No','statusCode', 'name', 'displayDescription', 'url', 'imageUrl', 'imageWidth', 'imageHeight'],
-									colModel: [
-										{name: 'Approved', index: 'Approved', width: 55, align: 'center', editable: true, edittype: "checkbox", editoptions: {value: "Yes:No"}},
-										{name: 'status', index: 'status', width: 70, editable: true, edittype: "select", editoptions: {value: "Reviewed:Reviewed;Approved:Approved"}},
-										{name: 'inventorySpaceId', index: 'inventorySpaceId', width: 55, editable: false, editoptions: {readonly: true, size: 10}},
-										{name: 'statusCode', index: 'statusCode', width: 80, editable: true, editoptions: {size: 10}},
-										{name: 'name', index: 'name', width: 90, editable: true, editoptions: {size: 25}},
-										{name: 'displayDescription', index: 'displayDescription', width: 60, align: "right", editable: true, editoptions: {size: 10}},
-										{name: 'url', index: 'url', width: 60, align: "right", editable: true, editoptions: {size: 10}},
-										{name: 'imageUrl', index: 'imageUrl', width: 60, align: "right", editable: true, editoptions: {size: 10}},
-										{name: 'imageWidth', index: 'imageWidth', width: 55, align: 'center', editable: false, editoptions: {readonly: true, size: 10}},
-										{name: 'imageHeight', index: 'imageHeight', width: 70, editable: false, editoptions: {readonly: true, size: 10}}
-									],
-									rowNum: 10,
-									rowList: [10, 20, 30],
-									pager: '#pagered',
-									sortname: 'id',
-									viewrecords: true,
-									sortorder: "desc",
-									caption: "Editing Example",
-									onSelectRow: function(id) {
-										if (id && id !== lastsel2) {
-											jQuery('#editgrid').jqGrid('restoreRow', lastsel2);
-											jQuery('#editgrid').jqGrid('editRow', id, true);
-											lastsel2 = id;
-										}
-									},
-									editurl: "#"
-								});
+								var mygrid = jQuery("#editgrid")[0];
+								mygrid.addJSONData(offers);
 								$("#bedata").click(function() {
 									var gr = jQuery("#editgrid").jqGrid('getGridParam', 'selrow');
 									if (gr != null)
