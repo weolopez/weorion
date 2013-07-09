@@ -42,12 +42,12 @@ body .bx-wrapper .bx-pager.bx-default-pager a:hover, body .bx-wrapper .bx-pager.
 TOOLTIP WRAPPERS
 *****************/
 .tip-white { margin-top:10px; opacity:1; z-index:1000; text-align:left; border:none; padding:3px; min-width:50px; max-width:350px; color:#666; background-image:url(../js/poshytip/tip-white/tip-white.png);
-				/* bgImageFrameSize >= 10 should work fine *//**
-     * - If you set a background-image, border/padding/background-color will be ignored.
-     *   You can set any padding to .tip-inner instead if you need.dd
-     * - If you want a tiled background-image and border/padding for the tip,
-     *   set the background-image to .tip-inner instead.
-     */
+	     /* bgImageFrameSize >= 10 should work fine *//**
+* - If you set a background-image, border/padding/background-color will be ignored.
+*   You can set any padding to .tip-inner instead if you need.dd
+* - If you want a tiled background-image and border/padding for the tip,
+*   set the background-image to .tip-inner instead.
+*/
 }
 .tip-white .tip-inner { font: 13px/18px arial, sans-serif; margin-top:-1px; padding:8px;  }
 /*
@@ -78,7 +78,7 @@ TOOLTIP WRAPPERS
 /* START: Article Tiles */
 ul.articleTiles {margin:0; padding:0; list-style:none; height: 420px;}
 ul.articleTiles li {clear:left; margin:0.5em 0; height:105px;}
-ul.articleTiles li a.imgLink {display:block; width:100px; height:100px; float:left; margin-right:1em; overflow:hidden;}
+ul.articleTiles li a.imgLink {display:block; width:100px; height:100px; float:left; margin-right:3.5em; overflow:hidden;}
 /* END: Article Tiles */
 
 #didYouKnow section.module, #MobileTab section.module {height:440px; overflow:hidden;}
@@ -97,7 +97,7 @@ ul.articleTiles li a.imgLink {display:block; width:100px; height:100px; float:le
 #MobileTab.module .modBody ul {margin:0 1em;}
 #MobileTab.module .modBody ul li {width:46%; margin:0.5em; float:left; clear:none;}
 #MobileTab.module .modBody ul li p {font-size:0.8125em; margin:1em 0;}
-#MobileTab ul.articleTiles li a.imgLink {width:75px; }
+#MobileTab ul.articleTiles li a.imgLink {width:100px; }
 /* END: Mobile Tab Mod */
 
 /* START: Promos */

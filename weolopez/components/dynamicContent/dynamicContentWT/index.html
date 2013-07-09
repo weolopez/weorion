@@ -5,27 +5,36 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>wt prototype</title>
+        <title>tData prototype</title>
         <!--[if lt IE 9]>
         <script src="js/html5/html5.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="css/styles.css"/>
         <link rel="stylesheet" href="css/at.css"/>
-        <link rel="stylesheet" href="js/bxslider/jquery.bxslider.css"/>
-        <!--<link rel="stylesheet" href="css/wt.css"/>-->
+        <link rel="stylesheet" href="js/bxslider/jquery.bxslider.css"/> 
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <style>
+            #resizable {
+                width: 100px;
+                height: 100px;
+                background: #ccc;
+            }	
+        </style>
+
+        <!--<link rel="stylesheet" href="css/tdata.css"/>-->
     </head>
     <body>
         <div id="siteWrap">
             <!--header id="masthead"></header-->
             <section id="pageBody">
 
-                <!--section id="topSection">
+                <section id="topSection">
                     <div class="container_24 clearfix">
                         <div class="grid_24">
                             <div id="jumbotron">
                                 <ul class="bxslider">
                                     <li>
-                                        <div class="slide" data-wt="IS1" >
+                                        <div class="slide" data-tdata="IS1" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="Small Biz" target="_blank">
                                                 <img src="img/smallBiz_940x270.jpg" alt="Small Biz" />
                                             </a>
@@ -33,7 +42,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS2" >
+                                        <div class="slide" data-tdata="IS2" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="Windows Phone" target="_blank">
                                                 <img src="img/windows_940x270.jpg" alt="Windows Phone" />
                                             </a>
@@ -41,7 +50,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS3" >
+                                        <div class="slide" data-tdata="IS3" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="U-Verse" target="_blank">
                                                 <img src="img/refer_940x270.jpg" alt="U-Verse" />
                                             </a>
@@ -49,7 +58,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS4" >
+                                        <div class="slide" data-tdata="IS4" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="iPhone Accessories" target="_blank">
                                                 <img src="img/iPhone_940x270.jpg" alt="iPhone Accessories" />
                                             </a>
@@ -57,7 +66,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS1" data-wt-replace="true" >
+                                        <div class="slide" data-tdata="IS1" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="Best Deals" target="_blank">
                                                 <img src="img/bestDeails_940x270.jpg" alt="Best Deals" />
                                             </a>
@@ -65,7 +74,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS6" >
+                                        <div class="slide" data-tdata="IS6" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="AT&amp;T Trade-in Program" target="_blank">
                                                 <img src="img/Trade_940x270.jpg" alt="AT&amp;T Trade-in Program" />
                                             </a>
@@ -73,7 +82,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="slide" data-wt="IS7" >
+                                        <div class="slide" data-tdata="IS7" data-tdata-replace="sliderInsert" >
                                             <a href="#" title="Galaxy S&reg; III" target="_blank">
                                                 <img src="img/Samsung_940x270.JPG" alt="Galaxy S&reg; III" />
                                             </a>
@@ -82,10 +91,10 @@
                                     </li>
 
                                 </ul>
-                          iv  </div>
+                            </div>
                         </div>
-                    </d>
-                </section-->
+                    </div>
+                </section>
 
 
                 <div class="container_24 clearfix">
@@ -95,38 +104,38 @@
                                 <section class="module imgLeft">
                                     <header>
                                         <div class="title modTitle">
-                                            <h1>Static Layout</h1>
+                                            <h1>Fixed Design</h1>
                                         </div>
                                     </header>
                                     <section>
                                         <ul class="articleTiles">
 
-                                            <li data-wt="IS1">
+                                            <li data-tdata="IS1" style="visibility:hidden;">
                                                 <p>
-                                                    <a data-wt-link href="http://www.itcanwait.com" title="It Can Wait" class="imgLink" target="_blank">
-                                                        <img data-wt-image src="http://img.att.net/editorial/images/77/8098277/itcanwait100x87.jpg" alt="It Can Wait">
+                                                    <a data-tdata-link href="http://www.itcanwait.com" title="It Can Wait" class="imgLink" target="_blank">
+                                                        <img style="width:100px;height:87px;" data-tdata-image src="http://img.att.net/editorial/images/77/8098277/itcanwait100x87.jpg" alt="It Can Wait">
                                                     </a>
-                                                    <span data-wt-name>No text is worth dying for. Find out how you can take the pledge to never text and drive.  </span>
+                                                    <span data-tdata-name>No text is worth dying for. Find out how you can take the pledge to never text and drive.  </span>
                                                 </p>
-                                                <p><a data-wt-link href="http://www.itcanwait.com" target="_blank">Learn More &gt;</a></p>
+                                                <p><a data-tdata-link href="http://www.itcanwait.com" target="_blank">Learn More &gt;</a></p>
                                             </li>
 
-                                            <li data-wt="IS2">
+                                            <li data-tdata="IS5"  style="visibility:hidden;">
                                                 <p>
-                                                    <a data-wt-link href="http://uverseonline.att.net/" title="Watch U-verse TV/Movies from your .net account" class="imgLink" target="_blank">
-                                                        <img data-wt-image='large' src="http://img.att.net/editorial/images/72/8098272/tvshows.jpg" alt="Watch U-verse TV/Movies from your .net account">
+                                                    <a data-tdata-link href="http://uverseonline.att.net/" title="Watch U-verse TV/Movies from your .net account" class="imgLink" target="_blank">
+                                                        <img style="width:100px;height:100px;" data-tdata-image src="http://img.att.net/editorial/images/72/8098272/tvshows.jpg" alt="Watch U-verse TV/Movies from your .net account">
                                                     </a>
-                                                    <span data-wt-name > You can access over 250,000 free TV shows &amp; movies by visiting uverse.com &amp; using your .net account.  </span>
+                                                    <span data-tdata-name > You can access over 250,000 free TV shows &amp; movies by visiting uverse.com &amp; using your .net account.  </span>
                                                 </p>
-                                                <p><a data-wt-link href="http://uverseonline.att.net/" target="_blank">Learn More &gt;</a></p>
+                                                <p><a data-tdata-link href="http://uverseonline.att.net/" target="_blank">Learn More &gt;</a></p>
                                             </li>
 
-                                            <li data-wt="IS3">
+                                            <li data-tdata="IS3" style="visibility:hidden;">
                                                 <p>
-                                                    <a href="http://forums.att.com/" title="Stay Connected" class="imgLink" target="_blank">
-                                                        <img data-wt-image src="http://img.att.net/editorial/images/73/8098273/stayconnected.jpg" alt="Stay Connected">
+                                                    <a data-tdata-link href="http://forums.att.com/" title="Stay Connected" class="imgLink" target="_blank">
+                                                        <img style="width:100px;height:87px;" data-tdata-image src="http://img.att.net/editorial/images/73/8098273/stayconnected.jpg" alt="Stay Connected">
                                                     </a>
-                                                    Join in the conversation. Gain access to valuable AT&amp;T information. Check out the forum and discussion groups.
+													<span data-tdata-name > Join in the conversation. Gain access to valuable AT&amp;T information. Check out the forum and discussion groups.</span>
                                                 </p>
                                                 <p><a href="http://forums.att.com/" target="_blank">Learn More &gt;</a></p>
                                             </li>
@@ -140,36 +149,36 @@
                                 <section class="module imgLeft">
                                     <header>
                                         <div class="title modTitle">
-                                            <h1>Right Column</h1>
+                                            <h1>Dynamic Design</h1>
                                         </div>
                                     </header>
                                     <section>
                                         <ul class="articleTiles">
 
-                                            <li data-wt="IS1" data-wt-replace>
+                                            <li data-tdata="IS1" data-tdata-replace style="visibility:hidden;">
                                                 <p>
                                                     <a href="http://www.itcanwait.com" title="It Can Wait" class="imgLink" target="_blank">
-                                                        <img src="http://img.att.net/editorial/images/77/8098277/itcanwait100x87.jpg" alt="It Can Wait">
+                                                        <img  style="width:100px;height:87px;"  src="http://img.att.net/editorial/images/77/8098277/itcanwait100x87.jpg" alt="It Can Wait">
                                                     </a>
                                                     No text is worth dying for. Find out how you can take the pledge to never text and drive.
                                                 </p>
                                                 <p><a href="http://www.itcanwait.com" target="_blank">Learn More &gt;</a></p>
                                             </li>
 
-                                            <li data-wt="IS2" data-wt-replace="wtAnimate" >
+                                            <li data-tdata="IS5" data-tdata-replace="tdataAnimate" style="visibility:hidden;" >
                                                 <p>
                                                     <a href="http://uverseonline.att.net/" title="Watch U-verse TV/Movies from your .net account" class="imgLink" target="_blank">
-                                                        <img src="http://img.att.net/editorial/images/72/8098272/tvshows.jpg" alt="Watch U-verse TV/Movies from your .net account">
+                                                        <img style="width:100px;height:69px;" src="http://img.att.net/editorial/images/72/8098272/tvshows.jpg" alt="Watch U-verse TV/Movies from your .net account">
                                                     </a>
                                                     You can access over 250,000 free TV shows &amp; movies by visiting uverse.com &amp; using your .net account.
                                                 </p>
                                                 <p><a href="http://uverseonline.att.net/" target="_blank">Learn More &gt;</a></p>
                                             </li>
 
-                                            <li data-wt="IS3" data-wt-replace="true">
+                                            <li data-tdata="IS3" data-tdata-replace="true" style="visibility:hidden;">
                                                 <p>
                                                     <a href="http://forums.att.com/" title="Stay Connected" class="imgLink" target="_blank">
-                                                        <img src="http://img.att.net/editorial/images/73/8098273/stayconnected.jpg" alt="Stay Connected">
+                                                        <img style="width:100px;height:87px;"  src="http://img.att.net/editorial/images/73/8098273/stayconnected.jpg" alt="Stay Connected">
                                                     </a>
                                                     Join in the conversation. Gain access to valuable AT&amp;T information. Check out the forum and discussion groups.
                                                 </p>
@@ -183,32 +192,168 @@
                         </div>
                     </section>
                     <section id="btmSection">
+
                         <div class="container_24 clearfix" style="padding: 1em 0;">
                             <div id="promos clearfix">
-                                <div class="grid_12" data-wt="IS2" data-wt-replace="true">
-                                    <a href="#"><img data-wt-image='large' src="img/payyourbill6.png" alt="Pay your bill"/></a>
+                                <div class="grid_8" style="width:290px;height:163px;">
+                                    <a href="#"><img src="img/1180002_OLAM_AddALine_FreePhones_290x163.jpg" alt=""/></a>
                                 </div>
-                                <div class="grid_12" data-wt="IS1" data-wt-replace="true">
-                                    <a href="#"><img src="img/get10.gif" alt="Get a $10 Reward Card"/></a>
+
+                                <div class="grid_8" data-tdata="IS1" data-tdata-replace="true" style="width:290px;height:163px;visibility:hidden;">
+                                    <a href="#"><img src="img/1180002_OLAM_AddALine_FreePhones_290x163.jpg" style="border: 1px solid;" alt=""/></a>
+                                </div>
+
+								<div class="grid_8"  data-tdata="IS1" data-tdata-replace="true" style="width:290px;height:163px;visibility:hidden;">
+									<div class="invSpace wide-layout adOn" style="display: block; visibility: inherit;">
+										<a class="imgWrap"  data-tdata-link href=""><img data-tdata-image src="" alt="" style="width: 160px;height: 160px;position: relative;right: 30px;"/></a>
+
+										<h1 style="font-size: 84.6%;">
+											<a data-tdata-name data-tdata-link href=""></a>
+										</h1>
+										<p data-tdata-description style="font-size: 64.6%;"></p>
+										<a data-tdata-link href="">
+											<span>Learn More></span>
+										</a>
+									</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="container_24 clearfix" data-wt="IS2" data-wt-replace="true" style="padding: 1em; width: auto;">
-                            <a href="#"><img data-wt-image='large' src="img/payyourbill6.png" alt="Pay your bill"/></a>
+
+                        <div class="container_24 clearfix" style="padding: 1em 0;">
+                            <div id="promos clearfix">
+
+                                <div class="grid_8" style="width:228px;height:132px;">
+                                    <a href="#"><img src="img/090910_FamilyMsgUnl_228x132.jpg" style="border: 1px solid;" alt=""/></a>
+                                </div>
+                                <div class="grid_8" data-tdata="IS1" data-tdata-replace=""  style="width:228px;height:132px;visibility:hidden;">
+                                    <a href="#"><img src="img/090910_FamilyMsgUnl_228x132.jpg" style="border: 1px solid;" alt=""/></a>
+                                </div>
+                                <div class="grid_8" data-tdata="IS1" data-tdata-replace="tdataAnimate"   style="width:228px;height:132px;visibility:hidden;">
+									<div style="position: relative;border: 1px solid #0094D7;padding: 0.5em 0.75em;-moz-box-sizing: border-box; box-sizing: border-box;width: 228px;height:132px;line-height: 1;font-family: verdana, sans-serif;">
+										<h1 data-tdata-name style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;color: #ff7200;margin: 0px;padding: 0px;font: bold 1em sans-serif;">Messaging Unlimited</h1>	
+										<p data-tdata-description style="margin: 0em 0;font-size: 0.75em;line-height: 1.25;color: #333;width: 65%;">Unlimited messaging for everone in your family - only $30/month!</p>
+										<img data-tdata-image src="http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-160x160.jpg" style="position: absolute;right: 0;bottom: 0;width: 100px;height:100px;z-index: -1;"/>
+										<a data-tdata-link href="#" style="position: absolute;bottom: 0.5em;">Learn More</a>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container_24 clearfix" style="padding: 1em 0;">
+                            <div id="promos clearfix">
+                                <div class="grid_12" data-tdata="IS1" data-tdata-replace="tdataAnimate" style="width:450px;height:225px;visibility:hidden;">
+                                    <a href="#"><img src="img/payyourbill6.png" alt="Pay your bill"/></a>
+                                </div>
+                                <div id="ipad" class="grid_12" data-tdata="IS3" data-tdata-replace="true" style="width:450px;height:225px;visibility:hidden;">
+                                    <a href="#"><img src="img/payyourbill6.png" alt="Get a $10 Reward Card"/></a>
+                                </div>
+                            </div>
+                        </div>
+						<div class="container_24 clearfix" style="padding: 1em; width: auto;">
+                            <div id="resizable" style="width:481px;height:350px;background-color: white;visibility: visible;border: solid;">
+								<div id="TDIS" data-tdata="IS1" data-tdata-replace="true" style="width: 100%;height: 100%;visibility: visible;"><img src="img/get10.gif" alt="Get a $10 Reward Card"/></div>
+                            </div>
+							<div>
+								<span id="TDISW">Width: </span>
+								<span id="TDISH">Height: </span>
+							</div>
                         </div>
                     </section>
                 </div>
             </section>
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://crypto-js.googlecode.com/files/2.5.3-crypto-min.js"></script>       
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
         <script src="js/bxslider/jquery.bxslider.min.js"></script>
         <script src="js/poshytip/jquery.poshytip.min.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/wt.js"></script>
+        <script src="js/tdata.js"></script>
         <script>
-            $(document).ready(function() {
-                getRecommendations();
-            })
+			function handleSmallSpace(oldSpace, newSpace, offer) {
+				newSpace.find('img').data('height', '40');
+				newSpace.find('img').data('width', '40');
+				newSpace.find('img').width(40);
+				newSpace.find('img').height(40);
+				var hig = newSpace.find('img').data('height');
+				var tdataArrayObject = newSpace.parent();
+
+				$().invSpaceSizing(tdataArrayObject);
+				newSpace.find('h1').find('a').text(newSpace.find('h1').find('a').text().substring(0, 13));
+				newSpace.find('p').text(newSpace.find('p').text().substring(0, 13));
+				newSpace.removeClass('wide-layout-small');
+				oldSpace.remove();
+				newSpace.addClass('adOn').hide().css('visibility', 'visible').fadeIn();
+			}
+
+//Delayed fading of content
+			function tdataAnimate(oldSpace, newSpace) {
+				oldSpace.delay(1000).fadeOut(function() {
+					newSpace.addClass('adOn').hide().css('visibility', 'visible').fadeIn();
+				});
+			}
+//inserts content into slider and slider tooltip
+			function sliderInsert(oldSpace, newSpace, offer) {
+				
+				// resize IS height to avoid tooltop overlap
+				$().invSpaceSizing( newSpace.parent().height( 240 ) );
+				
+				var tipString = offer.name;
+				if (tipString.length > 35) {
+					tipString = tipString.substr(0, 30) + '...';
+				}
+				var img = '<img data-tdata="' + offer.inventorySpaceId + '" src="' + offer.largeImageUrl + '" style="width:auto;" />' + tipString;
+				var thumb = '<span class="thumb">' + img + '</span>';
+
+				if (offer.statusCode === '100')
+					newSpace.append(thumb);
+				oldSpace.fadeOut(function() {
+					newSpace.addClass('adOn').hide().css('visibility', 'visible').fadeIn();
+					$(this).remove();
+
+					var arrData = $('.bxslider li').not('.bx-clone').find('.thumb');
+					var arrTip = $('.tip');
+
+					$.each(arrTip, function(iTip, elTip) {
+						var tooltip = $(this).parent(),
+								newTip = $(arrData[iTip]);
+						tooltip.poshytip('update', newTip.html());
+					});
+				});
+			}
+
+			$(document).ready(function() {
+				$('.bxslider').bxSlider({
+					controls: false,
+					slideSelector: '.bxslider>li',
+					auto: true,
+					autoHover: true,
+					onSliderLoad: function() {
+						loadTips();
+					}
+				});
+				function testWH() {
+					var tdataArrayObject = $('#TDIS');
+					var TDISW = $('#TDISW');
+					var TDISH = $('#TDISH');
+					TDISW.text('Width: ' + tdataArrayObject.width());
+					TDISH.text('Height: ' + tdataArrayObject.height());
+					$().invSpaceSizing(tdataArrayObject);
+					$().invSpaceSizing($('#ipad'));
+				}
+
+				$().getRecommendations({
+					consumptionEngine: 'ATTNET',
+					pageID: '1'
+				}, function(offers) {
+					testWH();
+
+					$('#resizable').resizable().on('resize', function(event, ui) {
+//            console.log('resize');
+						testWH();
+					});
+				});
+			});
         </script>
     </body>
 </html>
