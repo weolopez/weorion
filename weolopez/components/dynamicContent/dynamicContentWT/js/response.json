@@ -1,0 +1,48 @@
+{
+    "recommendations":{
+        "offers":[
+            {
+                "inventorySpaceID":"1",
+                "contentId":"516fbbed42478d3197ee1288",
+                "offerId":"sku5110289",
+                "url":"http://www.att.com/shop/wireless/plans/data/sku5330322.html",
+                "imageURL":"http://www.att.com/catalog/en/skus/images/apple-ipad with retina display wi-fi + cellular 64gb-black-160x160.jpg",
+                "imagewidth": "160",
+                "imageheight": "160",
+                "largeImageURL":"http://www.bluegroper.com.au/sites/default/files/layout_42419_0.jpg",
+                "largeImagewidth": "600",
+                "largeImageheight": "271",
+                "displayDescription":"For iPad Use Only: $14.99 250 MB included.  $14.99 for an additonal 250MB overage.  Unlimited data on the ATT WiFi Basic Network. No Activation charge, No Early Termination Fee, No Minimum Commitment Period.",
+                "name":"DataConnect Personal for iPad 250MB"
+            },
+            {
+                "inventorySpaceID":"2",
+                "contentId":"516fbbed42478d3197ee1273",
+                "offerId":"sku6220543",
+                "url":"http://www.att.com/shop/wireless/data-plans.html#fbid=6iRcXUdPiXP?tab2",
+                "imageURL":"http://www.technobuffalo.com/wp-content/uploads/2012/08/MobileShare_mrq_v3.jpg",
+                "imagewidth":"450",
+                "imageheight":"350",
+                "largeImageURL":"http://www.technobuffalo.com/wp-content/uploads/2012/08/MobileShare_mrq_v3.jpg",
+                "largeImagewidth": "974",
+                "largeImageheight": "615",
+                "displayDescription":"This is a generic description",
+                "name":"Mobile Share Plan"
+            },
+            {
+                "inventorySpaceID":"3",
+                "contentId":"516fbbed42478d3197ee1266",
+                "offerId":"sku4260224",
+                "url":"http://www.att.com/gen/general?pid=10996",
+                "imageURL":"http://icds.portal.att.net/Tdata/ryanrimphonec2a9sm-510kb.jpg",
+                "imagewidth":"450",
+                "imageheight":"350",
+                "largeImageURL":"http://icds.portal.att.net/Tdata/ryanrimphonec2a9sm-510kb.jpg",
+                "largeImagewidth": "4592",
+                "largeImageheight": "2576",
+                "displayDescription":"If your family or social network extends beyond Puerto Rico, the Unlimited Calling with Long Distance and Roaming plan may be the one for you. At $54.98/month you receive unlimited Anytime Minutes, Mobile to Mobile calling, Night and Weekend Minutes, and free long distance and free roaming.",
+                "name":"Unlimited Nationwide Calling"
+            }
+        ]
+    }
+}
