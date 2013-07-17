@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="css/at.css"/>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery-pane.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.css">
         <style>
             #resizable {
                 width: 100px;
@@ -29,45 +31,119 @@
             <!--header id="masthead"></header-->
             <section id="pageBody">
                 <div class="container_24 clearfix" style="padding: 1em 0;">
-                    <select onchange="$('#resizable').attr('style', this.value);
-                            $().invSpaceSizing($('#TDIS'));">
-                        <option value=""  selected="selected">Select IAB Standard</option>
-                        <option value=""  >Rising Star Display Ad Units</option>
-                        <option value="width:970px;height:250px;background-color: white;visibility: visible;border: solid;">....Billboard 970x250</option>
-                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Filmstrip 300x600</option>
-                        <option value="width:300px;height:1050px;background-color: white;visibility: visible;border: solid;">....Portrait 300x1050</option>
-                        <option value="width:970px;height:90px;background-color: white;visibility: visible;border: solid;">....Pushdown 970x90</option>
-                        <option value="width:970px;height:90;background-color: white;visibility: visible;border: solid;">....Slider 970x90</option>
-                        <option value="width:300px;height:250px;background-color: white;visibility: visible;border: solid;">....Sidekick 300x250</option>
-                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Sidekick 300x600</option>
-                        <option value="width:970px;height:250px;background-color: white;visibility: visible;border: solid;">....Sidekick 970x250</option>
 
-                        <option value=""  >Universal Ad Package (UAP)</option>
-                        <option value="width:300px;height:250px;background-color: white;visibility: visible;border: solid;">....Medium Rectangle 300x250</option>
-                        <option value="width:180px;height:150px;background-color: white;visibility: visible;border: solid;">....Rectangle 180x150</option>
-                        <option value="width:160px;height:600px;background-color: white;visibility: visible;border: solid;">....Wide Skyscraper 160x600</option>
-                        <option value="width:728px;height:90px;background-color: white;visibility: visible;border: solid;">....Leaderboard 728x90</option>
+                    <!-- Container that will hold the contents of the Pane -->
+                    <div id="ISDefinition" style="width:1200px;">                	
+                        <div id="paneDemo"  ></div>
 
-                        <option value=""  >Other Ad Units</option>
-                        <option value="width:970px;height:90px;background-color: white;visibility: visible;border: solid;">....Super Leaderboard 970x90</option>
-                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Half Page 300x600</option>
-                        <option value="width:120px;height:60px;background-color: white;visibility: visible;border: solid;">....Button 2 120x60</option>
-                        <option value="width:88px;height:31px;background-color: white;visibility: visible;border: solid;">....Micro Bar 88x31</option>
+                        <!-- Hidden container used to populate the Pane -->
+                        <div id="pane-widget-demo" style="display:none;">
+                            <form id="frmData" action="#" class="form-inline">
+                                <fieldset>
+                                    <legend>Inventory Space Rules</legend>
+                                    <div class="control-group" >
+		                              <select onchange="$('#resizable').attr('style', this.value);
+				                            $().invSpaceSizing($('#TDIS'));">
+				                        <option value=""  selected="selected">Select IAB Standard</option>
+				                        <option value=""  >Rising Star Display Ad Units</option>
+				                        <option value="width:970px;height:250px;background-color: white;visibility: visible;border: solid;">....Billboard 970x250</option>
+				                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Filmstrip 300x600</option>
+				                        <option value="width:300px;height:1050px;background-color: white;visibility: visible;border: solid;">....Portrait 300x1050</option>
+				                        <option value="width:970px;height:90px;background-color: white;visibility: visible;border: solid;">....Pushdown 970x90</option>
+				                        <option value="width:970px;height:90;background-color: white;visibility: visible;border: solid;">....Slider 970x90</option>
+				                        <option value="width:300px;height:250px;background-color: white;visibility: visible;border: solid;">....Sidekick 300x250</option>
+				                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Sidekick 300x600</option>
+				                        <option value="width:970px;height:250px;background-color: white;visibility: visible;border: solid;">....Sidekick 970x250</option>
+				
+				                        <option value=""  >Universal Ad Package (UAP)</option>
+				                        <option value="width:300px;height:250px;background-color: white;visibility: visible;border: solid;">....Medium Rectangle 300x250</option>
+				                        <option value="width:180px;height:150px;background-color: white;visibility: visible;border: solid;">....Rectangle 180x150</option>
+				                        <option value="width:160px;height:600px;background-color: white;visibility: visible;border: solid;">....Wide Skyscraper 160x600</option>
+				                        <option value="width:728px;height:90px;background-color: white;visibility: visible;border: solid;">....Leaderboard 728x90</option>
+				
+				                        <option value=""  >Other Ad Units</option>
+				                        <option value="width:970px;height:90px;background-color: white;visibility: visible;border: solid;">....Super Leaderboard 970x90</option>
+				                        <option value="width:300px;height:600px;background-color: white;visibility: visible;border: solid;">....Half Page 300x600</option>
+				                        <option value="width:120px;height:60px;background-color: white;visibility: visible;border: solid;">....Button 2 120x60</option>
+				                        <option value="width:88px;height:31px;background-color: white;visibility: visible;border: solid;">....Micro Bar 88x31</option>
+				
+				                    </select>
+				                    </div>
 
-                    </select>
+                                    <div class="control-group" >
+		                              <select onchange="
+alert('Im in'+this.value);
+var tdataObject  = $('#TDIS'); 		                              
+		                              tdataObject.attr('data-tdata-replace', this.value );
+		                              
+				                    var tdisid = $('#TDIS').data('tdata');  
+				                    for (i = 0; i < pageOffers.length; i++) {
+                                        var offer = pageOffers[i];
+                                        if (offer.inventorySpaceId === tdisid)
+                                            $().replaceContent(offer, $('#TDIS'), this.value);
+                                    }
+		                              ">
+				                        <option value="tdataFade"  selected="selected">Select Style</option>
+				                        <option value="tdataFade"  >Responsive Designs</option>
+				                        <option value="tdataFade">tdataFade</option>
+				
+				                        <option value="tdataFade"  >Custom Templates</option>
+				                        <option value="attcom">att.com</option>
+				
+				                        <option value="tdataFade">Transitions</option>
+				                        <option value="tdataFade">....T.Data Default Fade In</option>
+				                        <option value="tdataAnimate">....T.Data 1sec delay Fade In</option>
+				                    </select>
+				                    </div>
+
+				                    <div id="promos clearfix">
+				                        <div class="container_24 clearfix" style="padding: 1em; width: auto;">
+				                            <div id="resizable" style="width:450px;height:225px;background-color: white;visibility: visible;border: solid;">
+				                                <div id="TDIS" data-tdata="IS7" data-tdata-replace="true" style="width: 100%;height: 100%;visibility: visible;"><img src="" alt="Get a $10 Reward Card"/></div>
+				                            </div>
+				                            <div>
+				                                <span id="TDISW">Width: </span>
+				                                <span id="TDISH">Height: </span>
+				                            </div>
+				                        </div>
+				                    </div>
+                            	</fieldset>
+                                <fieldset>
+                                    <legend>Inventory Space Rules</legend>
+                                    <div class="control-group" >
+                                        <label class="control-label" for="name"> 
+                                            <strong>Enter any message you want</strong> 
+                                        </label>
+                                        <div class="controls">
+                                        	
+                                            <textarea id="myTextArea" name="myTextArea" rows="3" 
+                                                      class="span12">Now is the time for all good men to come 
+                                                to the aid of their country</textarea>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input name="btnSave" type="button" value="Save" class="btn btn-primary" />
+                                        <input name="btnReset" type="button" value="Reset" class="btn"/>
+                                        <input name="btnDisable" type="button" value="Disable" 
+                                               class="btn disabler-ignore-readonly"/> 
+                                        <input name="btnReadOnly" type="button" value="ReadOnly" 
+                                               class="btn disabler-ignore-readonly"/>
+                                    </div>
+                                </fieldset>
+                            </form>	
+                        </div>
+
+                        <-- Container to hold the Refresh warning message -->
+                        <div id="pane-reload-warning-dialog"></div>
+                    </div>
+                    <script type="text/javascript">
+
+                    </script>	
+
+                  
                     <script>
                     </script>
-                    <div id="promos clearfix">
-                        <div class="container_24 clearfix" style="padding: 1em; width: auto;">
-                            <div id="resizable" style="width:450px;height:225px;background-color: white;visibility: visible;border: solid;">
-                                <div id="TDIS" data-tdata="IS7" data-tdata-replace="true" style="width: 100%;height: 100%;visibility: visible;"><img src="" alt="Get a $10 Reward Card"/></div>
-                            </div>
-                            <div>
-                                <span id="TDISW">Width: </span>
-                                <span id="TDISH">Height: </span>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="container_24 clearfix">
@@ -84,15 +160,84 @@
 
             </section>
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script
         <script src="js/jquery-1.9.0.min.js" type="text/javascript"></script-->
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
+
+        <script src="js/jquery-disabler.min.js"></script>
+        <script src="js/jquery-mod-highlighter.min.js"></script>
+        <script src="js/jquery-pane.js"></script>
         <script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
         <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
         <script src="js/app.js"></script>
         <script src="js/tdata.js"></script>
         <script>
+                        // initializing the widget
+                        $(function() {
+                        	
+                            var pageOffers;
+                        
+                            // initializing the widget
+                            $("div#paneDemo").pane({
+                                paneActionUrl: '#pane-widget-demo',
+                                paneHeaderTitle: 'Inventory Space Definition',
+                                enablePaneGroupBox: true,
+                                enablePaneHeader: true
+                            });
+
+                            // handle the button click events		
+                            $("input[name='btnReset']").on("click", function(e) {
+                                e.preventDefault();
+                                $("div#paneDemo").pane("resetModifiedColumnsInContainer");
+                            });
+
+                            $("input[name='btnSave']").on("click", function(e) {
+                                e.preventDefault();
+                                // your code would probably have additional logic
+                                // to save the data.  For this demo, we'll simply
+                                // mark the values entered on this form as the new
+                                // original values so that the Modification Highlighter
+                                // plugin thinks nothing has been modified.
+                                $("div#paneDemo").pane("storeOriginalValues");
+                            });
+
+                            $("input[name='btnRefresh']").on("click", function(e) {
+                                e.preventDefault();
+                                $("div#paneDemo").pane("load");
+                            });
+
+                            $("input[name='btnDisable']").on("click", function(e) {
+                                if ($("div#paneDemo").pane("option", "disable")) {
+                                    $("div#paneDemo input[name='btnReadOnly']")
+                                            .removeAttr("disabled");
+                                    $("div#paneDemo").pane("enable");
+                                    $(this).val("Disable");
+                                } else {
+                                    $("div#paneDemo input[name='btnReadOnly']")
+                                            .attr("disabled", "disabled");
+                                    $("div#paneDemo").pane("disable");
+                                    $(this).val("Enable");
+                                }
+                            });
+
+                            $("input[name='btnReadOnly']").on("click", function(e) {
+                                if ($("div#paneDemo").pane("option", "readonly")) {
+                                    $("div#paneDemo input[name='btnDisable']")
+                                            .removeAttr("disabled");
+                                    $("div#paneDemo").pane("option", "readonly", false);
+                                    $(this).val("ReadOnly");
+                                } else {
+                                    $("div#paneDemo input[name='btnDisable']")
+                                            .attr("disabled", "disabled");
+                                    $("div#paneDemo").pane("option", "readonly", true);
+                                    $(this).val("Undo ReadOnly");
+                                }
+                            });
+                        });
+
+
                         function handleSmallSpace(oldSpace, newSpace, offer) {
                             newSpace.find('img').data('height', '40');
                             newSpace.find('img').data('width', '40');
@@ -115,7 +260,24 @@
                                 newSpace.addClass('adOn').hide().css('visibility', 'visible').fadeIn();
                             });
                         }
-                        var pageOffers;
+
+                        var template1 =
+                                {"groupOp": "AND",
+                                    "rules": [
+                                        {"field": "b.name", "op": "bw", "data": "Client 1"},
+                                        {"field": "a.amount", "op": "gt", "data": "20"}
+                                    ]
+                                };
+
+                        var template2 =
+                                {"groupOp": "AND",
+                                    "rules": [
+                                        {"field": "b.name", "op": "eq", "data": "Client 2"},
+                                        {"field": "a.id", "op": "le", "data": "10"}
+                                    ]
+                                };
+
+
                         var lastsel2;
                         var editGrid = jQuery("#editgrid").jqGrid({
                             jsonReader: {
@@ -126,7 +288,7 @@
                                 id: "inventorySpaceId"
                             },
                             datatype: "json",
-                            colNames: ['Approved', 'Status', 'Inv No', 'statusCode', 'name', 'displayDescription', 'url', 'imageUrl', 'imageWidth', 'imageHeight'],
+                            colNames: ['Approved', 'Status', 'Inv No', 'statusCode', 'name', 'displayDescription', 'url', 'Default View', 'imageWidth', 'Template'],
                             colModel: [
                                 {name: 'Approved', index: 'Approved', width: 55, align: 'center', editable: true, edittype: "checkbox", editoptions: {value: "Yes:No"}},
                                 {name: 'status', index: 'status', width: 70, editable: true, edittype: "select", editoptions: {value: "Reviewed:Reviewed;Approved:Approved"}},
@@ -135,9 +297,9 @@
                                 {name: 'name', index: 'name', width: 90, editable: true, editoptions: {size: 25}},
                                 {name: 'displayDescription', index: 'displayDescription', width: 60, align: "right", editable: true, editoptions: {size: 10}},
                                 {name: 'url', index: 'url', width: 60, align: "right", editable: true, editoptions: {size: 10}},
-                                {name: 'imageUrl', index: 'imageUrl', width: 60, align: "right", editable: true, editoptions: {size: 10}},
+                                {name: 'defaultView', index: 'defaultView', width: 60, align: "right", editable: true, edittype: "select", editoptions: {value: "RWD:Responsive Web Design;attcom:attcom"}},
                                 {name: 'imageWidth', index: 'imageWidth', width: 55, align: 'center', editable: false, editoptions: {readonly: true, size: 10}},
-                                {name: 'imageHeight', index: 'imageHeight', width: 70, editable: false, editoptions: {readonly: true, size: 10}}
+                                {name: 'Template', index: 'Template', width: 70, editable: true, edittype: "select", editoptions: {value: "RWD:Responsive Web Design;attcom:attcom"}}
                             ],
                             rowNum: 10,
                             rowList: [10, 20, 30],
@@ -145,7 +307,7 @@
                             sortname: 'id',
                             viewrecords: true,
                             sortorder: "desc",
-                            caption: "Editing Example",
+                            caption: "Content Rules",
                             onSelectRow: function(id) {
                                 if (id && id !== lastsel2) {
                                     jQuery('#editgrid').jqGrid('restoreRow', lastsel2);
@@ -161,7 +323,22 @@
                             },
                             editurl: "#"
                         });
-
+                        jQuery("#editgrid").jqGrid('navGrid', '#pagered',
+                                {edit: true, add: true, del: true},
+                        {},
+                                {},
+                                {},
+                                {
+                                    multipleSearch: true,
+                                    multipleGroup: true,
+                                    showQuery: true,
+                                    // set the names of the template
+                                    "tmplNames": ["Template One", "Template Two"],
+                                    // set the template contents
+                                    "tmplFilters": [template1, template2]
+                                }
+                        );
+ 
 
                         $(document).ready(function() {
                             function testWH() {
@@ -178,6 +355,8 @@
                                 pageID: '1'
                             }, function(offers) {
                                 pageOffers = offers;
+
+
                                 var mygrid = jQuery("#editgrid")[0];
                                 mygrid.addJSONData(offers);
                                 $("#bedata").click(function() {
@@ -187,6 +366,9 @@
                                     else
                                         alert("Please Select Row");
                                 });
+
+
+
                                 testWH();
 
                                 $('#resizable').resizable().on('resize', function(event, ui) {
@@ -204,6 +386,29 @@
                                 }
                             });
                         });
+
+//Delayed fading of content
+			function tdataAnimate(oldSpace, newSpace) {
+				oldSpace.delay(1000).fadeOut(function() {
+					newSpace.addClass('adOn').hide().css('visibility', 'visible').fadeIn();
+				});
+			}
+
+
+
+			function attcom(oldSpace, newSpace, offer) {
+			
+				var attcomDesign = '<div style="width:290px;height:163px;visibility:visible;border: 1px solid #0094D7;"><div style="position: relative;border: 1px solid #0094D7;padding: 0.5em 0.75em;-moz-box-sizing: border-box; box-sizing: border-box;width:290px;height:163px;line-height: 1;font-family: verdana, sans-serif;"><h1 data-tdata-name style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;color: #ff7200;margin: 0px;padding: 0px;font: bold 1em sans-serif;">Messaging Unlimited</h1><p data-tdata-description style="margin: 0em 0;font-size: 0.75em;line-height: 1.25;color: #333;width: 65%;">Unlimited messaging for everone in your family - only $30/month!</p><img data-tdata-image src="http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-160x160.jpg" style="position: absolute;right: 0;bottom: 0;width: 100px;height:100px;z-index: -1;"/><a data-tdata-link href="#" style="position: absolute;bottom: 0.5em;">Learn More</a></div></div>';							
+				
+				var tdataObject=oldSpace.parent();
+				oldSpace.remove();
+				newSpace.remove();
+				var replaceSpace = tdataObject.append(attcomDesign).find('.invSpace');
+				$().replaceContent(offer, tdataObject, tdataAnimate);
+				
+			}
+			
+
         </script>
     </body>
 </html>
