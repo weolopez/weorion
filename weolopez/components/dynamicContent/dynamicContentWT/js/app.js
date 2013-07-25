@@ -30,3 +30,18 @@ function loadTips() {
 		});
 	});
 }
+
+function openAWindow() {
+			  	var newWin = window.open('http://dev.weolopez.com','a','height=800,width=1000');
+			  	
+				$(newWin).ready(function(){
+					var el = $('#id123');
+					
+			    	alert('New page has '+ el.text() +' forms.');
+			   	
+//			    newWin.weofunction();
+				});
+				
+//			    newWin.weofunction();
+			    	newWin.document.bgColor='lightgreen';this.focus();
+}

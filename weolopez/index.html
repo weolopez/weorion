@@ -369,7 +369,7 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="span4">
+        <div id="IS1" class="span4" >
           <img class="img-circle" width="144px" height="144px" src="/weolopez/assets/img/angularjs.png">
           <h2>AngularJS</h2>
           <p>Web Application Framework</p>
@@ -451,12 +451,10 @@
     <script src="/weolopez/assets/js/bootstrap-carousel.js"></script>
     <script src="/weolopez/assets/js/bootstrap-typeahead.js"></script>
     <script>
-      !function ($) {
-        $(function(){
-          // carousel demo
-    //      $('#myCarousel').carousel()
-        })
-      }(window.jQuery)
+      function weofunction() {
+      	alert("loaded");
+      }
+      //weofunction();
     </script>
     <script src="../assets/js/holder/holder.js"></script>
   </body>
