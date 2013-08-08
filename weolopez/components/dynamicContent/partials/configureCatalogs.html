@@ -1,0 +1,28 @@
+<h1>Configure Catalogs</h1>
+<hgroup class="row-fluid clearfix">
+    <h3 class="span6">
+        Page Name: {{selectedInventorySpace.pagename}}
+    </h3>
+    <h3 class="span6">
+        Size: {{selectedInventorySpace.size}}
+    </h3>
+</hgroup>    
+<hgroup class="row-fluid clearfix">
+    <h3 class="span6">
+        Inventory Space Name: {{selectedInventorySpace.name}}
+    </h3>
+    <h3 class="span6">
+        Module Name: {{selectedInventorySpace.modulename}}
+    </h3>
+</hgroup>
+
+<div data-collapse="isCollapsed">
+    <button ng-click="isCollapsed = !isCollapsed" class="btn btn-primary" >Close</button>    
+    <section data-tdata-preview></section>    
+</div>
+
+<div class="gridStyle" ng-grid="gridOptions" style="height: 200px"></div>
+
+<a href="#/createIS"><button class="btn btn-primary" >Back</button></a>
+<hr>
+

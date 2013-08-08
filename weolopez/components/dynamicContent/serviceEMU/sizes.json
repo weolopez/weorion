@@ -1,0 +1,33 @@
+{
+    "sizes": [        
+        {"value": "", "name": "Select Size", "id": ""},
+        {"value": "", "name": "Rising Star Display Ad Units", "id": ""},
+        {"value": "width:970px;height:250px;background-color: white;visibility: visible;border: solid;", "name": "....Billboard 970x250", "id": ""},
+        {"value": "width:970px;height:250px;background-color: white;visibility: visible;border: solid;", "name": "....Billboard 970x250", "id": ""},
+        {"value": "width:300px;height:600px;background-color: white;visibility: visible;border: solid;", "name": "....Filmstrip 300x600", "id": ""},
+        {"value": "width:300px;height:1050px;background-color: white;visibility: visible;border: solid;", "name": "....Portrait 300x1050", "id": ""},
+        {"value": "width:970px;height:90px;background-color: white;visibility: visible;border: solid;", "name": "....Pushdown 970x90", "id": ""},
+        {"value": "width:970px;height:90;background-color: white;visibility: visible;border: solid;", "name": "....Slider 970x90", "id": ""},
+        {"value": "width:300px;height:250px;background-color: white;visibility: visible;border: solid;", "name": "....Sidekick 300x250", "id": ""},
+        {"value": "width:300px;height:600px;background-color: white;visibility: visible;border: solid;", "name": "....Sidekick 300x600", "id": ""},
+        {"value": "width:970px;height:250px;background-color: white;visibility: visible;border: solid;", "name": "....Sidekick 970x250", "id": ""},
+        {"value": "", "name": "Universal Ad Package (UAP)", "id": ""},
+        {"value": "width:300px;height:250px;background-color: white;visibility: visible;border: solid;", "name": "....Medium Rectangle 300x250", "id": ""},
+        {"value": "width:180px;height:150px;background-color: white;visibility: visible;border: solid;", "name": "....Rectangle 180x150", "id": ""},
+        {"value": "width:160px;height:600px;background-color: white;visibility: visible;border: solid;", "name": "....Wide Skyscraper 160x600", "id": ""},
+        {"value": "width:728px;height:90px;background-color: white;visibility: visible;border: solid;", "name": "....Leaderboard 728x90", "id": ""},
+        {"value": "", "name": "Other IAB Ad Units", "id": ""},
+        {"value": "width:970px;height:90px;background-color: white;visibility: visible;border: solid;", "name": "....Super Leaderboard 970x90", "id": ""},
+        {"value": "width:300px;height:600px;background-color: white;visibility: visible;border: solid;", "name": "....Half Page 300x600", "id": ""},
+        {"value": "width:120px;height:60px;background-color: white;visibility: visible;border: solid;", "name": "....Button 2 120x60", "id": ""},
+        {"value": "width:88px;height:31px;background-color: white;visibility: visible;border: solid;", "name": "....Micro Bar 88x31", "id": ""},
+        {"value": "", "name": "ATT Custom", "id": ""},
+        {"value": "width:292px;height:164px;background-color: white;visibility: visible;border: solid;", "name": "....Att.com 292x164", "id": ""},
+        {"value": "", "name": "....NEW", "id": ""}
+    ],
+  "templates": [
+      {"value":"Responsive","name":"Responsive"}
+  ]   
+}
+
+				                       
