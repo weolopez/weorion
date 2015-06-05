@@ -1,0 +1,7 @@
+<div>
+    <h1>Login</h1>
+    <label for="user-name">Name: <input id="user-name" type="text" ng-model="userName"></label>
+    <div ng-if="userName.length>2">
+        <h6>{{localuser}} saved!</h6>
+    </div>
+</div>

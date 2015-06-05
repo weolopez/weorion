@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="previewApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>TDice App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This application helps managing the Inventory Spaces">
+        <link rel="stylesheet" href="../bootstrap/bootstrap-combined.min.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="myUtilityStyle.css" />
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+        <style>
+            .fa {
+                font-size: 150%;
+                padding-right: 10px;
+            }
+            #inventory-space  {
+                position: relative;
+                display: inline;
+            }
+            #inventory-space h3 {                
+                float: left;
+                width: 350px;
+            }
+            #inventory-space select {
+                float: right;
+            }
+            
+            #preview {
+                margin: 55px;
+            }
+            
+            #preview-tabs { overflow-x: none;}
+            #preview-tabs ol li{
+                list-style: none;
+                width: 100px;
+                float: left;
+                background-color: grey;
+                color: white;
+                padding: 15px;
+                margin-left: 15px;
+            }
+            #preview-tabs ol li.active {
+                background-color: #090;
+            }
+
+            #preview-tabs #search-box {
+                float: right;
+                width: 300px; 
+                position: relative;
+                padding: 1px;
+
+            }
+            #preview-tabs #search-box label {
+                margin-top: 10px;
+                margin-right: 10px;
+                float: right;                
+            }#preview-tabs #search-box input {
+                margin: 5px;
+                float: right;
+            }
+        </style>
+    </head>
+    <body ng-controller="previewCtrl">
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="adminHeader">
+            <div id="header_login">
+
+
+                <span class="context-menu"> <a href="#/listis">Inventory Space Management
+                    </a> </span>
+                <div ID="loginarea">
+                    <div id="loginleftbg"></div>
+                    <span class="userneme">Welcome, Aruna&nbsp;</span>
+                    <div id="loginrightbg">
+                        <span class="logouttxt"> <a href="https://www.e-access.att.com/cgi-bin/logoutredir.cgi?redir=http://tdiceis.att.com/">Logout</a>
+                        </span><span class="helplogout"><a target="_blank"
+                                                           href="/CMSGUI/help/UserGuide-CMSGUI.htm">Help</a></span>
+                        <div style="clear: left;"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="header_banner">
+                <div class="main-title">Inventory Spaces</div>
+            </div>
+        </div>
+
+
+        <div>
+
+            <!--START: Progressive Indicator-->
+            <div class="progressInd pL120">
+                <div class="pT15 pB15 progressStep mR10">
+                    <span class="w160p progressStepText fs18  dInB   taCE w160p">ATTRIBUTES</span>
+                </div>
+                <div class="pT15 pB15 progressStep mR10">
+                    <span class="w160p progressStepText fs18  dInB   taCE w160p">CATALOGS</span>
+                </div>
+                <div class="pT15 pB15 progressStep mR10">
+                    <span class="w160p progressStepText fs18  dInB   taCE w160p">RULES</span>
+                </div>
+                <div class="pT15 pB15 progressStep active mR10">
+                    <span class="w160p progressStepText fs18  dInB   taCE w160p">PREVIEW</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <!--END: Progressive Indicator-->
+
+            <div class="pL120pR120">
+                <div class="myBox" style="height: 870px;">	
+                    <div class="pageTitile bgBlueGrad pT15 pB15 fs24 pL20" style="border: 1px solid black;">{{selectedInventorySpace.consumptionEngineID}}</div>
+                    <div class="pL10 pR10 pB30">
+                        <div class=" pageDesc pT30 pB30 pL10 pR10 ">
+
+                            <section id="inventory-space">  
+                                <h3>IS Name: Essentials Jumbo 1</h3>
+                                <h3>Size: 940x270</h3>
+                                <select>
+                                    <option>Responsive</option>
+                                    <option>Fixed Image Left</option>
+                                </select>
+                            </section>
+                            <section id="preview" data-tdata-preview></section>    
+
+                            <section>
+                                <nav id="preview-tabs">
+                                    <ol>
+                                        <li ng-class="{active: showCatalog == true}" ng-click="showCatalog = true">
+                                            Catalogs
+                                        </li>
+                                        <li ng-class="{active: showCatalog != true}" ng-click="showCatalog = false">
+                                            Content
+                                        </li>
+
+                                        <li id="search-box" ng-hide="showCatalog" >
+                                            <input id="search-input" ng-model="search" type="text" size="20" />
+                                            <label for="search-input">Search </label>
+                                        </li>
+                                    </ol>
+                                </nav>
+                                <table class="table table-striped1 tableSecHead1 landTable" ng-show="showCatalog">
+                                    <thead>
+                                        <tr>
+                                            <th class="textFace">Priority</th>
+                                            <th class="textFace">Name</th>
+                                            <th class="textFace">Content Size</th>
+                                            <th class="textFace">Template</th>
+                                            <th class="textFace">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="catalog in catalogs">
+                                            <td class="col30 textCol textFace"><a ng-click="prioritize($index)"><i class="fa fa-long-arrow-up"></i></a><a ng-click="dePrioritize($index)"><i class="fa fa-long-arrow-down"></i></a></td>
+                                            <td class="col50 textCol textFace">{{catalog.name}}</td>
+                                            <td class="col50 textCol textFace">{{catalog.contentSize}}</td>
+                                            <td class="textCol textFace">{{catalog.template}}</td>
+                                            <td class="textCol textFace"><a ng-click="selectedCatalogue($index)"><i class="fa fa-eye"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped1 tableSecHead1 landTable" ng-hide="showCatalog">
+                                    <thead>
+                                        <tr>
+                                            <th class="textFace">Content ID</th>
+                                            <th class="textFace">Title</th>
+                                            <th class="textFace">ContentSize</th>
+                                            <th class="textFace">ContentType</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="content in catalog">
+                                            <td class="col30 textCol textFace">{{content.contentid}}</td>
+                                            <td class="col50 textCol textFace">{{content.title}}</td>
+                                            <td class="textCol textFace">{{content.contentType}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                        <br>
+                        <div class="btnLeft float-left pL20 pT15">	
+                            <a class="fs14" href="#">Cancel</a>
+                        </div>
+                        <div class="btnRight float-right pR20">
+                            <button class="btn btn-primary myPrimarybtn pT10 pB10 pL30 pR30 fs14 boldIt"  type="button" ng-click="saveCatalogues();">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <div id="footer_wapper">
+                AT&T on the Web <a href="http://www.att.com/privacy/" target="_blank">Privacy
+                    Policy</a> | <a href="http://www.att.com/econtactus/" target="_blank">Contact
+                    Us</a> | <a href="http://www.att.com/gen/general?pid=11561"
+                            target="_blank">Terms of Use</a> | <a
+                            href="http://www.att.com/gen/general?pid=10190" target="_blank">Accessibility</a>
+                | <a href="http://www.att.com/gen/public-affairs?pid=20107"
+                     target="_blank">Wireless Emergency Alerts</a> | <a href="#">Licenses</a><br>
+                <br>
+                <p>
+                    <a href="http://www.att.com/gen/privacy-policy?pid=2587"
+                       target="_blank" style="padding: 0;">&copy;2013 AT&T Intellectual
+                        Property</a>. All rights reserved. AT&T, the AT&T logo and all other
+                    AT&T marks contained herein are trademarks of AT&T Intellectual
+                    Property and/or AT&T affiliated companies. AT&T 36USC220506
+                </p>
+            </div>
+        </div>
+
+        <script src="../../app/lib/angular/jquery/jquery.js"></script>
+        <script src='../angular/angular.js'></script>
+        <script src='../angular/angular-resource.js'></script>
+        <script src='../tdata/tdata-recommendation.js'></script>
+        <script src='../tdata/tdata-responsive.js'></script>
+        <script src='../tdata/tdata-transitions.js'></script>
+
+        <script>
+                                    angular.module('previewApp', [])
+                                            .factory('Entity', function() {
+                                                return {
+                                                    selectedInventorySpace: {
+                                                        size: "940x270"
+                                                    }
+                                                };
+                                            })
+                                            .controller('previewCtrl', function($scope, Entity) {
+                                                $scope.showCatalog = true;
+                                                $scope.msg = 'world';
+                                                $scope.catalogs = [
+                                                    {
+                                                        name: 'ecomm',
+                                                        contentSize: 's',
+                                                        catalog: [
+                                                            {
+                                                                contentid: '123',
+                                                                title: 'Samsung Galaxy S4',
+                                                                contentType: 'Wireless Device'
+                                                            },
+                                                            {
+                                                                contentid: '124',
+                                                                title: 'Applie iPhone 5S',
+                                                                contentType: 'Wireless Device'
+                                                            },
+                                                            {
+                                                                contentid: '125',
+                                                                title: 'Applie iPhone 5C',
+                                                                contentType: 'Wireless Device'
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        name: 'ecomm',
+                                                        contentSize: 'l',
+                                                        catalog: [
+                                                            {
+                                                                contentid: '133',
+                                                                title: 'Samsung Galaxy S4',
+                                                                contentType: 'Wireless Device'
+                                                            },
+                                                            {
+                                                                contentid: '134',
+                                                                title: 'Applie iPhone 5S',
+                                                                contentType: 'Wireless Device'
+                                                            },
+                                                            {
+                                                                contentid: '135',
+                                                                title: 'Applie iPhone 5C',
+                                                                contentType: 'Wireless Device'
+                                                            }
+                                                        ]
+                                                    }
+                                                ];
+                                                $scope.selectedCatalog = [{
+                                                        isEnabled: "true",
+                                                        name: "ecomm",
+                                                        contentSize: "160x160",
+                                                        count: "500",
+                                                        template: {
+                                                            name: "Fixed Orange Right",
+                                                            size: "939x270",
+                                                            catalog: {
+                                                                name: "ecomm",
+                                                                contentSize: "160x160"
+                                                            },
+                                                            html: "<div class=\"invSpace wide-layout adOn\" style=\"display: block; visibility: visible;\"><a class=\"imgWrap\" href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\" style=\"width: 320px;float:right;margin-right: 0;\"><img data-tdata-image data-height=\"350\" data-width=\"450\" alt=\"image alt\" src=\"http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-450x350.jpg\" style=\"height: 270px;\"></a><div class=\"content\" style=\"width: 59.0306%;margin-left:30px;\"><h1 style=\"margin: 0px; font-size: 200%; line-height: 1.25;\"><a data-tdata-original-name=\"Samsung Galaxy S® 4 - 16GB Black Mist\" href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\" style=\"color:rgb(255,133,0);\">Samsung Galaxy S&reg; 4 - 16GB Black Mist</a><a class=\"tdata-expand\" href=\"#\">+</a></h1><p data-tdata-text=\"Premium camera for photos you won't believe came from a smartphone. View pictures, open files, and answer calls without touching the phone. Track diet/fitness goals and translate voice or text into another language. Built-in TV remote control.\" style=\"font-size: 124.65%;\">Premium camera for photos you won't believe came from a smartphone. View pictures, open files, and answer calls without touching the phone. Track diet/fitness goals and translate voice or text into another language. Built-in TV remote control.</p> <a href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\"><span style=\"font-size: 100%;\">Learn More</span></a></div></div>"
+                                                        },
+                                                        defaultContent: {
+                                                            contentId: "51b1b87731758f5a8c980199",
+                                                            statusCode: "100",
+                                                            offerId: "sku6580454",
+                                                            name: "Samsung Galaxy S® 4 - 16GB Black Mist",
+                                                            displayDescription: "Premium camera for photos you won't believe came from a smartphone. View pictures, open files, and answer calls without touching the phone. Track diet/fitness goals and translate voice or text into another language. Built-in TV remote control.",
+                                                            url: "http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html",
+                                                            imageUrl: "http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-160x160.jpg",
+                                                            imageWidth: "160",
+                                                            imageHeight: "160",
+                                                            largeImageUrl: "http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-450x350.jpg",
+                                                            largeImageWidth: "450",
+                                                            largeImageHeight: "350",
+                                                            catalog: "ecomm",
+                                                            contentSize: "450x350",
+                                                            template: "<div class=\"invSpace wide-layout adOn\" style=\"display: block; visibility: visible;\"><a class=\"imgWrap\" href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\" style=\"width: 320px;float:right;margin-right: 0;\"><img data-tdata-image data-height=\"350\" data-width=\"450\" alt=\"image alt\" src=\"http://www.att.com/catalog/en/skus/images/samsung-galaxy%20s%204%2016gb-black%20mist-450x350.jpg\" style=\"height: 270px;\"></a><div class=\"content\" style=\"width: 59.0306%;margin-left:30px;\"><h1 style=\"margin: 0px; font-size: 200%; line-height: 1.25;\"><a data-tdata-original-name=\"Samsung Galaxy S® 4 - 16GB Black Mist\" href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\" style=\"color:rgb(255,133,0);\">Samsung Galaxy S&reg; 4 - 16GB Black Mist</a><a class=\"tdata-expand\" href=\"#\">+</a></h1><p data-tdata-text=\"Premium camera for photos you won't believe came from a smartphone. View pictures, open files, and answer calls without touching the phone. Track diet/fitness goals and translate voice or text into another language. Built-in TV remote control.\" style=\"font-size: 124.65%;\">Premium camera for photos you won't believe came from a smartphone. View pictures, open files, and answer calls without touching the phone. Track diet/fitness goals and translate voice or text into another language. Built-in TV remote control.</p> <a href=\"http://www.att.com/shop/wireless/devices/samsung/galaxy-s-4-16gb-black-mist.html\"><span style=\"font-size: 100%;\">Learn More</span></a></div></div>"
+                                                        }
+                                                    }];
+                                                $scope.selectedCatalogue = function(index) {
+                                                    $scope.catalog = $scope.catalogs[index].catalog;
+                                                };
+                                            })
+                                            .directive('tdataPreview', function() {
+                                                return {
+                                                    templateUrl: 'previewTemplate.html',
+                                                    controller: function($scope, $element, $attrs, Entity) {
+                                                        $scope.is = Entity['selectedInventorySpace'];
+                                                        $scope.is.width = $scope.is.size.substring(0, $scope.is.size.indexOf('x'));
+                                                        $scope.is.height = $scope.is.size.substring($scope.is.size.indexOf('x') + 1, $scope.is.size.length);
+                                                    },
+                                                    link: function(scope, element, attrs, Entity) {
+                                                        var tdataArrayObject = $('#TDIS');
+                                                        var v = scope;
+                                                        scope.$watch('selectedCatalog[0]', function(newValue, oldValue) {
+                                                            if (newValue !== undefined && newValue.defaultContent !== undefined) {
+                                                                var offer = angular.copy(newValue);
+                                                                if (offer.template.html !== undefined) {
+                                                                    offer.defaultContent.template = offer.template.html;
+                                                                    $().replaceContent(offer.defaultContent, tdataArrayObject, 'defaultTransition');
+                                                                } else {
+                                                                    var parent = tdataArrayObject.children().wrapAll('<div />').parent();
+                                                                    var oldSpace = parent.children().wrapAll('<div />').parent();
+                                                                    oldSpace.remove();
+                                                                    offer.defaultContent.template = offer.template.html;
+                                                                    $().replaceContent(offer.defaultContent, tdataArrayObject, 'defaultTransition');
+                                                                }
+                                                            }
+                                                        }, true);
+                                                    }
+                                                };
+                                            });
+        </script>
+    </body>
+</html>

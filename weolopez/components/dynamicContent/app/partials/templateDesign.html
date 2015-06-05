@@ -1,0 +1,53 @@
+
+<div class="modal-header">
+    <div class="row-fluid clearfix">
+        <h1 class="span6" >Template
+            <select id="templateName" ng-model="$root.selectedCatalog[0].template" ng-options="p as p.name for p in templates" ></select> 
+        </h1>
+        <div class="span6">
+
+            <button class="btn btn-primary" ng-click="openPreviewModal()">Preview</button>
+            <button class="btn btn-primary pull-right"  ng-click="saveTemplate()">Save</button>
+            <button class="btn btn-secondary pull-right"  ng-click="cancelTemplate()">Cancel</button>
+            <button class="btn btn-primary pull-right"  ng-click="newTemplate()">New</button>
+        </div>
+    </div>
+</div>
+<div style="height: 90%;margin-bottom: 1em;">
+
+    <div class="row-fluid clearfix">
+        <div class="span6">
+            <label for="isName">Template Name: </label>
+            <input id="isName" type="text" size="20" ng-model="$root.selectedCatalog[0].template.name" required>
+        </div>
+        <div class="span6" >
+            <label for="size">Catalog Name: </label>
+            <input id="catalogName" type="text" size="20" ng-model="$root.selectedCatalog[0].template.catalog.name" required>
+        </div>
+    </div>
+    <div class="row-fluid clearfix">
+        <div class="span6">
+            <label for="isName">Inventory Space Size: </label>
+            <input id="size" type="text" size="20" ng-model="$root.selectedCatalog[0].template.size" required>
+        </div>
+        <div class="span6">
+            <label for="catalogSize">Catalog Size:</label>
+            <input id="catalogSize" type="text" size="20" ng-model="$root.selectedCatalog[0].template.catalog.contentSize" required>
+        </div>
+    </div>
+
+    <button class="btn btn-primary pull-right" ng-click="autoFormatSelection()">Format</button>
+    <textarea id="foo" ui-codemirror="editorOptions" ng-model="codeText" style="border-style: dotted;"></textarea>
+</div>
+
+<div data-modal="isPreviewModalOpen" data-close="closeModal()" data-options="opts" >
+    <form>
+        <div class="modal-header">
+            <div class="row-fluid clearfix">
+                <div class="span12">
+                    <section data-tdata-preview></section>    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

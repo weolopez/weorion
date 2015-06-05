@@ -1,0 +1,76 @@
+{
+    "catalogs": [
+        {
+            "isEnabled":"true",
+            "name": "ecomm",
+            "contentSize": "160x160",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "500"
+        },
+        {
+            "isEnabled":"true",
+            "name": "ecomm",
+            "contentSize": "450x350",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "500"
+        },
+        {
+            "isEnabled":"true",
+            "name": "ecomm",
+            "contentSize": "text",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "500"
+        },
+        {
+            "isEnabled":"true",
+            "name": "CQ5",
+            "contentSize": "TBD",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "100"
+        },
+        {
+            "isEnabled":"true",
+            "name": "Teamsite",
+            "contentSize": "DB 2x2",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "100"
+        },
+        {
+            "isEnabled":"true",
+            "name": "Teamsite",
+            "contentSize": "DB 1x3",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "100"
+        },
+        {
+            "isEnabled":"true",
+            "name": "Teamsite",
+            "contentSize": "myATT Shop MQ",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "100"
+        },
+        {
+            "isEnabled":"true",
+            "name": "Teamsite",
+            "contentSize": "myATT Shop Tile",
+            "rules": "Configure Rules",
+            "template": "Responsive",
+            "content": "Samsung",
+            "count": "100"
+        }
+    ]
+}

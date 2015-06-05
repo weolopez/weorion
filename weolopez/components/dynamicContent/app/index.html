@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mauricio Lopez Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Bootstrap based static page">
+        <meta name="author" content="weolopez@gmail.com">
+
+        <!-- Le styles -->
+        <link rel="stylesheet" href="lib/bootstrap/bootstrap-combined.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="lib/ng-grid/ng-grid.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="lib/ui-codemirror/codemirror.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="lib/tdata/tdata.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+        <style>
+            [ng-cloak] {
+                display: none;
+            }
+
+            /* GLOBAL STYLES
+            -------------------------------------------------- */
+            /* Padding below the footer and lighter body text */
+            html {
+                height: 100%;
+            }
+            body {
+                height: 100%;
+            }
+            .img-circle {
+                width: 144px;
+                height: 144px;
+            }
+
+            .test {
+                width: 100%; 
+                height: 700px;
+                margin: 0 auto;
+                left: 0;
+            }
+
+            .test .modal-body{
+                height: 700px;
+                max-height: 700px;
+            }
+
+            .pull-right {
+                margin-right: 10px;
+            }
+
+
+            .gridStyle {
+                border: 1px solid rgb(212,212,212);
+                width: 400px; 
+                height: 100%;
+            }
+
+            /* CUSTOMIZE THE NAVBAR
+            -------------------------------------------------- */
+            #app-header {
+                position: relative;
+                height: 100px;
+                margin-bottom: 1em;
+            }
+
+            /* Special class on .container surrounding .navbar, used for positioning it into place. */
+            .navbar-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                margin-top: 20px;
+                margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+            }
+            .navbar-wrapper .navbar {
+
+            }
+
+            /* Remove border and change up box shadow for more contrast */
+            .navbar .navbar-inner {
+                border: 0;
+                -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                box-shadow: 0 2px 10px rgba(0,0,0,.25);
+            }
+
+            /* Downsize the brand/project name a bit */
+            .navbar .brand {
+                padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+                font-size: 16px;
+                font-weight: bold;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+            }
+
+            /* Navbar links: increase padding for taller navbar */
+            .navbar .nav > li > a {
+                padding: 15px 20px;
+            }
+
+            /* Offset the responsive button for proper vertical alignment */
+            .navbar .btn-navbar {
+                margin-top: 10px;
+            }
+
+            #app-view {
+                width: 90%;
+                margin: 0 auto;
+                height: 100%;
+            }
+
+            #app-footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            #addToFirefox {
+                background: linear-gradient(#84C63C, #489615) repeat scroll 0 0 #489615;
+                border: 0 none;
+                border-radius: 6px 6px 6px 6px;
+                box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 -2px rgba(0, 0, 0, 0.1) inset;
+                color: #FFFFFF;
+                cursor: pointer;
+                font: 700 13px/1em "Trebuchet MS",sans-serif;
+                padding: 6px 10px 7px;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+                margin-top: 13px;
+            }
+
+            .gridStyle {
+                border: 1px solid rgb(212,212,212);
+                width: 100%; 
+                height: 100%
+            }
+            /* MARKETING CONTENT
+            -------------------------------------------------- */
+
+            /* Center align the text within the three columns below the carousel */
+            .marketing .span4 {
+                text-align: center;
+            }
+            .marketing h2 {
+                font-weight: normal;
+            }
+            .marketing .span4 p {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            #app-view .container  {
+                top: -315px;
+            }
+
+
+            /* Featurettes
+            ------------------------- */
+            .featurette-divider {
+                margin: 80px 0; /* Space out the Bootstrap <hr> more */
+            }
+            .featurette {
+                padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+                overflow: hidden; /* Vertically center images part 2: clear their floats. */
+
+                top: -315px;
+            }
+            .featurette-image {
+                margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+            }
+
+            /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+            .featurette-image.pull-left {
+                margin-right: 40px;
+                display: block;
+                max-width: 40%;
+            }
+            .featurette-image.pull-right {
+                margin-left: 40px;
+                display: block;
+                max-width: 40%;
+            }
+
+            /* Thin out the marketing headings */
+            .featurette-heading {
+                font-size: 50px;
+                font-weight: 300;
+                line-height: 1;
+                letter-spacing: -1px;
+            }
+
+
+
+            /* RESPONSIVE CSS
+            -------------------------------------------------- */
+
+            @media (max-width: 979px) {
+
+                .container.navbar-wrapper {
+                    margin-bottom: 0;
+                    width: auto;
+                }
+                .navbar-inner {
+                    border-radius: 0;
+                    margin: -20px 0;
+                }
+
+                .carousel .item {
+                    height: 500px;
+                }
+                .carousel img {
+                    width: auto;
+                    height: 500px;
+                }
+
+                .featurette {
+                    height: auto;
+                    padding: 0;
+                }
+                .featurette-image.pull-left,
+                .featurette-image.pull-right {
+                    display: block;
+                    float: none;
+                    max-width: 40%;
+                    margin: 0 auto 20px;
+                }
+            }
+
+
+            @media (max-width: 767px) {
+
+                .navbar-inner {
+                    margin: -20px;
+                }
+
+                .marketing .span4 + .span4 {
+                    margin-top: 40px;
+                }
+
+                .featurette-heading {
+                    font-size: 30px;
+                }
+                .featurette .lead {
+                    font-size: 18px;
+                    line-height: 1.5;
+                }
+
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body ng-app="inventorySpaceDefinition" ng-cloak>
+
+        <div id="plugincheck"></div>
+
+        <header id="app-header" ng-controller="PageController">
+            <!-- NAVBAR
+            ================================================== -->
+            <div class="navbar-wrapper">
+                <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+                <div class="container">
+
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+                            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="brand" href="index.html">T.Data Home Page</a>
+                            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+                            <div class="nav-collapse collapse">
+                                <ul class="nav">
+                                    <li><a href="mailto:weolopez@gmail.com">Contact</a></li>
+                                    <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">                                            
+                                            <li><a href="#/list">List Inventory Spaces</a></li>
+                                            <li><a href="https://builder.addons.mozilla.org/user/dashboard/">Edit Plugin</a></li>
+                                            <li class="divider"></li>
+                                            <li class="nav-header">Nav header</li>
+                                            <li><a href="#/dashboard">Dashboard</a></li>
+                                            <li><a href="#/ces">CE Config</a></li>
+                                            <li><a href="#/users">User Config</a></li>
+                                            <li><a href="https://tdata-recommendationsdev.stage.att.net/nt/MutualCertificate/1/2/recommendations/http/ATTNET/PG1?deviceType=1&userId=qay_opradhoc_66@att.net&userIdType=Email">Test JSON</a></li>                                            
+                                        </ul>
+                                    </li>
+                                    <li ng-hide="!hasPlugin()"><a id="addToFirefox" ng-click="openPreview()" >Preview</a></li>
+                                    <li ng-hide="hasPlugin()"><a id="addToFirefox" href="plugins/tdatapreview.xpi" >+ Add to Firefox</a></li>
+                                </ul>
+                            </div><!--/.nav-collapse -->
+                        </div><!-- /.navbar-inner -->
+                    </div><!-- /.navbar -->
+
+                </div> <!-- /.container -->
+
+            </div><!-- /.navbar-wrapper -->
+
+            <div id="preview" data-modal="shouldBeOpen" data-close="close()" data-options="optsPreview" >
+                <div class="modal-header">
+                    <h3>Preview<span style="float: right;" ><button class="btn btn-primary" ng-click="close()">Close</button></span></h3>
+
+                </div>
+                <div class="modal-body">                    
+                    <iframe style="width: 100%;height: 600px;" src="http://www.att.net/products"></iframe>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>            
+        </header>
+
+        <section id="app-view" data-ng-view ></section>
+
+        <footer id="app-footer"> AngularSample: v<span data-app-version></span></footer>
+
+        <script src='lib/angular/angular.js'></script>
+        <script src='lib/jquery/jquery.js'></script>
+        <script src='lib/bootstrap/bootstrap.min.js'></script>
+        <script src='lib/angular/angular-resource.js'></script>
+        <script src='lib/mongolabResourceHttp/mongolabResourceHttp.js'></script>
+        <script src='lib/ng-grid/ng-grid-2.0.7.debug.js'></script>
+        <script src='lib/bootstrap/ui-bootstrap-tpls-0.5.0.js'></script>
+        <script src='lib/ui-codemirror/codemirror.js'></script>
+        <script src="lib/ui-codemirror/htmlmixed.js"></script>
+        <script src="lib/ui-codemirror/css.js"></script>
+        <script src="lib/ui-codemirror/xml.js"></script>
+        <script src="lib/ui-codemirror/javascript.js"></script>
+        <script src='lib/ui-codemirror/formatting.js'></script>
+        <script src='lib/ui-codemirror/ui-codemirror.js'></script>
+        <script src='js/app.js'></script>
+        <script src='js/controllers.js'></script>
+        <script src='js/services.js'></script>
+        <script src='js/directives.js'></script>
+        <script src='js/filters.js'></script>
+        <script src='lib/tdata/tdata-recommendation.js'></script>  
+        <script src='lib/tdata/tdata-responsive.js'></script>  
+        <script src='lib/tdata/tdata-transitions.js'></script>  
+        
+<!--PLUGIN Testing TODO:Remove     
+        <script src='plugins/tdata-plugin.js'></script>     -->
+    </body> 
+</html>

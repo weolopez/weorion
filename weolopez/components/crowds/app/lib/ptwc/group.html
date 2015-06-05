@@ -1,0 +1,36 @@
+<div id="groupContainer">    
+    <h1>Predict the World Cup</h1>
+
+    <table id="groupTable" border="1"class="animate-table">
+        <thead>
+        <tr>
+            <th colspan="5">
+        <h2>Group {{selectedGroup}}</h2>
+        </th>
+        </tr>
+        <tr>
+            <th colspan="5">
+                <button ng-repeat="g in group| unique:'group'" ng-click="$parent.selectedGroup = g.group" ng-class="{ sgcss: $parent.selectedGroup == g.group}">{{g.group}}</button>
+            </th>
+        </tr>
+        <tr>
+            <th>Home</th>
+            <th>Score</th>
+            <th>vs</th>
+            <th>Score</th>
+            <th>Away</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="g in group| filter: {group:selectedGroup} " class="my-repeat-animation">
+                <td><a href="{{g.homeTeamLink}}">{{g.homeTeamName}}</a> <span class="{{g.homeTeamIcon}}" title="{{g.homeTeamName}}"> </span> </td>
+                <th><input type="text" style="width:17px" ng-model="g.homeScore"></th>
+                <th>-</th>
+                <th><input type="text" style="width:17px" ng-model="g.awayScore"></th>
+                <td><a href="{{g.awayTeamLink}}">{{g.awayTeamName}} </a>
+                    <span class="{{g.awayTeamIcon}}" title="{{g.awayTeamName}}"> </span> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>         

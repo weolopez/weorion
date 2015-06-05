@@ -1,0 +1,9 @@
+<section id="setAttributes" style="width: 100%;height: 100%; text-align: center;font-size:150%;">
+    <h1>{{line.name}}</h1>
+    <h2 ng-click="peopleInFront()" ng-hide="showCounter" >{{line.index}}</h2>
+    <label for="user_lic" ng-show="showCounter">Number of people in front of you? </label><br>
+    <input id="user_lic" type="number" min="5" max="30" step="5" ng-model="line.index"  ng-show="showCounter" ng-blur="showCounter=false;" ng- style="font-size:150%;background-color: black;color:white;border: none;" autofocus="autofocus"/>
+    <!--p><a title="reduce" class="heart"><i class="icon-heart"></i></a></p-->
+    <button data-file-button  ng-hide="showCounter" > </button>
+    <h2 ng-hide="showCounter" >{{counter}}</h2>
+</section>

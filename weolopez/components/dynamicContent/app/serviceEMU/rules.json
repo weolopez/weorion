@@ -1,0 +1,36 @@
+{
+	"rules": [
+		{
+			"name": "wirelessPlan",
+			"type": "Content Type"                        
+		},
+		{
+			"name": "wirelessDevice",
+			"type": "Content Type"     
+		},
+		{
+			"name": "wirelessAccessory",
+			"type": "Content Type"     
+		},
+		{
+			"name": "TBD Sam",
+			"type": "Content Type"     
+		},
+		{
+			"name": "WirelessPromo_Lines",
+			"type": "Content Type"     
+		},
+		{
+			"name": "WirelesPromo_Services",
+			"type": "Content Type"     
+		},
+		{
+			"name": "WirelessPromo_Accessories",
+			"type": "Content Type"     
+		},
+		{
+			"name": "WirelessPromo_Devices",
+			"type": "Content Type"     
+		}
+	]
+}

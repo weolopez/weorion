@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="lineApp">
+    <head>
+        <meta charset="utf-8">
+        <title>My AngularJS App</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=0.95, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../../fonts/font-awesome/dist/leaflet.awesome-markers.css">
+        <link rel="stylesheet" href="../../lib/angular-leaflet/leaflet.css">
+
+        <link rel="stylesheet" href="lineApp.css"/>
+    </head>
+    <body>
+        <div id="app">
+            <div ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+            </div>
+        </div>
+        <script src="../../lib/jquery/jquery.js"></script>        
+        <script src="../../lib/angular/angular1.2.js"></script>
+        <script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+        <script src="../../lib/angular-leaflet/angular-leaflet-directive.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+        <script src="../../lib/angular/angular-animate1.2.js"></script>
+        <script src="../../lib/angular/angular-route1.2.js"></script>
+        <script src="../../lib/angular/angular-resource1.2.js"></script>
+        <script src="../../lib/ngStorage/ngStorage.js"></script>
+        <script src="LineApp.js"></script>
+        <script src="../../lib/angular-leaflet/leaflet.js"></script> 
+        <script src="../../fonts/font-awesome/dist/leaflet.awesome-markers.js"></script>
+        <script src="../../fonts/font-awesome/js/fontawesome-markers.js"></script> 
+        <script src="../../lib/angular-leaflet/Google.js"></script>   
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <script src="http://firebase.github.io/angularFire/angularFire.js"></script>
+        <script src="../../lib/mongolabResourceHttp/mongolabResourceHttp.js"></script>
+
+
+        <script>
+        </script>
+    </body>
+</html>

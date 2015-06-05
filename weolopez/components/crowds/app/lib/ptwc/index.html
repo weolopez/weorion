@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=.9">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="App.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.js"></script>
+        <script src="http://code.angularjs.org/1.2.3/angular-route.js"></script>
+        <script src="http://code.angularjs.org/1.2.3/angular-animate.js"></script>
+        <script src="../../lib/mongolabResourceHttp/mongolabResourceHttp.js"></script>
+        <script src="../../lib/ngStorage/ngStorage.js"></script>        
+        <script src="AppsDirective.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-controller="myController">
+        <div id="app" class="my-slide-container">
+            <ng-view class="my-slide-animation"></ng-view>
+            <crowd-apps app-config="types" current-type="currentType"></crowd-apps>
+        </div>
+    </body>
+</html>

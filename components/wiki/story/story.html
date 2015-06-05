@@ -1,0 +1,32 @@
+<ion-view view-title="{{story.title}}" id="story">
+    <style>
+	    #story {
+	    	padding: 0;
+	    }
+        #roomlogin:hover {
+            color: #0a9ec7;
+        }
+        #loginroom:hover {
+            color: #0a9ec7;
+        }
+        .users {
+          //  margin-top: 50px;
+	    	padding: 0;
+        }
+    </style>    
+    <ion-header-bar class="bar-stable" style="height: 50px" >
+        <h1 class="" style="margin-top: -8px;"> {{story.current.name}}</h1>
+        <!--a id="roomlogin" class="button button-icon icon ion-share right" ng-click="shareRoom()"></a>
+        <a id="loginroom" class="button button-icon icon ion-log-in right" ng-click="loginRoom()"></a-->
+    </ion-header-bar>
+    
+    <ion-content class="padding users" scroll="true">    
+   		<div class="list">
+    	<label class="item item-icon-right" ng-repeat="key in story.getKeys()" ng-click="story.openModal(key)">
+		    <div class="input-label" ng-click="wiki.add()">
+		      {{key}}
+		    </div>
+		</label>
+		</div>
+    </ion-content>
+</ion-view>
