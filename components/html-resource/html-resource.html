@@ -1,0 +1,54 @@
+<div>
+	<style>
+		#output #wrapper { overflow: scroll; }
+		//	#corsource-template-template { display: none; }
+		textarea {float: right;width: 85%;margin-right: 15px;}
+		#propertiesDiv {float: left;width: 75px;}
+		md-content {margin-left: auto; margin-right: auto; width: 50%;overflow: hidden;}
+		#toolbar { display:inline-block;border: #000 inset medium; width: 95%;background-color: white; }
+		#unedit { float: right; }
+	</style>
+
+	<md-content ng-hide="hasInit">	
+		<div style="width: 300px" >
+			<h2 style="text-align: center;">Configure Resouce: {{path}}</h2>
+			<md-text-float label=" URL after http://" type="text" ng-model="inputurl" ng-init="inputurl = 'finance.yahoo.com/q?s=t'"> </md-text-float>	
+			<md-text-float label=" Find " type="text" ng-model="inputselector" ng-init="inputselector = '#yfi_quote_summary_data'"> </md-text-float>	
+			<md-button id="find" aria-label='none' ng-click="findHTML(inputurl, inputselector)" class="md-primary" ng-show="inputurl.length > 4">
+				Find
+			</md-button>	
+		</div>
+	</md-content>
+	<div id="toolbar" class="row" ng-show="(hasInit && edit)" >
+		<properties model="to"></properties>	
+		<md-button id="unedit" aria-label='none' ng-click="edit = false;" >
+			save
+		</md-button>	
+		<textarea ng-model="htmltemplate"></textarea>
+	</div>
+	<div ng-hide="edit">		
+
+	</div>
+	<md-button id="edit" aria-label='none' ng-click="idAction()"  ng-hide="edit">
+		{{id}}
+	</md-button>	
+	<br>
+	<div id="corsource-template-template">
+		<div ng-repeat="b in $parent.bindings">
+			<div id="toolbar" class="row" ng-show="(hasInit && edit)" >
+				<properties model="b"></properties>	
+				<md-button id="unedit" aria-label='none' ng-click="edit = false;" >
+					save
+				</md-button>	
+				<textarea ng-model="htmltemplate"></textarea>
+			</div>
+			<div id="{{b}}sel" style="display: none;"></div>
+		</div>					
+		<div id="{{name}}" style="display: none;"></div>
+	</div>
+
+	<preview template="htmltemplate" ng-show="hasInit"/>
+	<!--md-button id="edit" aria-label='none' ng-click="storage.$reset();"  ng-hide="edit">
+		Delete Local Storage
+	</md-button-->	
+</div>

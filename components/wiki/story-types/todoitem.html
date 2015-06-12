@@ -1,0 +1,68 @@
+<div id="weo" >
+	<style>
+		#todoname {
+			padding-bottom: 16px
+		}
+		#weo {
+			background: #7db9e8;
+			background: -moz-linear-gradient(top,  #7db9e8 0%, #7db9e8 0%, #207cca 61%, #3a6699 99%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(0%,#7db9e8), color-stop(61%,#207cca), color-stop(99%,#3a6699));
+			background: -webkit-linear-gradient(top,  #7db9e8 0%,#7db9e8 0%,#207cca 61%,#3a6699 99%);
+			background: -o-linear-gradient(top,  #7db9e8 0%,#7db9e8 0%,#207cca 61%,#3a6699 99%);
+			background: -ms-linear-gradient(top,  #7db9e8 0%,#7db9e8 0%,#207cca 61%,#3a6699 99%);
+			background: linear-gradient(to bottom,  #7db9e8 0%,#7db9e8 0%,#207cca 61%,#3a6699 99%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#3a6699',GradientType=0 );
+		}
+		a {
+		    color: white;
+		}
+ .animate-if.ng-enter, .animate-if.ng-leave {
+    -webkit-transition: 1s linear all;
+    -moz-transition: 1s linear all;
+    -ms-transition: 1s linear all;
+    -o-transition: 1s linear all;
+    transition: 1s linear all;
+}
+ .animate-if.ng-enter {
+    max-height: 0;
+    opacity: 0;
+}
+ .animate-if.ng-enter.ng-enter-active {
+    max-height: 999px;
+    opacity:1;
+}
+ .animate-if.ng-leave {
+    max-height: 999px;
+    opacity:1;
+}
+ .animate-if.ng-leave.ng-leave-active {
+    max-height: 0;
+    opacity:1;
+}
+	</style>	
+	<script>
+	
+angular.module('component.wiki.page', [ ]).controller('TodoItemCtrl', function ($page) {
+	var todo = this;
+	todo.change = function() {
+		$page.save();
+	}
+	todo.canExpand = function(s) {
+		return (($page.currentStory===s) && (!s.complete) );
+	}
+});     
+var queue = angular.module('component.wiki.page')._invokeQueue;
+for(var i=0;i<queue.length;i++) {
+    var call = queue[i];
+    var provider = providers[call[0]];
+    if(provider) {
+        provider[call[1]].apply(provider, call[2]);
+    }
+}
+
+$('#weo').attr('ng-controller', "TodoItemCtrl as todo"); 
+
+	</script>
+	<ion-toggle id="todoname" ng-change="todo.change()" ng-model="s.complete" toggle-class="toggle-calm" ng-click="page.edit(s.name)">{{s.name}}</ion-toggle>
+	<section ng-if="todo.canExpand(s)" class="animate-if" ng-bind-html="page.deliberatelyTrustDangerousSnippet(s)"></section>
+</div>  

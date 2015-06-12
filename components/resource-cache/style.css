@@ -1,0 +1,11 @@
+#header {width:100%; overflow-x:hidden;overflow-y: hidden;background-color: #444;color: white}
+#header ul { list-style:none;padding: 0;margin: 0;width: 100%;}
+#header ul li { float:left; width: auto;padding: 10px 10px 10px 10px; }
+.menu-items.active { background-color: gray;}
+#header .menu-items { margin-top: 20px}
+#header ul li a {text-decoration: none;color: white; }
+#header ul li img {width: 35px}
+#submenu {display: none;position: relative;float: left;clear:both;width: 100%}
+#submenu.active{background-color: grey;padding: 10px;display: block}
+#submenu input {width: 150px;margin-right: 20px;margin-top: 10px}
+

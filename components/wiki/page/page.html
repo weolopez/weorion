@@ -4,19 +4,20 @@
 		-webkit-transition:0.5s linear all;
   		transition:0.5s linear all;	
 	  background:white;
-	  padding:5px;
+	 // padding:5px;
 	  border:0px solid black;
 	}	
 	.editable-content.focused {
 	  background: #E6E6E6;
-	//  margin:10px;
+	  margin:10px;
 	  border:1px solid black;
 	}	
 </style>
-	<div ng-repeat="s in page.page.story track by $index" 
+	<div ng-repeat="s in page.page.current.story track by $index" 
 		class="editable-content" 
-		ng-class="{focused:(s==page.story)}"
-		ng-click="page.componentClicked($index, s)" 
+		ng-class="{focused:page.isSelected($index)}"
+		ng-click="page.componentClicked($index)" 
+		delegate-handle="D{{$index}}"
 		>
 		<div 
 			ng-include="page.getTemplate(s)"
@@ -28,6 +29,9 @@
  
   <button ng-hide="showjson" ng-click="showjson=!showjson">show json</button>
   <p ng-show="showjson" ng-click="showjson=!showjson">
-  	{{page.page.story}}
+  	{{page.page.current.story}}
   </p>
+  <br>
+  <br>
+  <br>
 </<ion-content>

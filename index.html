@@ -5,14 +5,17 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="http://code.ionicframework.com/1.0.0/css/ionic.min.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
+    
+    <!-- jquery js -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
     <!-- ionic/angularjs js -->
-    <script src="http://code.ionicframework.com/1.0.0/js/ionic.bundle.js"></script>
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
     <script src="https://cdn.rawgit.com/gsklee/ngStorage/master/ngStorage.min.js"></script>
 
 	<!-- Firebase -->
@@ -20,17 +23,13 @@
 	
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
-	
-	<!-- Angular-contenteditable -->
-	<script src="https://cdn.rawgit.com/akatov/angular-contenteditable/master/angular-contenteditable.js"></script>
-
-	<!-- Angular-drag-and-drop-lists -->
-	<script src="https://cdn.rawgit.com/marceljuenemann/angular-drag-and-drop-lists/master/angular-drag-and-drop-lists.min.js"></script>
-	<script src="https://cdn.rawgit.com/timruffles/ios-html5-drag-drop-shim/master/ios-drag-drop.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
 	
     <!-- cordova script (this will be a 404 during development) 
     <script src="cordova.js"></script>-->
     
+    <!-- jsonml-dom-->
+	<script src="https://cdn.rawgit.com/weolopez/Recursive/master/components/wiki/jsonml-dom.js"></script>
 
     <!-- your app's js -->
      <script src="components/user/user.js"></script>
@@ -40,6 +39,8 @@
      <script src="components/wiki/page/page.js"></script>
      <script src="components/wiki/story/story.js"></script>
      <script src="components/wiki/wiki.js"></script>
+     <script src="components/firebase/firebase.js"></script>
+     <script src="components/resource-cache/resource-cache.js"></script>
     <!-- Views -->
   </head>
 
@@ -47,7 +48,9 @@
     <ion-nav-view></ion-nav-view>    
   </body>
   <script>
-  	angular.module('starter', ['ionic', 'ngAnimate', 'component.application', 'component.application.settings', 'component.wiki', 'component.wiki.page', 'component.wiki.story', 'component.wiki.pageconf'])
+  	angular.module('starter', ['ionic', 'ngAnimate', 'component.application', 'component.application.settings', 
+  	'component.wiki', 'component.wiki.page', 'component.wiki.story', 'resource-cache', 'component.wiki.pageconf', 
+  	'component.firebase'])
   	.run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -71,28 +74,51 @@
                     })
                     .state('app.wiki', {
                         url: '/wiki/:name',
+                        abstract: true,
                         views: {
                             'page': {
 		                        templateUrl: 'components/wiki/page/page.html',
 		                        controller: 'PageCtrl as page'
-		                     },
-                            'story': {
-		                        templateUrl: 'components/wiki/story/story.html',
-		                        controller: 'StoryCtrl as story'
-		                     }, 
-                            'pageconf': {
-		                        templateUrl: 'components/wiki/pageconf/pageconf.html',
-		                        controller: 'PageConfCtrl as pageconf'
-		                     }, 
-                            'settings': {
-		                        templateUrl: 'components/application/settings/settings.html',
-		                        controller: 'SettingsCtrl as settings'
+		                       /* resolve: {
+							    stories: function($page) {
+							        return $page.getStories();
+							      }
+							    }*/
 		                     }
 		             	}        
                     })
+                    .state('app.wiki.story', {
+                        url: '/story/:storyName?edit',
+                        views: {
+                        	'story': {
+	                        	templateUrl: 'components/wiki/story/story.html',
+		                        controller: 'StoryCtrl as story'
+                        	}
+                        }
+                    })
+                    .state('app.wiki.pageconf', {
+                        url: '/pageconf/:storyName',
+                        	views: {
+                        		'pageconf': {
+                        			templateUrl: 'components/wiki/pageconf/pageconf.html',
+                        			controller: 'PageConfCtrl as pageconf'
+                        		}
+                        	}
+                    })
+                    .state('app.wiki.settings', {
+                        url: '/settings/:storyName',
+                        	views: {
+                        		'settings': {
+		                        	templateUrl: 'components/application/settings/settings.html',
+		                        	controller: 'SettingsCtrl as settings'
+	                        	}
+                        	}
+                    })
                     ;
             // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/app/wiki/New');
+            $urlRouterProvider.otherwise(function(i,l) {
+            	return '/app/wiki/home/settings/';
+            	});
         })
   </script>
 </html>

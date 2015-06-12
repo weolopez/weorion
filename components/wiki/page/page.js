@@ -1,10 +1,17 @@
 /* 
  */
 'use strict';
-
-angular.module('component.wiki.page', [ 'contenteditable', 'dndLists', 'ngSanitize'
-])         
-	.factory('$page', function ($log, $firebaseAuth, $firebaseObject, $firebaseArray) {
+// Make module Foo and store providers for later use
+var providers = {};
+angular.module('component.wiki.page', [ 'ngSanitize'
+], function($controllerProvider, $compileProvider, $provide) {
+    providers = {
+        $controllerProvider: $controllerProvider,
+        $compileProvider: $compileProvider,
+        $provide: $provide
+    };
+})        
+	.factory('$page', function ($log, $firebaseAuth, $firebaseObject, $firebaseArray, CONST) {
         	var page = this;
             
 			var observerCallbacks = [];
@@ -14,36 +21,52 @@ angular.module('component.wiki.page', [ 'contenteditable', 'dndLists', 'ngSaniti
 				});
 			};
 
-			page.registerObserverCallback = function (callback) {
+			page.ifPageChanges = function (callback) {
 				observerCallbacks.push(callback);
 			}
 			
-			page.setPageName = function(p) {
-				page.name = p;
-				var pageRef = new Firebase("https://weo.firebaseio.com/wiki/pages/"+page.name);
-        		$firebaseObject(pageRef).$loaded(function(value) {
-					page.dataExists = value.$value !== null;
-					page.current = value;
-					if (page.dataExists === false) {
-					    page.current.title = page.name;			
-						page.current.story = [];
+			page.getPages = function(callback) {
+				if (page.pages === undefined) {
+					return $firebaseArray(new Firebase(CONST.FB+'/wiki/pages')).$loaded(function(value) {
+						page.pages = value;
+						callback();
+					})
+				} else callback();
+			}
+			page.updatePage = function(state) {
+				page.getPage(state.params.name, function(p) {
+					page.current=p;
+					
+					if (state.params.storyName !== '' ) {
+						angular.forEach(page.current.story, function(story, index) {
+							if (state.params.storyName === story.name) {
+								page.storyIndex = index;
+								page.currentStory = page.current.story[index];
+								
+					/*			if ($state.params.edit === 'true') $page.ifPageChanges( function() {
+									story.openModal($page.storyIndex);
+								});*/
+							}
+						})
 					} else {
-					} 			
-					notifyObservers()
-				});
+						page.storyIndex = -1;
+						page.currentStory = undefined;
+					}
+					
+			//		notifyStoryObservers();
+			//		notifyObservers;
+				})
 			}
 			
-			page.save = function() {
-				page.current.$save();
-			}
             page.add = function(s) {
+            	if (page.current.story === undefined) page.current.story = [];
 				page.current.story.push(s);
 				page.save();
 			}
 			
 			var storyChangeCallbacks = [];
-            var notifyStoryObservers = function () {
-				angular.forEach(storyChangeCallbacks, function (callback) {
+            var notifyStoryObservers = function () {				
+				angular.forEach(storyChangeCallbacks, function (callback) {	
 					callback();
 				});
 			};
@@ -51,104 +74,81 @@ angular.module('component.wiki.page', [ 'contenteditable', 'dndLists', 'ngSaniti
 			page.ifStoryChanges = function (callback) {
 				storyChangeCallbacks.push(callback);
 			}
-			
-			page.setStory = function(index, story) {
-				page.storyIndex = index;
-				page.story = story;
-	        	if ( (page.story !== undefined) && (page.story.name === undefined) ) page.story.name = 'undefined';
-				notifyStoryObservers();
+			page.save = function() {
+				page.current.story[page.storyIndex] = page.currentStory;
+				page.current.$save().then(function(value){
+					notifyStoryObservers();
+					notifyObservers();
+				});
 			}
 			page.removeStory = function() {				
 				page.current.story.splice(page.storyIndex, 1);
-				page.save();
-				page.story = undefined;
+				page.currentStory = undefined;
 				page.storyIndex = -1;
-				notifyStoryObservers();
+				page.save();
 			}
+	        page.getPage = function(pageName, callback) {
+	        	var pageRef = new Firebase(CONST.FB+'/wiki/pages/'+pageName);
+        		$firebaseObject(pageRef).$loaded(function(value) {
+        			callback(value);
+				})
+	        }        
             return page;
     })
-	.controller('PageCtrl', function ($stateParams, $app, $page, $compile, $sanitize) {
-        var page = this;
-        page.name = $stateParams.name;		
-		$app.name = page.name;		
-		$app.navBar.title($app.name);
-		$page.registerObserverCallback(function() {
-			page.page = $page.current;
-		});
-		$page.setPageName(page.name);
+	.controller('PageCtrl', function ($log, $stateParams, $state, $location, $app, 
+			$page, $scope, $interpolate, $sce, $wiki, $user, $ionicPopup) {
+        var page = this;	
+        page.page = $page;        
 		
-        var storyLength=0;
-        
-        $page.ifStoryChanges(function(){
-			page.story = $page.story;        	
-        })
-        
-		page.componentClicked = function(index, story){
-			if (index === $page.storyIndex) $page.setStory(-1,undefined);
-			else $page.setStory(index, story);
+		$scope.$on( "$stateChangeSuccess", function()
+		{ 
+			var storyName = ' / '+$state.params.storyName;
+			if ($state.params.storyName === '') storyName = '';
+			$app.navBar.title($state.params.name+storyName);
+			
+			$page.updatePage($state);
+            if ($user.user === undefined) return;
+            $user.setLocation($location.url());
+	    });  
+		
+		page.componentClicked = function(index){
+			if (index === $page.storyIndex) {
+					index = -1;
+					$page.currentStory = undefined;
+					$state.go('app.wiki.pageconf', { 'storyName': ''});
+				}
+				else {
+					$state.go('app.wiki.story', { 'storyName': $page.current.story[index].name});
+				}
+				
+		//	$page.setStory(index);
 		} 
-		page.moved = function($index,s) {
-			if (storyLength !== page.page.story.length-1) return;
-			page.page.story.splice($index, 1);
-			page.page.$save();
-		}
-		page.save = function(s,text) {
-			if (text === undefined) return;
-			text = angular.element('<textarea />').html(text).text();
-			text = $sanitize(text);
-		//	page.story[$index].text = text;
-			page.page.$save();
+		page.isSelected = function(index) {
+			return ($page.storyIndex === index); 
 		}
 		page.getTemplate = function(s) {
+			if (s === undefined) {
+				$log.error("Story not found:",  $page.currentStory);
+				return;
+			}
 			return 'components/wiki/story-types/'+s.type+'.html';
 		}
-		
-		function wikifyString(data) {
-                        var newMsg = '';
-                        var res = data.split(" ");
-                        angular.forEach(res, function (value) {
-                            angular.forEach($page.nouns, function (item) {
-                                //console.dir(item);
-                                if (item === value) {
-                                    value = '<a href="#/wiki/' + item + '">' + item + '</a>';
-                                    return false;
-                                }
-                            });
-                            newMsg += value + " ";
-                        });
-                        return newMsg;
-                    }
-		function updateHTML() {
-                        $timeout(function () {
-                            var value = $element.html();
-                            value = wikifyString(value);
-                        });
-                    }
-		function parseStory(story) {
-                        if (story.type === 'paragraph') {
-                            var txt = replaceLink(story.text)
-                            return "<p>" + txt + "</p>";
-                        }
-                        if (story.type === 'html') {
-                            var txt = replaceLink(story.text)
-                            return txt + "</h3>";
-                        }
-                        if (story.type === 'pagefold') {
-                            return "<hr>";
-                        }
-                        else {
-                            $log.error("Story Type Not Found: "+ story.type);
-                            return story.type + "<br>" + story.text + "<hr>";
-                        }
-                    }
-		function replaceLink(txt) {
-			txt='xxxx'
-                        var txt = txt.replace(/\[\[(.+?)\]\]/g, function (match) {
-                            var display = match.substring(2, match.length - 2);
-                            var link = display.replace(/ /g, "-");
-                            var newtxt = "<a ng-click=\"page.openFedWiki(\'" + link + "\')\">" + display + "</a>";
-                            return newtxt;
-                        }, txt);
-                        return txt;
-                    }
+		page.deliberatelyTrustDangerousSnippet = function(s) {
+			var txt = s.text;
+			$scope.s = s;
+			txt = $wiki.wikify(txt)
+			txt=$scope.$eval($interpolate(txt));
+			//console.log("SECOND"+txt);
+               return $sce.trustAsHtml(txt);
+             };
+        page.wikify = function(s) {
+        	var txt = s.text;
+        	return $wiki.wikify(txt);
+        }
+        page.getStories = function(s) {
+        	$page.getPage(s.page, function(p) {
+        		page.t=p.story;
+        	});
+        }
+        
 	});

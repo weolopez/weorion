@@ -1,0 +1,35 @@
+<div id="story" ng-init="page.getStories(s,page.t)">
+	<style>
+		#todoname {
+			margin: 0;
+			background-color: red;
+		}
+		#todoname.complete {
+			margin: 0;
+			background-color: green;
+		}
+		#story {
+		}
+	</style>
+	<h1>Name : {{s.name}}</h1>
+	<ul ng-init="todoitemtype='todoitem'">
+		<li ng-repeat="todoitem in page.t track by $index"
+			ng-if="todoitemtype===todoitem.type">
+
+	<label 
+		 	id="todoname" 
+			ng-class="{complete:todoitem.complete}" 
+			class="item item-input">
+			
+		<button 
+           type="button" 
+           class="button button-icon button-clear ion-edit" 
+           ng-click="todoitem.complete=true" ></button>   
+		    
+		<div class="input-label" 
+		        ng-click="todoitem.complete=true">
+		       {{todoitem.name}}</div>		   
+	</label>	
+		</li>
+	</ul>		
+</div>

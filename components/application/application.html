@@ -5,30 +5,35 @@
                 <ion-nav-back-button>         
                 </ion-nav-back-button>
 
-                <ion-nav-buttons side="right">
+                <ion-nav-buttons side="right" ng-controller="UserCtrl as user">
                     <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
                     </button>
+                    <user ng-show="user.isLoggedIn()"></user>
                 </ion-nav-buttons>
             	<h1 class="title" ></h1>
             </ion-nav-bar>
             <ion-nav-view name="page" style="top:40px;"></ion-nav-view>
         </ion-side-menu-content>
 
-        <ion-side-menu side="right" > 
+        <ion-side-menu side="right" >
+        
+  <!--span>$state = <b>{{app.state.current.name}}</b></span><br>
+  <span>$state url = <b>{{app.state.$current.url.source}}</b></span-->
             <ion-tabs class="tabs-icon-top tabs-color-active-positive">
-                <!-- Dashboard Tab -->
-                <ion-tab title="Story" icon-off="ion-chatbox" icon-on="ion-chatbox-working" href="#" ng-if="app.story!==undefined">
-                    <ion-nav-view name="story"></ion-nav-view>
+<!-- Dashboard Tab -->                
+                <ion-tab title="Story" icon-off="ion-chatbox" icon-on="ion-chatbox-working" ui-sref="app.wiki.story" hidden="{{(app.page.currentStory===undefined)}}">
+                    <ion-nav-view name="story@app.wiki"></ion-nav-view>
                 </ion-tab>
 
+
                 <!-- Chats Tab -->
-                <ion-tab title="Page" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/app">
-                    <ion-nav-view name="pageconf"></ion-nav-view>
+                <ion-tab title="Page" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.wiki.pageconf">
+                    <ion-nav-view name="pageconf@app.wiki"></ion-nav-view>
                 </ion-tab>
 
                 <!-- Account Tab -->
-                <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/settings">
-                    <ion-nav-view name="settings"></ion-nav-view>
+                <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ui-sref="app.wiki.settings">
+                    <ion-nav-view name="settings@app.wiki"></ion-nav-view>
                 </ion-tab>
             </ion-tabs>
         </ion-side-menu>

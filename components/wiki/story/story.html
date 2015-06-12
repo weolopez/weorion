@@ -1,4 +1,4 @@
-<ion-view view-title="{{story.title}}" id="story">
+<ion-view view-title="{{page.current.title}}" id="story">
     <style>
 	    #story {
 	    	padding: 0;
@@ -15,18 +15,24 @@
         }
     </style>    
     <ion-header-bar class="bar-stable" style="height: 50px" >
-        <h1 class="" style="margin-top: -8px;"> {{story.current.name}}</h1>
+        <h1 class="" style="margin-top: -8px;">Properties</h1>
         <!--a id="roomlogin" class="button button-icon icon ion-share right" ng-click="shareRoom()"></a>
         <a id="loginroom" class="button button-icon icon ion-log-in right" ng-click="loginRoom()"></a-->
     </ion-header-bar>
     
     <ion-content class="padding users" scroll="true">    
    		<div class="list">
-    	<label class="item item-icon-right" ng-repeat="key in story.getKeys()" ng-click="story.openModal(key)">
-		    <div class="input-label" ng-click="wiki.add()">
-		      {{key}}
-		    </div>
-		</label>
+	    	<label class="item item-icon-right" ng-repeat="key in story.getKeys()" ng-click="story.openModal(key)">
+			    <div class="input-label" ng-click="story.openModal(key)">
+			      {{key}}
+			    </div>
+			</label>
+			
+	    	<label class="item item-icon-right" ng-click="story.app.copy(story.page.currentStory)">
+			    <div class="input-label" ng-click="story.app.copy(story.page.currentStory)">
+			      Copy {{story.page.currentStory.name}}
+			    </div>
+			</label>
 		</div>
     </ion-content>
 </ion-view>

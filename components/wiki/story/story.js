@@ -4,46 +4,40 @@
 
 angular.module('component.wiki.story', [
 ]) 
-	.controller('StoryCtrl', function ($app, $page, $ionicModal, $scope) {
-        var story = this;
+	.controller('StoryCtrl', function ($app, $log, $ionicModal, $ionicSideMenuDelegate, $scope, $page) {
+        var story = this;        
+        story.page = $page;
         story.app = $app;
-        story.current = {name:'undefined'}
-        story.title = $app.name;
-        story.current = $page.story;
+        $page.storyCtrl = story;
+        story.currentStory = {};
         
-        $page.ifStoryChanges(function() {
-	        story.current = $page.story;
+        story.page.ifStoryChanges(function(){
+      //  	if (story.page.currentStory === undefined) return story.currentStory = {};
         })
         
         story.getKeys = function() {
-        	return Object.keys(story.current);
-        } 
-        
-		$ionicModal.fromTemplateUrl('components/wiki/story/edit-story.html', {
-		    scope: $scope,
-		    animation: 'slide-in-up'
-	  	}).then(function(modal) {
-		    story.modal = modal;		   
-	  	});
-	  	
+        	//$log.debug(story.page.currentStory);
+        	if (story.page.currentStory===undefined)return;
+        	return Object.keys(story.page.currentStory);
+        }   
+	  	story.isSaved = function() {
+	  		return false;
+	  	}
 	  	story.openModal = function(key) {
-	    	story.modal.scope.key = key;
-	    	story.modal.show();
+	  		$ionicSideMenuDelegate.toggleRight();
+	  		$ionicModal.fromTemplateUrl('components/wiki/story/edit-story.html', {
+		  		id: '1',	
+		  		backdropClickToClose: false,
+		    	scope: $scope,
+				animation: 'slide-in-up'
+			}).then(function(modal) {
+			    story.modal = modal;
+				story.modal.scope.key = key;  
+		    	story.modal.show();
+			  });
 	  	};
-	  	story.closeModal = function() {
-	    	story.modal.hide();	    
-	  	};
-		  	//Cleanup the modal when we're done with it!
-		  	$scope.$on('$destroy', function() {
-		    	story.modal.remove();
-		  	});
-		  	// Execute action on hide modal
-		  	$scope.$on('modal.hidden', function() {
-		    	// Execute action
-		    	$page.save();
-		  	});
-		  	// Execute action on remove modal
-		  	$scope.$on('modal.removed', function() {
-		    	// Execute action
-		  	});
+		story.closeModal = function(u) {       
+		    $page.save();
+		    story.modal.hide();
+		};	
 	});

@@ -1,0 +1,41 @@
+<div>	
+	<h1>{{s.name}}</h1>
+	<section style="text-indent: 50px;">
+		<h4 style="color:white;background-color:blue;">Remote HTML</h4>
+		<ul>
+		    <li>name: {{s.name}}</li>
+		    <li>text: {{s.text}}</li>
+		    <li>type: {{s.type}}</li>
+		</ul>
+		
+<section>
+	<style>
+		#output #wrapper { overflow: scroll; }
+		table { margin-left: auto; margin-right: auto; width: 50%; }
+	</style>
+	<h1>From predictthescore.net
+
+		<resource-cache id="EPL Standings" url="predictthescore.net/" bind-to="team" ishtml="true" style="float: right">
+		</resource-cache>
+		<weo-bind from="team" to="standings" selector="#standings"></weo-bind>
+	</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>TEAM</th>
+				<th>POINTS</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat = "s in standings[5][3]">
+				<td>{{s[3][2][2]}}</td>
+				<td>{{s[5][2]}}</td>
+				{{s}}
+			</tr>
+		</tbody>
+	</table>
+{{standings[5]}}
+</section>
+
+	</section>	
+</div>

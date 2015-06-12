@@ -32,12 +32,11 @@
 </style>
 <header id="editor-header" class="bar bar-header bar-positive">
           <h1 class="title">Property Editor ({{key}})</h1>
-          <div id="close-editor" class="button button-clear" ng-click="story.modal.hide()">
+          <div id="close-editor" class="button button-clear" ng-click="story.closeModal()">
           	<span class="icon ion-close"></span>
           </div>
         </header>
         
-    <textarea id="editor-text" placeholder="Comments" ng-model="story.current[key]"></textarea>
-
+    <textarea id="editor-text" placeholder="Comments" ng-model="story.page.currentStory[key]"></textarea>
 	
 </div>

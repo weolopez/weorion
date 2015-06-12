@@ -22,6 +22,8 @@
     
     <ion-content class="padding users" scroll="true">    
    		<div class="list">
+   		
+		<ion-toggle ng-model="settings.user.synch" toggle-class="toggle-calm" >Synch URL</ion-toggle>
 		 <label class="item item-input">
            <button type="button" class="button button-icon button-clear ion-edit" ng-click="settings.edit()" ></button>   
 		    <div class="input-label" ng-click="settings.delete()">
