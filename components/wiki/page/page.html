@@ -1,10 +1,9 @@
-<ion-content>
+<ion-content  header-shrink scroll-event-interval="5">
 <style>
 	.editable-content {
 		-webkit-transition:0.5s linear all;
   		transition:0.5s linear all;	
 	  background:white;
-	 // padding:5px;
 	  border:0px solid black;
 	}	
 	.editable-content.focused {
@@ -12,6 +11,17 @@
 	  margin:10px;
 	  border:1px solid black;
 	}	
+	
+.bar-header {
+  height: 44px !important;
+}
+.bar-header > * {
+  //margin-top: 20px !important;
+}
+
+.scroll-content{
+  top:0 !important
+}
 </style>
 	<div ng-repeat="s in page.page.current.story track by $index" 
 		class="editable-content" 

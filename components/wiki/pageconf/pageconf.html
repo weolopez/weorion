@@ -9,17 +9,14 @@
         #loginroom:hover {
             color: #0a9ec7;
         }
-        .users {
-          //  margin-top: 50px;
-	    	padding: 0;
+        .pageconf {
+            padding: 45px 0 0 0 ;
         }
     </style>    
     <ion-header-bar class="bar-stable" style="height: 50px" >
         <h1 class="" style="margin-top: -8px;">Page(s)</h1>
-        <!--a id="roomlogin" class="button button-icon icon ion-share right" ng-click="shareRoom()"></a>{{pageconf.name}}
-        <a id="loginroom" class="button button-icon icon ion-log-in right" ng-click="loginRoom()"></a-->
     </ion-header-bar>
-    <ion-content class="padding users" scroll="true">    
+    <ion-content class="padding pageconf" scroll="true">    
    		<div class="list">
 		 <label class="item item-input " ng-repeat="p in pageconf.pages">
 		    <button type="button" class="button button-icon button-clear ion-arrow" ng-click="pageconf.goToPage(p)"></button>
@@ -27,29 +24,6 @@
 		      {{p.title}}
 		    </div>		   
 		  </label>
-		 <label class="item item-input item-select">
-		    <button type="button" class="button button-icon button-clear ion-plus-circled" ng-click="pageconf.add()"></button>
-		    <div class="input-label" ng-click="pageconf.add()">
-		      Add Story
-		    </div>
-		    <select ng-model="pageconf.model.id" ng-init="pageconf.model.id = 'html'">
-		      <option value="html">html</option>
-		      <option value="paragraph" selected>paragraph</option>
-		      <option value="reference">reference</option>
-		    </select>
-		  </label>
-		 <label class="item item-input " ng-if="pageconf.page.currentStory !== undefined">
-		    <button type="button" class="button button-icon button-clear ion-plus-circled" ng-click="pageconf.delete()"></button>
-		    <div class="input-label" ng-click="pageconf.delete()">
-		      Delete Story {{pageconf.page.currentStory.name}}
-		    </div>		   
-		  </label>
-		  
-	    	<label class="item item-icon-right" ng-click="pageconf.add(pageconf.app.paste())" ng-if="pageconf.app.paste()">
-			    <div class="input-label" ng-click="pageconf.add(pageconf.app.paste())">
-			      Paste {{pageconf.app.paste().name}}
-			    </div>
-			</label>
 		</div>
     </ion-content>
 </ion-view>

@@ -28,9 +28,12 @@
     <!-- cordova script (this will be a 404 during development) 
     <script src="cordova.js"></script>-->
     
-    <!-- jsonml-dom-->
-	<script src="https://cdn.rawgit.com/weolopez/Recursive/master/components/wiki/jsonml-dom.js"></script>
-
+    <!-- html-json-->
+	<script src="https://cdn.rawgit.com/noherczeg/ng-jsonpath/master/dist/ng-jsonpath.min.js"></script>
+	<script src="https://cdn.rawgit.com/mckamey/jsonml/master/jsonml-dom.js"></script>
+    <script src="https://cdn.rawgit.com/darul75/ng-prettyjson/master/dist/ng-prettyjson.min.js"></script>
+    <link href="https://cdn.rawgit.com/darul75/ng-prettyjson/master/dist/ng-prettyjson.min.css" rel="stylesheet">
+    
     <!-- your app's js -->
      <script src="components/user/user.js"></script>
      <script src="components/application/application.js"></script>
@@ -41,6 +44,7 @@
      <script src="components/wiki/wiki.js"></script>
      <script src="components/firebase/firebase.js"></script>
      <script src="components/resource-cache/resource-cache.js"></script>
+     <script src="components/html-resource/html-resource.js"></script>
     <!-- Views -->
   </head>
 
@@ -48,9 +52,12 @@
     <ion-nav-view></ion-nav-view>    
   </body>
   <script>
+    Array.prototype.move = function (from, to) {
+	  this.splice(to, 0, this.splice(from, 1)[0]);
+	};
   	angular.module('starter', ['ionic', 'ngAnimate', 'component.application', 'component.application.settings', 
   	'component.wiki', 'component.wiki.page', 'component.wiki.story', 'resource-cache', 'component.wiki.pageconf', 
-  	'component.firebase'])
+  	'component.firebase', 'component.html-resource', 'ngPrettyJson', 'ngJSONPath'])
   	.run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

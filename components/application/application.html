@@ -4,7 +4,11 @@
             <ion-nav-bar class="bar-stable">
                 <ion-nav-back-button>         
                 </ion-nav-back-button>
-
+         		<ion-nav-buttons side="left">
+                    <button class="button button-icon button-clear ion-share" ng-click="app.open()">
+                    </button>
+                </ion-nav-buttons>
+                
                 <ion-nav-buttons side="right" ng-controller="UserCtrl as user">
                     <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
                     </button>
@@ -16,7 +20,6 @@
         </ion-side-menu-content>
 
         <ion-side-menu side="right" >
-        
   <!--span>$state = <b>{{app.state.current.name}}</b></span><br>
   <span>$state url = <b>{{app.state.$current.url.source}}</b></span-->
             <ion-tabs class="tabs-icon-top tabs-color-active-positive">
@@ -25,9 +28,8 @@
                     <ion-nav-view name="story@app.wiki"></ion-nav-view>
                 </ion-tab>
 
-
                 <!-- Chats Tab -->
-                <ion-tab title="Page" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.wiki.pageconf">
+                <ion-tab title="Page" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" ui-sref="app.wiki.pageconf({storyName: app.page.currentStory.name})">
                     <ion-nav-view name="pageconf@app.wiki"></ion-nav-view>
                 </ion-tab>
 

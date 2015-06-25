@@ -9,18 +9,16 @@
         #loginroom:hover {
             color: #0a9ec7;
         }
-        .users {
-          //  margin-top: 50px;
-	    	padding: 0;
+        .story{
+            padding: 45px 0 0 0 ;
         }
     </style>    
     <ion-header-bar class="bar-stable" style="height: 50px" >
         <h1 class="" style="margin-top: -8px;">Properties</h1>
-        <!--a id="roomlogin" class="button button-icon icon ion-share right" ng-click="shareRoom()"></a>
-        <a id="loginroom" class="button button-icon icon ion-log-in right" ng-click="loginRoom()"></a-->
+        <button class="button button-icon button-clear ion-share" ng-click="story.open()"></button>
     </ion-header-bar>
     
-    <ion-content class="padding users" scroll="true">    
+    <ion-content class="padding story" scroll="true">    
    		<div class="list">
 	    	<label class="item item-icon-right" ng-repeat="key in story.getKeys()" ng-click="story.openModal(key)">
 			    <div class="input-label" ng-click="story.openModal(key)">
@@ -28,11 +26,27 @@
 			    </div>
 			</label>
 			
-	    	<label class="item item-icon-right" ng-click="story.app.copy(story.page.currentStory)">
-			    <div class="input-label" ng-click="story.app.copy(story.page.currentStory)">
-			      Copy {{story.page.currentStory.name}}
+			 <label class="item item-input item-select">
+			    <button type="button" class="button button-icon button-clear ion-plus-circled" ng-click="story.add()"></button>
+			    <div class="input-label" ng-click="story.add()">
+			      Add Story
 			    </div>
-			</label>
+			    <select ng-model="story.model.id" ng-init="story.model.id = 'html'">
+			      <option value="html">html</option>
+			      <option value="paragraph" selected>paragraph</option>
+			      <option value="remote-html">remote-html</option>
+			      <option value="todoitem">todoitem</option>
+			      <option value="todolist" selected>todolist</option>
+			      <option value="trust-html">trust-html</option>
+			    </select>
+			  </label>  
+	    	<!--label class="item item-icon-right" ng-click="story.app.copy(story.page.currentStory)" style="padding-right: 100%;display: inline-flex;padding: 15px 100% 0px 15px;">
+			    <div class="input-label" ng-click="story.app.copy(story.page.currentStory)">
+			      Index {{story.page.storyIndex}}
+			    </div>
+			    <button type="button" class="button button-icon button-clear ion-plus-circled" ng-click="story.move(1)" style="top: -6px;"></button>
+			    <button type="button" class="button button-icon button-clear ion-minus-circled" ng-click="story.move(-1)" style="top: -6px;"></button>
+			</label-->
 		</div>
     </ion-content>
 </ion-view>

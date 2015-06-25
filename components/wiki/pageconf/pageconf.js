@@ -19,17 +19,4 @@ angular.module('component.wiki.pageconf', [
 	  		$ionicSideMenuDelegate.toggleRight();
 		}
 	
-        pageconf.add = function(s) {
-        	if (s===undefined) {
-				var story = {
-					text:'',
-					type:pageconf.model.id,
-					name:$page.current.story.length+1
-				};
-        	} else var story = s;
-			$page.add(story);			
-		}
-        pageconf.delete = function() {
-			$page.removeStory();			
-		}
 	});

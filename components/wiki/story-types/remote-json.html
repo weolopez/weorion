@@ -1,12 +1,8 @@
-<div id="todolistsection" ng-init="page.getStories(s)">
+<div id="remoteJSON" >
 	<style>
-	    #todolisttitle {
-	    	margin: 10px;
-	    }
-		#todoitem {
-			padding-bottom: 16px
+		#remoteJSON {
 		}
-		#todolist {
+		#weo {
 			background: #7db9e8;
 			background: -moz-linear-gradient(top,  #7db9e8 0%, #7db9e8 0%, #207cca 61%, #3a6699 99%);
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(0%,#7db9e8), color-stop(61%,#207cca), color-stop(99%,#3a6699));
@@ -39,45 +35,13 @@
 		    max-height: 0;
 		    opacity:1;
 		}
-			 
-		ol {
-		  color: #ccc;
-		  list-style-type: none;
-		}
-		 
-		ol li {
-		  position: relative;
-		  font: bold italic 45px/1.5 Helvetica, Verdana, sans-serif;
-		  margin-bottom: -12px;
-		  top: -26px;
-		}
-		 
-		li p {
-		  font: 12px/1.5 Helvetica, sans-serif;
-		  padding-left: 60px;
-		  color: #555;
-		  padding-top: 25px;
-		}
-		 
-		.lispan {
-		  position: absolute;
-		}
-		
-		p a {
-				    color: white;
-				}
 	</style>	
 	
 	<script>
-angular.module('component.wiki.page', [ ]).controller('TodoItemCtrl', function ($page) {
-	var todo = this;
-	todo.page=$page;
-	todo.change = function() {
-		$page.save();
-	}
-	todo.canExpand = function(s) {
-		return true;//$page.currentStory===s.name;
-	}
+angular.module('component.wiki.page', [ ])
+.controller('RemoteJSONCtrl', function ($page) {
+	var remoteJSON = this;
+	
 });     
 var queue = angular.module('component.wiki.page')._invokeQueue;
 for(var i=0;i<queue.length;i++) {
@@ -88,18 +52,9 @@ for(var i=0;i<queue.length;i++) {
     }
 }
 
-$('#todolistsection').attr('ng-controller', "TodoItemCtrl as todo"); 
+$('#remoteJSON').attr('ng-controller', "RemoteJSONCtrl as remoteJSON"); 
 
 	</script>
-	<h1 id="todolisttitle">{{s.page}} Todo List</h1>
-	<section id="todolist" ng-if="page.page.currentStory.name===s.name" class="animate-if">
-		<br>
-		<div>
-		  <ol>
-		    <li ng-repeat="todoitem in page.t | filter: {type : 'todoitem'}">
-				<span class="lispan">{{$index}}.</span><p>{{todoitem.name}} {{todoitem.type}}</p>
-			</li>
-		  </ol>
-		</div>	
-	</section>
+	<h1 id="remoteJSON">{{s.name}}</h1>
+	<section id="weo" ng-if="page.page.currentStory===s" class="animate-if" ng-bind-html="page.deliberatelyTrustDangerousSnippet(s)"></section>
 </div>  

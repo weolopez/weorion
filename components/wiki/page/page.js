@@ -36,6 +36,7 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 			page.updatePage = function(state) {
 				page.getPage(state.params.name, function(p) {
 					page.current=p;
+					if (page.current.title===undefined) page.current.title=state.params.name;
 					
 					if (state.params.storyName !== '' ) {
 						angular.forEach(page.current.story, function(story, index) {
@@ -54,11 +55,11 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 					}
 					
 			//		notifyStoryObservers();
-			//		notifyObservers;
+					notifyObservers();
 				})
 			}
-			
             page.add = function(s) {
+	        	if (s===undefined) return;
             	if (page.current.story === undefined) page.current.story = [];
 				page.current.story.push(s);
 				page.save();
@@ -133,12 +134,21 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 			}
 			return 'components/wiki/story-types/'+s.type+'.html';
 		}
-		page.deliberatelyTrustDangerousSnippet = function(s) {
-			var txt = s.text;
-			$scope.s = s;
-			txt = $wiki.wikify(txt)
+		page.deliberatelyTrustDangerousSnippet = function(text) {
+			var txt = text;
+			if ((text === undefined)||(text===null)) return;
+			if (typeof text !== "string") {
+				//$log.debug("Text", txt);
+				txt = text.text;
+				}
+			else {
+			//$log.debug("Not Text", txt);
+			return txt;
+			}
+			$scope.s = txt;
+			txt = $wiki.wikify(txt);      
 			txt=$scope.$eval($interpolate(txt));
-			//console.log("SECOND"+txt);
+		//		console.log("SECOND"+txt);
                return $sce.trustAsHtml(txt);
              };
         page.wikify = function(s) {

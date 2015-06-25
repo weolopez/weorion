@@ -36,7 +36,7 @@ angular.module('component.html-resource', [ 'ngResource'
 			}
 		};
 	})
-	.directive('htmlResource', function ($resource, $localStorage, $resources, $timeout) {
+	.directive('scrapee', function ($resource, $localStorage, $resources, $timeout) {
 		return {
 			restrict: 'E',
 			priority: -100,
@@ -61,16 +61,17 @@ angular.module('component.html-resource', [ 'ngResource'
 						edit = false;
 				};
 				function refreshData(newValue) {
+					return;
 					$('#' + attrs.bindTo).html('');
 					if (newValue.length < 4)
 						return;
-					$.getJSON('http://anyorigin.com/dev/get?url=' + newValue + '&callback=?', function (data) {
+					$.getJSON('http://allow-any-origin.appspot.com/' + newValue + '&callback=?', function (data) {
 						var content = data.contents.substring(data.contents.indexOf('<body'));
 						content = content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
 						content = content.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "");
 						content = content.replace(/<img[^>]*>/g, '');
 						content = content.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "");
-						$('#' + attrs.bindTo).html(content);
+						element.html(content);
 						//console.log("AFTER:"+$('#' + attrs.bindTo).html());
 						scope.bindTo = new Date().toString();
 						$resources.update(attrs.bindTo, scope.bindTo);

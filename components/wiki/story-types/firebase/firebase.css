@@ -1,7 +1,7 @@
-<div id="weo" >
-	<style>
-		#todoitem {
-			padding-bottom: 16px
+		#firebase {
+			padding-bottom: 16px;
+			background-color: orange;
+			color: green;
 		}
 		#weo {
 			background: #7db9e8;
@@ -36,30 +36,3 @@
 		    max-height: 0;
 		    opacity:1;
 		}
-	</style>	
-	
-	<script>
-angular.module('component.wiki.page', [ ]).controller('TodoItemCtrl', function ($page) {
-	var todo = this;
-	todo.change = function() {
-		$page.save();
-	}
-	todo.canExpand = function(s) {
-		return (($page.currentStory===s) && (!s.complete) );
-	}
-});     
-var queue = angular.module('component.wiki.page')._invokeQueue;
-for(var i=0;i<queue.length;i++) {
-    var call = queue[i];
-    var provider = providers[call[0]];
-    if(provider) {
-        provider[call[1]].apply(provider, call[2]);
-    }
-}
-
-$('#weo').attr('ng-controller', "TodoItemCtrl as todo"); 
-
-	</script>
-	<ion-toggle id="todoitem" ng-change="todo.change()" ng-model="s.complete" toggle-class="toggle-calm" ng-click="page.edit(s.name)">{{s.name}}</ion-toggle>
-	<section ng-if="todo.canExpand(s)" class="animate-if" ng-bind-html="page.deliberatelyTrustDangerousSnippet(s)"></section>
-</div>  

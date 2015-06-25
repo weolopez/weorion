@@ -29,6 +29,10 @@
 		width: 100%;
 		height: 100%;
 	}
+	#storyeditor {
+		padding-left: 10px;
+		margin-left: 10px;
+	}
 </style>
 <header id="editor-header" class="bar bar-header bar-positive">
           <h1 class="title">Property Editor ({{key}})</h1>
@@ -36,7 +40,8 @@
           	<span class="icon ion-close"></span>
           </div>
         </header>
-        
-    <textarea id="editor-text" placeholder="Comments" ng-model="story.page.currentStory[key]"></textarea>
+    <section id="storyeditor">
+       <textarea id="editor-text" placeholder="Comments" ng-model="story.page.currentStory[key]"></textarea>
 	
+	</section>
 </div>

@@ -2,8 +2,11 @@ angular.module('component.wiki', ['firebase','ngStorage'])
         .factory('$wiki', function ($log, $q, $localStorage, $firebaseAuth, $firebaseObject, $firebaseArray) {
         	var wiki = this;
             wiki.$storage = $localStorage;
-            
             wiki.wikify = function(txt) {
+                if (txt === undefined) {
+                	$log.log('wiki.wikify = function(txt) {if (txt === undefined) ')
+                	return txt;
+                }
             	txt=txt.replace(/\[\[(.+?)\]\]/g, function (match) {
                             var display = match.substring(2, match.length - 2);
                             var link = display.replace(/ /g, "-");
