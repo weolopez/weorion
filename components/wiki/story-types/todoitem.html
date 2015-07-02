@@ -36,7 +36,38 @@
 		    max-height: 0;
 		    opacity:1;
 		}
-	</style>	
+		#listitem {
+		  margin: 10px
+		}
+		 
+		ol {
+		  color: #ccc;
+		  list-style-type: none;
+		  padding-left: 10px;
+		}
+		 
+		ol li {
+		  position: relative;
+		  font: bold italic 45px/1.5 Helvetica, Verdana, sans-serif;
+		  margin-bottom: -12px;
+		  top: -26px;
+		}
+		 
+		li p {
+		  font: 18px/1.5 Helvetica, sans-serif;
+		  padding-left: 60px;
+		  color: white;
+		  padding-top: 25px;
+		}
+		 
+		.lispan {
+		  position: absolute;
+		}
+		
+		p a {
+		    color: white;
+		}
+</style>
 	
 	<script>
 angular.module('component.wiki.page', [ ]).controller('TodoItemCtrl', function ($page) {
@@ -56,10 +87,10 @@ for(var i=0;i<queue.length;i++) {
         provider[call[1]].apply(provider, call[2]);
     }
 }
-
+//todo.canExpand(s)
 $('#weo').attr('ng-controller', "TodoItemCtrl as todo"); 
 
 	</script>
 	<ion-toggle id="todoitem" ng-change="todo.change()" ng-model="s.complete" toggle-class="toggle-calm" ng-click="page.edit(s.name)">{{s.name}}</ion-toggle>
-	<section ng-if="todo.canExpand(s)" class="animate-if" ng-bind-html="page.deliberatelyTrustDangerousSnippet(s)"></section>
+	<section ng-if="page.page.currentStory===s && !s.complete" class="animate-if" ng-bind-html="page.deliberatelyTrustDangerousSnippet(s)"></section>
 </div>  

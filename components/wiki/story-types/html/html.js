@@ -1,7 +1,7 @@
 angular.module('component.wiki.page', [ ])
-.controller('TodoItemCtrl', function ($page, $http, $scope, $window) {
-	var todo = this;
-	todo.test='TESTTEST';
+.controller('HTMLCtrl', function ($page, $http, $scope, $window) {
+	var html = this;
+	html.test='TESTTEST';
 });     
 
 var queue = angular.module('component.wiki.page')._invokeQueue;
@@ -12,5 +12,4 @@ for(var i=0;i<queue.length;i++) {
         provider[call[1]].apply(provider, call[2]);
     }
 }
-
-$('#firebase').attr('ng-controller', "TodoItemCtrl as todo"); 
+$('#html').attr('ng-controller', "HTMLCtrl as html"); 

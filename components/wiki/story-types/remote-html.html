@@ -162,7 +162,7 @@ $('#remote-html').attr('ng-controller', "RemoteHTMLCtrl as remoteHTML");
 		    <label class="item-input-wrapper">
 		      <input type="text" placeholder="url"  ng-model="remoteHTML.s.url" ng-click="$event.stopPropagation();" style="width:100%;">
 		    </label>
-		    <i class="icon ion-refresh" ng-click="opentab(remoteHTML.s.url); $event.stopPropagation();" style="font-size: 35px;  padding-left: 10px;"></i>
+		    <i class="icon ion-android-open" ng-click="opentab(remoteHTML.s.url); $event.stopPropagation();" style="font-size: 35px;  padding-left: 10px;"></i>
 		  </div>
 			
 		  <div class="item item-input-inset" title="selector">
@@ -186,7 +186,6 @@ $('#remote-html').attr('ng-controller', "RemoteHTMLCtrl as remoteHTML");
 		    		<pre class='json' json="remoteHTML.s.jsondata" pretty-json >
 				</div>
 			</section>
-	
 		</div>
 	</section>
 	

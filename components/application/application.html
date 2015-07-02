@@ -14,7 +14,7 @@
                     </button>
                     <user ng-show="user.isLoggedIn()"></user>
                 </ion-nav-buttons>
-            	<h1 class="title" ></h1>
+            	<h1 class="apptitle" ></h1>
             </ion-nav-bar>
             <ion-nav-view name="page" style="top:40px;"></ion-nav-view>
         </ion-side-menu-content>
@@ -34,7 +34,7 @@
                 </ion-tab>
 
                 <!-- Account Tab -->
-                <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ui-sref="app.wiki.settings">
+                <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ui-sref="app.wiki.settings({storyName: app.page.currentStory.name})">
                     <ion-nav-view name="settings@app.wiki"></ion-nav-view>
                 </ion-tab>
             </ion-tabs>

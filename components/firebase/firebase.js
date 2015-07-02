@@ -4,33 +4,25 @@
 
 angular.module('component.firebase', [ 
 ])         
-		.factory('$firebase', function () {
+	.factory('$firebase', function () {
 	})
-	.directive('firebase', function () {
+	.directive('firebase', function ($page) {
 		return {
 			restrict: 'E',
-		  //  transclude: true,
 			scope: {
-		//		path: '@',
-		//		bindTo: '='
+				page: '@',
+				story: '@',
+				bindto: '='
 			},
-			template: '<div>XXXXX</div>',
-//			replace: false,
-			controller: function($scope) {
-				alert("test");
+			controller: function($scope, $page) {
 				var firebase = this;
-				firebase.path = $scope.path;
-				firebase.bindTo = $scope.bindTo;
-				firebase.test= 'scope.bindTo';
-				console.log('weotest');
+				$page.getPage(firebase.page, function(p) {
+					if (firebase.story === undefined) firebase.bindto = p.story;
+					else firebase.bindto = p.story[firebase.story].jsondata;
+				});
 			},
-			controllerAs: 'firebase',
-			link: function (scope, element, attrs, ctrl, transclude) {
-				transclude(scope, function(clone, scope) {
-				console.log('weotest');
-			        element.append(clone);
-			      });
-			}
+			controllerAs: 'firebase', 
+            bindToController: true
 		};
 	})
 	;

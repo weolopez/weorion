@@ -10,8 +10,21 @@ angular.module('component.wiki.page', [ 'ngSanitize'
         $compileProvider: $compileProvider,
         $provide: $provide
     };
-})        
-	.factory('$page', function ($log, $firebaseAuth, $firebaseObject, $firebaseArray, CONST) {
+})  
+	.config(function($provide) {
+        	$provide.decorator('$exceptionHandler',
+        	['$delegate', '$window',
+        	    function($delegate, $window) {
+        	    	return function(exception, cause) {
+					   //; exception.message += '\n\n!!!ERROR Let WEO Know!!!!!!\n\n';
+					    $delegate(exception, cause);
+					    var newerror = exception.message;
+					    $window.pageerror = exception.message;
+					    //alert(exception.message);
+					  };
+        	    }]);
+        })
+	.factory('$page', function ($log, $firebaseAuth, $firebaseObject, $firebaseArray, CONST, $window, $user) {
         	var page = this;
             
 			var observerCallbacks = [];
@@ -34,15 +47,34 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 				} else callback();
 			}
 			page.updatePage = function(state) {
-				page.getPage(state.params.name, function(p) {
-					page.current=p;
-					if (page.current.title===undefined) page.current.title=state.params.name;
+				page.current = undefined;
+				page.getPage(state.params.name, function(p) {					
+				//	console.dir(p);
+					if (p.title===undefined) p.title=state.params.name;
 					
 					if (state.params.storyName !== '' ) {
-						angular.forEach(page.current.story, function(story, index) {
+						angular.forEach(p.story, function(story, index) {
 							if (state.params.storyName === story.name) {
+								if (state.params.set !== undefined) {
+									for (var i = 0; i < state.params.set.length; i++) {
+										var parameter = state.params.set;
+										if (state.params.set instanceof Array) parameter = 	state.params.set[i];
+										
+										if (state.params.set.length > 0) {
+											var name = parameter.substring(0,parameter.indexOf(':'));
+											var value = parameter.substring(parameter.indexOf(':')+1);
+										//	$log.debug(name,value);
+											p.story[index][name]  = ('true' === value);
+											page.save(function() {
+												
+											});
+											
+										}
+									}
+								}
+								
 								page.storyIndex = index;
-								page.currentStory = page.current.story[index];
+								page.currentStory = p.story[index];
 								
 					/*			if ($state.params.edit === 'true') $page.ifPageChanges( function() {
 									story.openModal($page.storyIndex);
@@ -54,6 +86,9 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 						page.currentStory = undefined;
 					}
 					
+			//		console.dir(p);
+					page.current=p;
+			//		page.save();
 			//		notifyStoryObservers();
 					notifyObservers();
 				})
@@ -75,11 +110,24 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 			page.ifStoryChanges = function (callback) {
 				storyChangeCallbacks.push(callback);
 			}
-			page.save = function() {
+			page.save = function( ) {
+				if (page.current === undefined) return;
 				page.current.story[page.storyIndex] = page.currentStory;
+				
+				if ($window.pageerror !== undefined) {
+					if (page.current.hidden === undefined) page.current.hidden = { error : [$window.pageerror]};
+					else page.current.hidden.error.push($window.pageerror);
+					$window.pageerror = undefined;
+				}
+				
+				page.current.lastEditBy = $user.user.name;
+				
 				page.current.$save().then(function(value){
+				//	callback();
 					notifyStoryObservers();
 					notifyObservers();
+				}, function(error) {
+				  alert(error.toString());
 				});
 			}
 			page.removeStory = function() {				
@@ -94,12 +142,13 @@ angular.module('component.wiki.page', [ 'ngSanitize'
         			callback(value);
 				})
 	        }        
-            return page;
-    })
+	        return page;
+    })      
 	.controller('PageCtrl', function ($log, $stateParams, $state, $location, $app, 
 			$page, $scope, $interpolate, $sce, $wiki, $user, $ionicPopup) {
         var page = this;	
-        page.page = $page;        
+        page.page = $page;    
+        page.user = $user;
 		
 		$scope.$on( "$stateChangeSuccess", function()
 		{ 
@@ -111,7 +160,14 @@ angular.module('component.wiki.page', [ 'ngSanitize'
             if ($user.user === undefined) return;
             $user.setLocation($location.url());
 	    });  
-		
+		page.getTemplate = function(s) {
+			if ( (s === undefined) ||  (s.type === undefined) ) {
+		//		$log.debug("Story not found:",  $page.currentStory, 'VS', s);
+				return;
+			}
+			
+			return 'components/wiki/story-types/'+s.type+'.html';
+		}
 		page.componentClicked = function(index){
 			if (index === $page.storyIndex) {
 					index = -1;
@@ -127,30 +183,22 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 		page.isSelected = function(index) {
 			return ($page.storyIndex === index); 
 		}
-		page.getTemplate = function(s) {
-			if (s === undefined) {
-				$log.error("Story not found:",  $page.currentStory);
-				return;
+
+		page.deliberatelyTrustDangerousSnippet = function(s) {
+			if ((s === undefined)||(s===null)) return;
+			
+			var txt = s;
+			$scope.s = s;
+			if (typeof s !== "string") {
+				txt = s.text;
 			}
-			return 'components/wiki/story-types/'+s.type+'.html';
-		}
-		page.deliberatelyTrustDangerousSnippet = function(text) {
-			var txt = text;
-			if ((text === undefined)||(text===null)) return;
-			if (typeof text !== "string") {
-				//$log.debug("Text", txt);
-				txt = text.text;
-				}
-			else {
-			//$log.debug("Not Text", txt);
-			return txt;
-			}
-			$scope.s = txt;
 			txt = $wiki.wikify(txt);      
 			txt=$scope.$eval($interpolate(txt));
-		//		console.log("SECOND"+txt);
-               return $sce.trustAsHtml(txt);
-             };
+            return $sce.trustAsHtml(txt);
+        };
+        page.append = function(text, element) {
+        	element.append(text);
+        }
         page.wikify = function(s) {
         	var txt = s.text;
         	return $wiki.wikify(txt);
@@ -160,5 +208,5 @@ angular.module('component.wiki.page', [ 'ngSanitize'
         		page.t=p.story;
         	});
         }
-        
+        page.init = 'testscope';
 	});

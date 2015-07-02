@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
     <title></title>
 
     <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -34,6 +38,10 @@
     <script src="https://cdn.rawgit.com/darul75/ng-prettyjson/master/dist/ng-prettyjson.min.js"></script>
     <link href="https://cdn.rawgit.com/darul75/ng-prettyjson/master/dist/ng-prettyjson.min.css" rel="stylesheet">
     
+    
+    <!-- slider-->
+    <script src="https://cdn.rawgit.com/itslenny/angular-slidezilla/master/dist/angular-slidezilla.min.js"></script>
+    
     <!-- your app's js -->
      <script src="components/user/user.js"></script>
      <script src="components/application/application.js"></script>
@@ -43,8 +51,7 @@
      <script src="components/wiki/story/story.js"></script>
      <script src="components/wiki/wiki.js"></script>
      <script src="components/firebase/firebase.js"></script>
-     <script src="components/resource-cache/resource-cache.js"></script>
-     <script src="components/html-resource/html-resource.js"></script>
+     <script src="components/html/html.js"></script>
     <!-- Views -->
   </head>
 
@@ -56,8 +63,8 @@
 	  this.splice(to, 0, this.splice(from, 1)[0]);
 	};
   	angular.module('starter', ['ionic', 'ngAnimate', 'component.application', 'component.application.settings', 
-  	'component.wiki', 'component.wiki.page', 'component.wiki.story', 'resource-cache', 'component.wiki.pageconf', 
-  	'component.firebase', 'component.html-resource', 'ngPrettyJson', 'ngJSONPath'])
+  	'component.wiki', 'component.wiki.page', 'component.wiki.story', 'component.wiki.pageconf', 
+  	'component.firebase', 'ngPrettyJson','component.html', 'ngJSONPath', 'angular-slidezilla'])
   	.run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -80,7 +87,7 @@
                         controller: 'AppCtrl as app'
                     })
                     .state('app.wiki', {
-                        url: '/wiki/:name',
+                        url: '/wiki/:name?set',
                         abstract: true,
                         views: {
                             'page': {

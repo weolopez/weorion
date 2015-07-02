@@ -19,4 +19,9 @@ angular.module('component.wiki.pageconf', [
 	  		$ionicSideMenuDelegate.toggleRight();
 		}
 	
+		pageconf.displayError = function() {			
+			alert($page.current.hidden.error);
+			$page.current.hidden = {};
+			$page.save();
+		}	
 	});

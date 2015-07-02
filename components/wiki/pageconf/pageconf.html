@@ -14,7 +14,8 @@
         }
     </style>    
     <ion-header-bar class="bar-stable" style="height: 50px" >
-        <h1 class="" style="margin-top: -8px;">Page(s)</h1>
+        <h1 class="" style="margin-top: -8px;">Page(s)</h1>    
+        <button ng-if="pageconf.page.current.hidden !== undefined" class="button button-icon button-clear ion-bug" style="color:red;" ng-click="pageconf.displayError()">{{pageconf.page.current.hidden.error.length+1}}</button>
     </ion-header-bar>
     <ion-content class="padding pageconf" scroll="true">    
    		<div class="list">

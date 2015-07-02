@@ -5,11 +5,11 @@
   		transition:0.5s linear all;	
 	  background:white;
 	  border:0px solid black;
+	  padding: 0;
 	}	
 	.editable-content.focused {
 	  background: #E6E6E6;
-	  margin:10px;
-	  border:1px solid black;
+	  border:2px outset;
 	}	
 	
 .bar-header {
@@ -18,29 +18,46 @@
 .bar-header > * {
   //margin-top: 20px !important;
 }
+.story {
+	width: 100%;
+}
+
+.card, .list-inset {
+  overflow: hidden;
+  margin: 5px 5px;
+  border-radius: 2px;
+  background-color: #fff;
+}
 
 .scroll-content{
   top:0 !important
 }
+.storyHeader {
+	padding-top: 5px;
+	min-width: 55px;
+}
+.storyHeader img{
+	margin: 5px;
+}
 </style>
 	<div ng-repeat="s in page.page.current.story track by $index" 
-		class="editable-content" 
+		class="editable-content item item-input-inset"
 		ng-class="{focused:page.isSelected($index)}"
 		ng-click="page.componentClicked($index)" 
 		delegate-handle="D{{$index}}"
 		>
-		<div 
-			ng-include="page.getTemplate(s)"
-		>			
+		<div class="storyHeader" ng-if="page.isSelected($index)" class="animate-if" ng-click="alert('test')">
+		      <img src="http://graph.facebook.com/{{page.user.user.profile.id}}/picture?width=50&height=50"/>
 		</div>
+		<div class="story card" style="padding: 0;" ng-include="page.getTemplate(s)"></div>
 	</div>
 
 
  
-  <button ng-hide="showjson" ng-click="showjson=!showjson">show json</button>
+  <!--button ng-hide="showjson" ng-click="showjson=!showjson">show json</button>
   <p ng-show="showjson" ng-click="showjson=!showjson">
   	{{page.page.current.story}}
-  </p>
+  </p-->
   <br>
   <br>
   <br>

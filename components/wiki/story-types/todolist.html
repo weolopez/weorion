@@ -53,9 +53,9 @@
 		}
 		 
 		li p {
-		  font: 12px/1.5 Helvetica, sans-serif;
+		  font: 24px/1.5 Helvetica, sans-serif;
 		  padding-left: 60px;
-		  color: #555;
+		  color: white;
 		  padding-top: 25px;
 		}
 		 
@@ -91,8 +91,18 @@ for(var i=0;i<queue.length;i++) {
 $('#todolistsection').attr('ng-controller', "TodoItemCtrl as todo"); 
 
 	</script>
-	<h1 id="todolisttitle">{{s.page}} Todo List</h1>
-	<section id="todolist" ng-if="page.page.currentStory.name===s.name" class="animate-if">
+	
+	<div class="item item-input-inset" title="todolist">
+		<i ng-init="open=false" class="icon" ng-click="open=!open;$event.stopPropagation();" ng-class="{'ion-chevron-down': open, 'ion-chevron-right': !open}" style="font-size: 35px;  padding-right: 10px;">
+		</i>
+		<label class="item-input-wrapper">
+			<input type="text" placeholder="url"  ng-model="s.name" ng-click="$event.stopPropagation();" style="width:100%;">
+		</label>
+		<a href="#/app/wiki/{{s.page}}/pageconf/"><i class="icon ion-android-open" style="font-size: 35px;  padding-left: 10px;">
+		</i></a>
+	</div>
+		  
+	<section id="todolist" ng-if="open" class="animate-if">
 		<br>
 		<div>
 		  <ol>
