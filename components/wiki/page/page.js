@@ -120,7 +120,7 @@ angular.module('component.wiki.page', [ 'ngSanitize'
 					$window.pageerror = undefined;
 				}
 				
-				page.current.lastEditBy = $user.user.name;
+				page.current.lastEditBy = $user.user.profile.id$user.user.name;
 				
 				page.current.$save().then(function(value){
 				//	callback();

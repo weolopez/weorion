@@ -1,3 +1,7 @@
+	#noborder {
+		border: none;
+	}
+	
 	.cardlist {
 		list-style-type: circle;
 		padding-left: 5px;

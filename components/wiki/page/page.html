@@ -46,7 +46,7 @@
 		ng-click="page.componentClicked($index)" 
 		delegate-handle="D{{$index}}"
 		>
-		<div class="storyHeader" ng-if="page.isSelected($index)" class="animate-if" ng-click="alert('test')">
+		<div class="storyHeader" ng-if="true" class="animate-if" ng-click="alert('test')">
 		      <img src="http://graph.facebook.com/{{page.user.user.profile.id}}/picture?width=50&height=50"/>
 		</div>
 		<div class="story card" style="padding: 0;" ng-include="page.getTemplate(s)"></div>
