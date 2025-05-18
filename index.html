@@ -1,51 +1,19 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>WIKI</title>
+<html lang="en">
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="components/page/page.css" rel="stylesheet">  
-    <link href="css/textAngular.css" rel="stylesheet" type="text/css"/>
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroids Game</title>
+    <link rel="stylesheet" href="styles.css?v=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script src="js/main.js" type="module"></script>
+    <!-- <script src="js/imageEdit.js?v=1.0" type="module"></script> -->
+</body>
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ngDraggable/ngDraggable.js" type="text/javascript"></script>
-    
-    <!-- textAngular js -->
-    <script src="lib/textAngular/textAngular-rangy.min.js" type="text/javascript"></script>
-    <script src="lib/textAngular/textAngular-sanitize.min.js" type="text/javascript"></script>
-    <script src="lib/textAngular/textAngular.min.js" type="text/javascript"></script>
-    <!-- Networked dependencies -->
-    	<!-- Firebase -->
-        <script src="lib/firebase/firebase.js" type="text/javascript"></script>
-        
-	<!-- AngularFire -->
-        <script src="lib/firebase/angularfire.min.js" type="text/javascript"></script>
-        
-        <script src="https://cdn.rawgit.com/noherczeg/ng-jsonpath/master/dist/ng-jsonpath.min.js"></script>
-        <script src="https://cdn.rawgit.com/mckamey/jsonml/master/jsonml-dom.js"></script>
-        
-        <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="components/storage/storage.js"></script>
-    <script src="components/application/application.js"></script>
-    <script src="components/page/page.js"></script>
-    <script src="components/wikihtml/wikihtml.js"></script>
-    <script src="components/wikipage/wikipage.js" type="text/javascript"></script>
-    <script src="components/user/user.js" type="text/javascript"></script>
-  </head>
-
-  <body ng-app="starter">
-    <ion-nav-view></ion-nav-view>
-  </body>
 </html>
